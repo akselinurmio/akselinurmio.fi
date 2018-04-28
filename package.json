@@ -1,17 +1,17 @@
 {
-  "dependencies": {
-    "gatsby": "^1.9.255",
-    "gatsby-link": "^1.6.41",
-    "gatsby-plugin-offline": "^1.0.15",
-    "gatsby-plugin-react-helmet": "^2.0.11",
-    "react-helmet": "^5.2.0"
-  },
-  "devDependencies": {
-    "prettier": "^1.12.1"
-  },
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write 'src/**/*.js' 'src/**/*.jsx'"
-  }
+	"dependencies": {
+		"gatsby": "^1.9.255",
+		"gatsby-link": "^1.6.41",
+		"gatsby-plugin-offline": "^1.0.15",
+		"gatsby-plugin-react-helmet": "^2.0.11",
+		"react-helmet": "^5.2.0"
+	},
+	"devDependencies": {
+		"prettier": "^1.12.1"
+	},
+	"scripts": {
+		"build": "gatsby build",
+		"develop": "gatsby develop",
+		"format": "prettier --write 'src/**/*.js' 'src/**/*.jsx'"
+	}
 }
