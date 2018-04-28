@@ -1,0 +1,13 @@
+.name {
+	font: 700 2.5em/1 Helvetica, Arial, sans-serif;
+	letter-spacing: -.02em;
+	margin: 0;
+}
+
+.link {
+	display: inline-block;
+	background: #ff0;
+	color: #000;
+	padding: .2em .5em .1em .2em;
+	text-decoration: none;
+}
