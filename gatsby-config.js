@@ -3,5 +3,11 @@ module.exports = {
 		'gatsby-plugin-react-helmet',
 		'gatsby-plugin-offline',
 		'gatsby-link',
+		{
+			resolve: 'gatsby-plugin-canonical-urls',
+			options: {
+				siteUrl: 'https://akselinurmio.fi',
+			},
+		},
 	],
 }
