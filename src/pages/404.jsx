@@ -2,8 +2,10 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 
+import Layout from '../components/Layout'
+
 const NotFoundPage = () => (
-	<div>
+	<Layout>
 		<Helmet>
 			<title>You monkey, me no page</title>
 		</Helmet>
@@ -12,7 +14,7 @@ const NotFoundPage = () => (
 		<p>
 			Hello, is it <Link to="/">me</Link> you're looking for?
 		</p>
-	</div>
+	</Layout>
 )
 
 export default NotFoundPage
