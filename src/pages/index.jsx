@@ -1,12 +1,11 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import { main as style } from '../styles/index.module.css'
-
+import Layout from '../components/Layout'
 import Name from '../components/Name'
 
 const IndexPage = () => (
-	<main className={style}>
+	<Layout>
 		<Helmet>
 			<title>Akseli Nurmio</title>
 			<meta name="description" content="I'm Akseli Nurmio." />
@@ -17,7 +16,7 @@ const IndexPage = () => (
 			link="https://www.linkedin.com/in/akselinurmio/"
 			title="Akseli Nurmio at LinkedIn"
 		/>
-	</main>
+	</Layout>
 )
 
 export default IndexPage
