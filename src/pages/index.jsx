@@ -9,6 +9,7 @@ const IndexPage = () => (
 		<Helmet>
 			<title>Akseli Nurmio</title>
 			<meta name="description" content="I'm Akseli Nurmio." />
+			<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 		</Helmet>
 
 		<Name
