@@ -4,7 +4,7 @@ import Link from 'gatsby-link'
 
 import Layout from '../components/Layout'
 
-const NotFoundPage = () => (
+export default () => (
 	<Layout>
 		<Helmet>
 			<title>You monkey, me no page</title>
@@ -16,5 +16,3 @@ const NotFoundPage = () => (
 		</p>
 	</Layout>
 )
-
-export default NotFoundPage

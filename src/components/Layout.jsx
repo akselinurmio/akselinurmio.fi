@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import '../styles/global.css'
 import './Layout.css'
 
-const Layout = ({ children }) => (
+export default ({ children }) => (
 	<main className="Layout">
 		<Helmet>
 			<html lang="en" />
@@ -12,5 +12,3 @@ const Layout = ({ children }) => (
 		{children}
 	</main>
 )
-
-export default Layout

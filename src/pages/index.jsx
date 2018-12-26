@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import Layout from '../components/Layout'
 import Name from '../components/Name'
 
-const IndexPage = () => (
+export default () => (
 	<Layout>
 		<Helmet>
 			<title>Akseli Nurmio</title>
@@ -19,5 +19,3 @@ const IndexPage = () => (
 		/>
 	</Layout>
 )
-
-export default IndexPage
