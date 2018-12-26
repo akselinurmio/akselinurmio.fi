@@ -1,11 +1,11 @@
 import React from 'react'
 
-import styles from '../styles/Name.module.css'
+import './Name.css'
 
-const Name = props => (
-	<h1 className={styles.name}>
-		<a href={props.link} title={props.title} className={styles.link}>
-			{props.name}
+const Name = ({ name, link, title }) => (
+	<h1 className="Name">
+		<a href={link} title={title} className="Name__link">
+			{name}
 		</a>
 	</h1>
 )

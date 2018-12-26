@@ -1,11 +1,11 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import '../styles/globalstyles.css'
-import { main as style } from '../styles/Layout.module.css'
+import '../styles/global.css'
+import './Layout.css'
 
 const Layout = ({ children }) => (
-	<main className={style}>
+	<main className="Layout">
 		<Helmet>
 			<html lang="en" />
 		</Helmet>

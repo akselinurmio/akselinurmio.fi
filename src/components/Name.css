@@ -1,10 +1,10 @@
-.name {
+.Name {
 	font: 700 2.5em/1 Helvetica, Arial, sans-serif;
 	letter-spacing: -0.02em;
 	margin: 0;
 }
 
-.link {
+.Name__link {
 	display: inline-block;
 	background: #ff0;
 	color: #000;
