@@ -9,7 +9,6 @@ export default () => (
 		<Helmet>
 			<title>Akseli Nurmio</title>
 			<meta name="description" content="I'm Akseli Nurmio." />
-			<link rel="icon" href="/favicon.ico" type="image/x-icon" />
 		</Helmet>
 
 		<Name
