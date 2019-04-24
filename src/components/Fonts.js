@@ -1,4 +1,7 @@
 import { createGlobalStyle, css } from "styled-components";
+import CallunaWoff2 from "../fonts/calluna/calluna.woff2";
+import CallunaWoff from "../fonts/calluna/calluna.woff";
+import CallunaTtf from "../fonts/calluna/calluna.ttf";
 
 const Fonts = createGlobalStyle`${css`
 	@font-face {
@@ -6,9 +9,9 @@ const Fonts = createGlobalStyle`${css`
 		font-weight: 400;
 		font-style: normal;
 		src: local("Calluna"), local("Calluna W03 Regular"),
-			url("../fonts/calluna/calluna.woff2") format("woff2"),
-			url("../fonts/calluna/calluna.woff") format("woff"),
-			url("../fonts/calluna/calluna.ttf") format("truetype");
+			url("${CallunaWoff2}") format("woff2"),
+			url("${CallunaWoff}") format("woff"),
+			url("${CallunaTtf}") format("truetype");
 	}
 `}`;
 
