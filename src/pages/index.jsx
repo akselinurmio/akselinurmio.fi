@@ -11,7 +11,7 @@ const page = () => (
 			<Hero
 				headingChunks={[
 					"Hello there! 👋",
-					"I’m Akseli, full-stack developer, designer and eternal student.",
+					"I’m Akseli, full-stack developer, designer and digital media student.",
 				]}
 			>
 				<p>
@@ -25,7 +25,7 @@ const page = () => (
 		</main>
 		<Meta
 			title="Akseli Nurmio"
-			description="Akseli Nurmio is full-stack developer, designer and eternal student."
+			description="Akseli Nurmio is full-stack developer, designer and digital media student."
 		/>
 		<StructuredData
 			data={{
