@@ -45,11 +45,9 @@ const Hero = ({ headingChunks, children }) => (
 	<StyledHero>
 		<Heading>
 			{headingChunks.map((c, i) => (
-				<>
-					<Chunk key={c} isFirst={!i}>
-						{c}
-					</Chunk>{" "}
-				</>
+				<React.Fragment key={c}>
+					<Chunk isFirst={!i}>{c}</Chunk>{" "}
+				</React.Fragment>
 			))}
 		</Heading>
 		{children}

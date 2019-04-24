@@ -15,17 +15,19 @@ const StyledPage = styled.div`
 
 const Page = ({ children, language = "en" }) => (
 	<ThemeProvider theme={defaultTheme}>
-		<Container>
+		<React.Fragment>
 			<Fonts />
 			<GlobalStyles />
 			<Helmet>
 				<html lang={language} />
 			</Helmet>
-			<StyledPage>
-				<Header />
-				{children}
-			</StyledPage>
-		</Container>
+			<Container>
+				<StyledPage>
+					<Header />
+					{children}
+				</StyledPage>
+			</Container>
+		</React.Fragment>
 	</ThemeProvider>
 );
 
