@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../layouts/MainLayout"
 import SEO from "../components/SEO"
 import StructuredData from "../components/StructuredData"
+import Container from "../components/Container"
 
 const title = "Akseli Nurmio"
 const description =
@@ -45,7 +46,9 @@ const IndexPage = () => {
     <>
       <SEO title={title} description={description} />
       <Layout>
-        <h1>{title}</h1>
+        <Container>
+          <h1>{title}</h1>
+        </Container>
       </Layout>
       <StructuredData data={structuredDataOfPerson} />
       <StructuredData data={structuredDataOfWebSite} />
