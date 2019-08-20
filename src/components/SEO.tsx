@@ -9,6 +9,11 @@ interface SEOProps {
   imageAlt?: string
 }
 
+/**
+ * Adds basic metadata to the page
+ * @param props
+ * @param props.title Page's title
+ */
 const SEO: React.FunctionComponent<SEOProps> = ({
   title,
   lang = "en",

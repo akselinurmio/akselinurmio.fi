@@ -1,34 +1,55 @@
-import { graphql } from "gatsby"
 import React from "react"
 import Layout from "../layouts/MainLayout"
+import SEO from "../components/SEO"
+import StructuredData from "../components/StructuredData"
 
-interface IndexPageProps {
-  data: {
-    site: {
-      siteMetadata: {
-        siteName: string
-      }
-    }
-  }
+const title = "Akseli Nurmio"
+const description =
+  "Akseli Nurmio is a front-end developer based in Helsinki. " +
+  "He has worked for Slush, Helsinki Design Week and more."
+
+const structuredDataOfPerson = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://akselinurmio.fi/#person",
+  name: title,
+  description: description,
+  jobTitle: "Front-end developer",
+  gender: "male",
+  url: "https://akselinurmio.fi/",
+  sameAs: "https://www.linkedin.com/in/akselinurmio/",
+  subjectOf: "https://akselinurmio.fi/#website",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Helsinki",
+    addressCountry: "FI",
+  },
+  nationality: "FI",
+  knowsAbout: ["development", "design"],
+  knowsLanguage: ["en", "fi"],
 }
 
-export const pageQuery = graphql`
-  query IndexQuery {
-    site {
-      siteMetadata {
-        siteName
-      }
-    }
-  }
-`
+const structuredDataOfWebSite = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://akselinurmio.fi/#website",
+  name: title,
+  description: "The personal website of Akseli Nurmio",
+  url: "https://akselinurmio.fi/",
+  about: "https://akselinurmio.fi/#person",
+  inLanguage: "en",
+}
 
-const IndexPage = (props: IndexPageProps) => {
-  const { siteName } = props.data.site.siteMetadata
-
+const IndexPage = () => {
   return (
-    <Layout>
-      <h1>{siteName}</h1>
-    </Layout>
+    <>
+      <SEO title={title} description={description} />
+      <Layout>
+        <h1>{title}</h1>
+      </Layout>
+      <StructuredData data={structuredDataOfPerson} />
+      <StructuredData data={structuredDataOfWebSite} />
+    </>
   )
 }
 
