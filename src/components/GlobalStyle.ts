@@ -1,5 +1,7 @@
 import { createGlobalStyle, css } from "styled-components"
 import { bodyFontProperties } from "../variables/fonts"
+import { mediaSm, mediaMd, mediaLg } from "../variables/mediaQueries"
+import { base as baseFontSize } from "../variables/fontSizes"
 
 const style = css`
   @font-face {
@@ -13,13 +15,24 @@ const style = css`
   }
 
   html {
-    font-size: 10px;
+    font-size: 8px;
+
+    ${mediaSm} {
+      font-size: 9px;
+    }
+    ${mediaMd} {
+      font-size: 9.5px;
+    }
+    ${mediaLg} {
+      font-size: 10px;
+    }
   }
 
   body {
+    ${bodyFontProperties};
+    ${baseFontSize};
     background: #fff;
     margin: 0;
-    font-size: 1.6rem;
   }
 
   h1,
@@ -27,8 +40,9 @@ const style = css`
   h3,
   h4,
   h5,
-  h6 {
-    ${bodyFontProperties};
+  h6,
+  ul,
+  ol {
     margin: 0;
   }
 
