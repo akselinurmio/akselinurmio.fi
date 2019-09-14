@@ -14,6 +14,12 @@ const style = css`
       url("../../assets/fonts/lexend-exa-v1-latin-regular.woff") format("woff");
   }
 
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   html {
     font-size: 8px;
 
