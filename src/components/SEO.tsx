@@ -3,22 +3,19 @@ import { Helmet } from "react-helmet"
 
 interface SEOProps {
   title: string
+  /** Language of the page in BCP47 format, defaults to "en" */
   lang?: string
   description?: string
-  image?: string
+  imageURL?: string
   imageAlt?: string
 }
 
-/**
- * Adds basic metadata to the page
- * @param props
- * @param props.title Page's title
- */
+/** Adds basic metadata to the page */
 const SEO: React.FunctionComponent<SEOProps> = ({
   title,
   lang = "en",
   description,
-  image,
+  imageURL,
   imageAlt,
 }) => {
   const meta: JSX.IntrinsicElements["meta"][] = [
@@ -49,15 +46,15 @@ const SEO: React.FunctionComponent<SEOProps> = ({
     )
   }
 
-  if (image) {
+  if (imageURL) {
     meta.push(
       {
         property: "og:image",
-        content: image,
+        content: imageURL,
       },
       {
         property: "twitter:image",
-        content: image,
+        content: imageURL,
       },
     )
 
