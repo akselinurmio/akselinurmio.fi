@@ -1,8 +1,9 @@
 import React from "react"
-import Layout from "../layouts/MainLayout"
+import MainLayout from "../layouts/MainLayout"
 import SEO from "../components/SEO"
 import StructuredData from "../components/StructuredData"
-import Container from "../components/Container"
+import BlockText from "../components/BlockText"
+import LeadParagraph from "../components/LeadParagraph"
 
 const title = "Akseli Nurmio"
 const description =
@@ -46,16 +47,22 @@ const structuredDataOfWebSite = {
 
 const IndexPage = () => {
   return (
-    <>
+    <React.Fragment>
       <SEO title={title} description={description} />
-      <Layout>
-        <Container>
-          <h1>{title}</h1>
-        </Container>
-      </Layout>
+      <MainLayout>
+        <BlockText>
+          <p>
+            <LeadParagraph>
+              I’m Akseli, front-end developer based in Helsinki.  
+            </LeadParagraph>
+          </p>
+          <p>I write clean code to create meaningful experiences.  </p>
+          <p>I have worked for Slush, Helsinki Design Week and many more.</p>
+        </BlockText>
+      </MainLayout>
       <StructuredData data={structuredDataOfPerson} />
       <StructuredData data={structuredDataOfWebSite} />
-    </>
+    </React.Fragment>
   )
 }
 

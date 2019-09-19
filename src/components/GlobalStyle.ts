@@ -55,6 +55,7 @@ const style = css`
   h4,
   h5,
   h6,
+  p,
   ul,
   ol {
     margin: 0;
