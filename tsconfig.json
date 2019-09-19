@@ -1,5 +1,5 @@
 {
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "./typings/**/*.d.ts"],
   "compilerOptions": {
     "noEmit": true,
     "target": "esnext",

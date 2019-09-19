@@ -1,7 +1,15 @@
 import { createGlobalStyle, css } from "styled-components"
+import lexendExaRegularWoff from "../../assets/fonts/lexend-exa-v1-latin/lexend-exa-v1-latin-regular.woff"
+import lexendExaRegularWoff2 from "../../assets/fonts/lexend-exa-v1-latin/lexend-exa-v1-latin-regular.woff2"
+import { backgroundColor, brandColor, textColor } from "../variables/colors"
 import { bodyFontProperties } from "../variables/fonts"
-import { mediaSm, mediaMd, mediaLg } from "../variables/mediaQueries"
-import { base as baseFontSize } from "../variables/fontSizes"
+import {
+  baseFontSize,
+  h1FontSize,
+  h2FontSize,
+  h3FontSize,
+} from "../variables/fontSizes"
+import { mediaLg, mediaMd, mediaSm } from "../variables/mediaQueries"
 
 const style = css`
   @font-face {
@@ -9,9 +17,8 @@ const style = css`
     font-style: normal;
     font-weight: 400;
     src: local("Lexend Exa Regular"), local("LexendExa-Regular"),
-      url("../../assets/fonts/lexend-exa-v1-latin-regular.woff2")
-        format("woff2"),
-      url("../../assets/fonts/lexend-exa-v1-latin-regular.woff") format("woff");
+      url(${lexendExaRegularWoff2}) format("woff2"),
+      url(${lexendExaRegularWoff}) format("woff");
   }
 
   *,
@@ -37,7 +44,8 @@ const style = css`
   body {
     ${bodyFontProperties};
     ${baseFontSize};
-    background: #fff;
+    background: ${backgroundColor};
+    color: ${textColor};
     margin: 0;
   }
 
@@ -53,13 +61,18 @@ const style = css`
   }
 
   h1 {
-    font-size: 4rem;
+    ${h1FontSize};
   }
   h2 {
-    font-size: 3rem;
+    ${h2FontSize};
   }
   h3 {
-    font-size: 2rem;
+    ${h3FontSize};
+  }
+
+  a {
+    color: ${brandColor};
+    text-decoration: none;
   }
 `
 
