@@ -18,7 +18,10 @@ const structuredDataOfPerson = {
   jobTitle: "Front-end developer",
   gender: "male",
   url: "https://akselinurmio.fi/",
-  sameAs: "https://www.linkedin.com/in/akselinurmio/",
+  sameAs: [
+    "https://www.linkedin.com/in/akselinurmio/",
+    "https://twitter.com/akselinurmio",
+  ],
   subjectOf: "https://akselinurmio.fi/#website",
   address: {
     "@type": "PostalAddress",
