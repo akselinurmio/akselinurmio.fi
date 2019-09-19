@@ -1,4 +1,7 @@
 export const mediaSm = "@media (min-width: 576px)"
+export const mediaSmMax = "@media (max-width: 575px)"
 export const mediaMd = "@media (min-width: 768px)"
+export const mediaMdMax = "@media (max-width: 767px)"
 export const mediaLg = "@media (min-width: 992px)"
+export const mediaLgMax = "@media (max-width: 991px)"
 export const mediaXl = "@media (min-width: 1200px)"
