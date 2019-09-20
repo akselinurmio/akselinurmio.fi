@@ -35,7 +35,7 @@ const InternalLink = styled(GatsbyLink)`
       position: absolute;
       top: 0.809em;
       right: 105%;
-      right: calc(100% + 0.5em);
+      right: calc(100% + 1.5rem);
       width: 100%;
       width: 50vw;
       height: 2px;
