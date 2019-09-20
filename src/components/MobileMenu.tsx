@@ -13,6 +13,7 @@ interface MobileMenuProps {
   isVisible: boolean
   menuItems: NavigationTargetList
   bottomButton?: NavigationTarget
+  close: () => void
 }
 
 interface StyledMobileMenuProps {
@@ -80,6 +81,7 @@ const MobileMenu = ({
   isVisible,
   menuItems,
   bottomButton: buttonTarget,
+  close,
 }: MobileMenuProps) => {
   return (
     <StyledMobileMenu isVisible={isVisible}>
@@ -87,12 +89,12 @@ const MobileMenu = ({
       <Wrapper>
         <NavigationArea>
           <Container>
-            <NavigationMobile menuItems={menuItems} />
+            <NavigationMobile menuItems={menuItems} goBackToDocument={close} />
           </Container>
         </NavigationArea>
         {buttonTarget && (
           <ContactButtonArea>
-            <WideButton target={buttonTarget} />
+            <WideButton target={buttonTarget} onClick={close} />
           </ContactButtonArea>
         )}
       </Wrapper>

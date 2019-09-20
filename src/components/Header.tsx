@@ -61,18 +61,23 @@ const Header = ({
   setMobileMenuOpen,
   mobileMenuButton,
 }: HeaderProps) => {
+  const closeMobileMenu = () => setMobileMenuOpen(false)
+  const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen)
+
   return (
     <StyledHeader>
       <Bar>
         <Container>
           <BarInner>
             <SiteNameWrapper>
-              <SiteName to="/">{siteName}</SiteName>
+              <SiteName to="/" onClick={closeMobileMenu}>
+                {siteName}
+              </SiteName>
             </SiteNameWrapper>
             <ToggleWrapper>
               <Sandwich
                 isToggled={isMobileMenuOpen}
-                onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+                onClick={toggleMobileMenu}
               />
             </ToggleWrapper>
           </BarInner>
@@ -82,6 +87,7 @@ const Header = ({
         isVisible={isMobileMenuOpen}
         menuItems={menuItems}
         bottomButton={mobileMenuButton}
+        close={closeMobileMenu}
       />
     </StyledHeader>
   )

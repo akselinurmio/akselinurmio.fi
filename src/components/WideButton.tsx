@@ -8,6 +8,7 @@ import Container from "./Container"
 
 interface WideButtonProps {
   target: NavigationTarget
+  onClick: () => void
 }
 
 const ExternalLink = styled.a`
@@ -22,19 +23,19 @@ const ExternalLink = styled.a`
 
 const InternalLink = ExternalLink.withComponent(GatsbyLink)
 
-const WideButton = ({ target }: WideButtonProps) => {
+const WideButton = ({ target, onClick }: WideButtonProps) => {
   const { title, url, isInternalLink } = target
 
   if (isInternalLink) {
     return (
-      <InternalLink to={url}>
+      <InternalLink to={url} onClick={onClick}>
         <Container>{title}</Container>
       </InternalLink>
     )
   }
 
   return (
-    <ExternalLink href={url}>
+    <ExternalLink href={url} onClick={onClick}>
       <Container>{title}</Container>
     </ExternalLink>
   )

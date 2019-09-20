@@ -6,6 +6,7 @@ import { brandColor } from "../variables/colors"
 
 interface NavigationMobileProps {
   menuItems: NavigationTargetList
+  goBackToDocument: () => void
 }
 
 const StyledNavigation = styled.nav``
@@ -46,15 +47,24 @@ const InternalLink = styled(GatsbyLink)`
 
 const ExternalLink = InternalLink.withComponent("a")
 
-const NavigationMobile = ({ menuItems = [] }: NavigationMobileProps) => {
+const NavigationMobile = ({
+  menuItems = [],
+  goBackToDocument,
+}: NavigationMobileProps) => {
   const items = menuItems.map(({ title, url, isInternalLink }) => (
     <Item key={title}>
       {isInternalLink ? (
-        <InternalLink to={url} activeClassName="active">
+        <InternalLink
+          to={url}
+          activeClassName="active"
+          onClick={goBackToDocument}
+        >
           {title}
         </InternalLink>
       ) : (
-        <ExternalLink href={url}>{title}</ExternalLink>
+        <ExternalLink href={url} onClick={goBackToDocument}>
+          {title}
+        </ExternalLink>
       )}
     </Item>
   ))
