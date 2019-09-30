@@ -11,10 +11,6 @@ const PrettyText = styled.div`
   ul,
   ol {
     margin-top: 1.2em;
-
-    &:first-child {
-      margin-top: 0;
-    }
   }
 `
 

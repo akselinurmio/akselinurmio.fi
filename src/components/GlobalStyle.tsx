@@ -2,7 +2,7 @@ import { createGlobalStyle, css } from "styled-components"
 import lexendExaRegularWoff from "../../assets/fonts/lexend-exa-v1-latin/lexend-exa-v1-latin-regular.woff"
 import lexendExaRegularWoff2 from "../../assets/fonts/lexend-exa-v1-latin/lexend-exa-v1-latin-regular.woff2"
 import { backgroundColor, brandColor, textColor } from "../variables/colors"
-import { bodyFontProperties } from "../variables/fonts"
+import { bodyFontProperties, headingFontProperties } from "../variables/fonts"
 import {
   baseFontSize,
   h1FontSize,
@@ -61,6 +61,15 @@ const style = css`
     margin: 0;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    ${headingFontProperties};
+  }
+
   h1 {
     ${h1FontSize};
   }
@@ -74,6 +83,13 @@ const style = css`
   a {
     color: ${brandColor};
     text-decoration: none;
+
+    &:active {
+      @supports (-webkit-text-stroke-width: 1px) {
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-fill-color: transparent;
+      }
+    }
   }
 `
 

@@ -5,3 +5,7 @@ export const bodyFontProperties = css`
   font-weight: 400;
   line-height: 1.618;
 `
+
+export const headingFontProperties = css`
+  font-weight: inherit;
+`
