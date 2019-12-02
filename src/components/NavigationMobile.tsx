@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { NavigationTargetList } from "../types/MenuItem"
-import { Link as GatsbyLink } from "gatsby"
+import GatsbyLink from "./InternalLink"
 import { brandColor } from "../variables/colors"
 
 interface NavigationMobileProps {
@@ -9,7 +9,7 @@ interface NavigationMobileProps {
   goBackToDocument: () => void
 }
 
-const StyledNavigation = styled.nav``
+const StyledNavigation = styled.div``
 
 const Items = styled.ul`
   list-style: none;
@@ -70,7 +70,7 @@ const NavigationMobile = ({
   ))
 
   return (
-    <StyledNavigation aria-label="Main menu">
+    <StyledNavigation>
       <Items>{items}</Items>
     </StyledNavigation>
   )

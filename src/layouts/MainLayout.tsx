@@ -1,22 +1,28 @@
 import React, { useState } from "react"
 import GlobalStyle from "../components/GlobalStyle"
 import Header from "../components/Header"
-import { NavigationTargetList, NavigationTarget } from "../types/MenuItem"
+import useSiteMetadata from "../hooks/useSiteMetadata"
+import { NavigationTarget, NavigationTargetList } from "../types/MenuItem"
 
-const siteName = "Akseli Nurmio"
-
-const menuItems: NavigationTargetList = [
-  { title: "Works", url: "/works", isInternalLink: true },
-  { title: "About me", url: "/about", isInternalLink: true },
+const desktopMenuItems: NavigationTargetList = [
+  { title: "Works", url: "/works/", isInternalLink: true },
+  { title: "About", url: "/about/", isInternalLink: true },
+  { title: "Contact", url: "/contact/", isInternalLink: true },
+]
+const mobileMenuItems: NavigationTargetList = [
+  { title: "Works", url: "/works/", isInternalLink: true },
+  { title: "About", url: "/about/", isInternalLink: true },
 ]
 
-const contactButton: NavigationTarget = {
-  title: "Send a message",
-  url: "/",
+const mobileMenuButton: NavigationTarget = {
+  title: "Send me a message",
+  url: "/contact/",
   isInternalLink: true,
 }
 
 const MainLayout: React.FunctionComponent = ({ children }) => {
+  const { name: siteName } = useSiteMetadata()
+
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -24,12 +30,13 @@ const MainLayout: React.FunctionComponent = ({ children }) => {
       <GlobalStyle />
       <Header
         siteName={siteName}
-        menuItems={menuItems}
+        desktopMenuItems={desktopMenuItems}
+        mobileMenuItems={mobileMenuItems}
+        mobileMenuButton={mobileMenuButton}
         isMobileMenuOpen={isMobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
-        mobileMenuButton={contactButton}
       />
-      {children}
+      <main aria-label="Page content">{children}</main>
     </React.Fragment>
   )
 }

@@ -12,6 +12,15 @@ const PrettyText = styled.div`
   ol {
     margin-top: 1.2em;
   }
+
+  small {
+    display: block;
+    font-size: 0.7em;
+  }
+
+  i {
+    font-style: inherit;
+  }
 `
 
 export default PrettyText

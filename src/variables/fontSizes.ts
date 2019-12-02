@@ -1,25 +1,28 @@
 import { css } from "styled-components"
-import { mediaSm, mediaLg, mediaXl } from "./mediaQueries"
+import { mediaMd, mediaLg } from "./mediaQueries"
 
 export const baseFontSize = css`
   font-size: 2.2rem;
+`
 
-  ${mediaSm} {
-    font-size: 2.6rem;
+export const largerTextFontSize = css`
+  font-size: 2.6rem;
+  ${mediaMd} {
+    font-size: 3rem;
   }
   ${mediaLg} {
-    font-size: 3.6rem;
-  }
-  ${mediaXl} {
-    font-size: 4rem;
+    font-size: 3.2rem;
   }
 `
+
 export const h1FontSize = css`
-  font-size: 4rem;
+  font-size: 1.45em;
 `
+
 export const h2FontSize = css`
-  font-size: 3rem;
+  font-size: 1.3em;
 `
+
 export const h3FontSize = css`
-  font-size: 2.5rem;
+  font-size: 1.14em;
 `

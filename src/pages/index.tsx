@@ -1,9 +1,13 @@
+import Link from "../components/InternalLink"
 import React from "react"
-import MainLayout from "../layouts/MainLayout"
+import BlockText from "../components/BlockText"
 import SEO from "../components/SEO"
 import StructuredData from "../components/StructuredData"
-import BlockText from "../components/BlockText"
-import LeadParagraph from "../components/LeadParagraph"
+import TextWithMarginLine from "../components/TextWithMarginLine"
+import VisuallyHidden from "../components/VisuallyHidden"
+import MainLayout from "../layouts/MainLayout"
+import { PageProps } from "../types/PageProps"
+import Section from "../components/Section"
 
 const title = "Akseli Nurmio"
 const description =
@@ -30,7 +34,13 @@ const structuredDataOfPerson = {
     addressCountry: "FI",
   },
   nationality: "FI",
-  knowsAbout: ["development", "design"],
+  knowsAbout: [
+    "development",
+    "front-end development",
+    "design",
+    "UX design",
+    "UI design",
+  ],
   knowsLanguage: ["en", "fi"],
 }
 
@@ -45,20 +55,50 @@ const structuredDataOfWebSite = {
   inLanguage: "en",
 }
 
-const IndexPage = () => {
+const IndexPage = (props: PageProps) => {
+  const path = props.location.pathname
+
   return (
     <React.Fragment>
-      <SEO title={title} description={description} />
+      <SEO title={title} description={description} path={path} />
       <MainLayout>
-        <BlockText>
-          <p>
-            <LeadParagraph>
-              I’m Akseli, front-end developer based in Helsinki.  
-            </LeadParagraph>
-          </p>
-          <p>I write clean code to create meaningful experiences.  </p>
-          <p>I have worked for Slush, Helsinki Design Week and many more.</p>
-        </BlockText>
+        <Section>
+          <BlockText>
+            <VisuallyHidden>
+              <h1>Akseli Nurmio</h1>
+            </VisuallyHidden>
+            <p>
+              <TextWithMarginLine>
+                I’m Akseli, front-end developer based in Helsinki.
+              </TextWithMarginLine>
+            </p>
+
+            <p>I write clean code to create meaningful online experiences.</p>
+            <p>
+              I have worked for <Link to="/works/#slush">Slush</Link>,{" "}
+              <Link to="/works/#helsinkidesignweek">Helsinki Design Week</Link>{" "}
+              and many more.
+            </p>
+          </BlockText>
+        </Section>
+        <Section>
+          <BlockText>
+            <h2>Get in touch</h2>
+            <p>
+              If you want to get in touch with me, just follow the white
+              rabbit.*
+            </p>
+            <p>
+              Or <Link to="/contact/">send me a message</Link>.
+            </p>
+            <p>
+              <small>
+                *Please don’t follow the rabbit, they get a little anxious about
+                that.
+              </small>
+            </p>
+          </BlockText>
+        </Section>
       </MainLayout>
       <StructuredData data={structuredDataOfPerson} />
       <StructuredData data={structuredDataOfWebSite} />

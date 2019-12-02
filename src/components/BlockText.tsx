@@ -1,16 +1,23 @@
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
+import { largerTextFontSize } from "../variables/fontSizes"
 import Container from "./Container"
 import PrettyText from "./PrettyText"
 
-const StyledBlockText = styled.div`
-  margin-top: 6rem;
-  margin-bottom: 6rem;
+interface BlockTextProps {
+  largerFontSize?: boolean
+}
+
+const StyledBlockText = styled.div<BlockTextProps>`
+  ${p => p.largerFontSize && largerTextFontSize};
 `
 
-const BlockText: FunctionComponent = ({ children }) => {
+const BlockText: FunctionComponent<BlockTextProps> = ({
+  largerFontSize = true,
+  children,
+}) => {
   return (
-    <StyledBlockText>
+    <StyledBlockText largerFontSize={largerFontSize}>
       <Container>
         <PrettyText>{children}</PrettyText>
       </Container>

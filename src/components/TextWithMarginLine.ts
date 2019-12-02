@@ -2,8 +2,8 @@ import styled from "styled-components"
 import { brandColor } from "../variables/colors"
 import { mediaLg } from "../variables/mediaQueries"
 
-const LeadParagraph = styled.span`
-  display: inline-block;
+const TextWithMarginLine = styled.span`
+  display: block;
   position: relative;
 
   &::before {
@@ -24,4 +24,4 @@ const LeadParagraph = styled.span`
   }
 `
 
-export default LeadParagraph
+export default TextWithMarginLine

@@ -1,2 +1,2 @@
-export const zIndexHeader = "20"
-export const zIndexMobileMenu = "10"
+export const zIndexHeader = 200
+export const zIndexMobileMenu = 100

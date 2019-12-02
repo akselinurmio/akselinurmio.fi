@@ -10,10 +10,11 @@ import NavigationMobile from "./NavigationMobile"
 import WideButton from "./WideButton"
 
 interface MobileMenuProps {
+  bottomButtonTarget?: NavigationTarget
+  close: () => void
+  id: string
   isVisible: boolean
   menuItems: NavigationTargetList
-  bottomButton?: NavigationTarget
-  close: () => void
 }
 
 interface StyledMobileMenuProps {
@@ -46,7 +47,7 @@ const StyledMobileMenu = styled.div<StyledMobileMenuProps>`
   background-color: ${backgroundColor};
   padding-top: 10rem;
 
-  transition: all 600ms ${easeOutQuint};
+  transition: all 800ms ${easeOutQuint};
   visibility: hidden;
   transform: translateX(-100%);
 
@@ -78,13 +79,14 @@ const NavigationArea = styled.div`
 const ContactButtonArea = styled.div``
 
 const MobileMenu = ({
+  bottomButtonTarget: buttonTarget,
+  close,
+  id,
   isVisible,
   menuItems,
-  bottomButton: buttonTarget,
-  close,
 }: MobileMenuProps) => {
   return (
-    <StyledMobileMenu isVisible={isVisible}>
+    <StyledMobileMenu id={id} isVisible={isVisible}>
       <GlobalMobileMenuStyle isVisible={isVisible} />
       <Wrapper>
         <NavigationArea>

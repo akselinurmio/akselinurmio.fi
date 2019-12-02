@@ -1,12 +1,12 @@
 import React from "react"
 
 interface StructuredDataProps {
+  /** Any JSON-compatible JSON-LD data. */
   data: Object
 }
 
 /**
  * Adds JSON-LD data to a page.
- * @param props.data Any JSON-compatible JSON-LD data.
  */
 const StructuredData = ({ data }: StructuredDataProps) => {
   return (

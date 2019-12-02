@@ -47,6 +47,7 @@ const style = css`
     background: ${backgroundColor};
     color: ${textColor};
     margin: 0;
+    margin-bottom: 12rem;
   }
 
   h1,
@@ -84,7 +85,8 @@ const style = css`
     color: ${brandColor};
     text-decoration: none;
 
-    &:active {
+    &:active,
+    &.active {
       @supports (-webkit-text-stroke-width: 1px) {
         -webkit-text-stroke-width: 1px;
         -webkit-text-fill-color: transparent;

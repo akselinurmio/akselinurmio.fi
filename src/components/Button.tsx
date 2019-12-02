@@ -1,22 +1,26 @@
-import GatsbyLink from "./InternalLink"
+import Link from "./InternalLink"
 import React from "react"
 import styled from "styled-components"
+import { NavigationTarget } from "../types/MenuItem"
 import { accentColor, textColor } from "../variables/colors"
 import { easeOutQuint } from "../variables/easings"
-import { ButtonProps } from "./Button"
-import Container from "./Container"
+
+// Export interface to share it with WideButton
+export interface ButtonProps {
+  target: NavigationTarget
+  onClick?: () => void
+}
 
 const ExternalTargetButton = styled.a`
-  display: block;
+  display: inline-block;
   color: ${textColor};
   background-color: ${accentColor};
   text-decoration: none;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding: 1em 2em;
   transition: all 0.2s ${easeOutQuint};
 `
 
-const InternalTargetButton = ExternalTargetButton.withComponent(GatsbyLink)
+const InternalTargetButton = ExternalTargetButton.withComponent(Link)
 
 const Button = ({ target, onClick }: ButtonProps) => {
   const { title, url, isInternalLink } = target
@@ -24,14 +28,14 @@ const Button = ({ target, onClick }: ButtonProps) => {
   if (isInternalLink) {
     return (
       <InternalTargetButton to={url} onClick={onClick}>
-        <Container>{title}</Container>
+        {title}
       </InternalTargetButton>
     )
   }
 
   return (
     <ExternalTargetButton href={url} onClick={onClick}>
-      <Container>{title}</Container>
+      {title}
     </ExternalTargetButton>
   )
 }
