@@ -55,6 +55,9 @@ module.exports = {
       resolve: "gatsby-plugin-netlify",
       options: {
         headers: {
+          "/*": [
+            "Strict-Transport-Security: max-age=63072000; includeSubDomains; preload",
+          ],
           "/*.webmanifest": ["Content-Type: application/manifest+json"],
         },
       },
