@@ -130,8 +130,8 @@ const WorksPage = (props: PagePropsWithData) => {
               Nordics.
             </p>
             <p>
-              They needed a new website to suit their needs during the event,
-              and as a content hub.
+              They needed a website that would suit their needs as an event site
+              and as a content hub all year round.
             </p>
             <p>I worked as a developer on the project in 2017.</p>
           </BlockText>

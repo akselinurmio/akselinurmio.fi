@@ -93,7 +93,7 @@ const IndexPage = (props: PageProps) => {
             </p>
             <p>
               <small>
-                *Please don’t follow the rabbit, they get a little anxious about
+                *Please don’t follow the rabbit, he gets a little anxious about
                 that.
               </small>
             </p>
