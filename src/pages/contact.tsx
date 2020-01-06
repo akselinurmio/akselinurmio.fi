@@ -8,16 +8,16 @@ import Section from "../components/Section"
 import ExternalLink from "../components/ExternalLink"
 import ContactForm from "../components/ContactForm"
 
-const title = "Contact me"
-const description =
-  "Write me a message and I will get back to you within 24 hours."
-
 const ContactPage = (props: PageProps) => {
   const path = props.location.pathname
 
   return (
     <React.Fragment>
-      <SEO title={title} description={description} path={path} />
+      <SEO
+        title="Contact me"
+        description="Write me a message and I will get back to you within 24 hours."
+        path={path}
+      />
       <MainLayout>
         <Section as="div">
           <BlockText>

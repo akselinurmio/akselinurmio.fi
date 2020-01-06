@@ -6,16 +6,17 @@ import SEO from "../components/SEO"
 import MainLayout from "../layouts/MainLayout"
 import { PageProps } from "../types/PageProps"
 
-const title = "Thank you"
-const description =
-  "Thanks for reaching out, I will get back to you within 24 hours."
-
 const ThanksPage = (props: PageProps) => {
   const path = props.location.pathname
 
   return (
     <React.Fragment>
-      <SEO title={title} description={description} path={path} noIndex />
+      <SEO
+        title="Thank you"
+        description="Thanks for reaching out, I will get back to you within 24 hours."
+        path={path}
+        noIndex
+      />
       <MainLayout>
         <Section>
           <BlockText>

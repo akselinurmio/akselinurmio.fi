@@ -7,18 +7,20 @@ import TextWithMarginLine from "../components/TextWithMarginLine"
 import MainLayout from "../layouts/MainLayout"
 import { PageProps } from "../types/PageProps"
 
-const title = "About me"
-const description =
-  "I created my first website when I was 6 years old. " +
-  "Now I’m designing and developing cool web apps as a professional, " +
-  "a dream come true, some would say."
-
 const AboutPage = (props: PageProps) => {
   const path = props.location.pathname
 
   return (
     <React.Fragment>
-      <SEO title={title} description={description} path={path} />
+      <SEO
+        title="About me"
+        description={
+          "I created my first website when I was 6 years old. " +
+          "Now I’m designing and developing cool web apps as a professional, " +
+          "a dream come true, some would say."
+        }
+        path={path}
+      />
       <MainLayout>
         <Section>
           <BlockText>

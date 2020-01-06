@@ -12,24 +12,19 @@ import useSiteMetadata from "../hooks/useSiteMetadata"
 import MainLayout from "../layouts/MainLayout"
 import { PagePropsWithData } from "../types/PageProps"
 
-const title = "Works"
-const description =
-  "I have been working for Slush, Helsinki Design Week and more. " +
-  "Check out some of my selected works!"
-
 const WorksPage = (props: PagePropsWithData) => {
   const path = props.location.pathname
   const { data } = props
 
-  const { siteUrl: baseUrl } = useSiteMetadata()
+  const { siteUrl } = useSiteMetadata()
 
-  const heroImageUrl = baseUrl + data.heroImage.childImageSharp.fixed.src
+  const heroImageUrl = siteUrl + data.heroImage.childImageSharp.fixed.src
 
   const slushImageFluid = data.slushImage.childImageSharp.fluid
-  const slushImageUrl = baseUrl + data.slushImage.childImageSharp.fixed.src
+  const slushImageUrl = siteUrl + data.slushImage.childImageSharp.fixed.src
 
   const hdwImageFluid = data.hdwImage.childImageSharp.fluid
-  const hdwImageUrl = baseUrl + data.hdwImage.childImageSharp.fixed.src
+  const hdwImageUrl = siteUrl + data.hdwImage.childImageSharp.fixed.src
 
   const baseStructuredData = {
     "@context": "https://schema.org",
@@ -71,8 +66,11 @@ const WorksPage = (props: PagePropsWithData) => {
   return (
     <React.Fragment>
       <SEO
-        title={title}
-        description={description}
+        title={"Works"}
+        description={
+          "I have been working for Slush, Helsinki Design Week and more. " +
+          "Check out some of my selected works!"
+        }
         path={path}
         imageURL={heroImageUrl}
         imageAlt="Mockups of Slush’s and Helsinki Design Week’s front pages"
