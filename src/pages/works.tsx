@@ -81,7 +81,7 @@ const WorksPage = (props: PagePropsWithData) => {
             <h1>
               <TextWithMarginLine>From the works</TextWithMarginLine>
             </h1>
-            <p>I wrote my first website at the age of nine.</p>
+            <p>I wrote my first website at the age of six.</p>
             <p>
               After that I have been involved in the birth and rebirth of
               numerous websites and apps.

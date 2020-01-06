@@ -28,13 +28,13 @@ const AboutPage = (props: PageProps) => {
               <TextWithMarginLine>About me</TextWithMarginLine>
             </h1>
             <p>
-              I created my first website at the age of 6. I hugely admired the
+              I created my first website at the age of six. I hugely admired the
               talented makers of the web, but never thought I could be one of
               them.
             </p>
             <p>
               Couple of years passed and I found myself preparing for an
-              entrance examination of a digital design school.
+              entrance examination to a digital design school.
             </p>
             <p>
               I have been working in the field of digital design and development
