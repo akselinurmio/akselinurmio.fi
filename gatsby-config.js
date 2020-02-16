@@ -52,6 +52,9 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-offline",
+    },
+    {
       resolve: "gatsby-plugin-netlify",
       options: {
         headers: {
