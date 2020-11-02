@@ -1,5 +1,6 @@
 import Link from "../components/InternalLink"
 import React from "react"
+import { Person, WebSite, WithContext } from "schema-dts"
 import BlockText from "../components/BlockText"
 import SEO from "../components/SEO"
 import StructuredData from "../components/StructuredData"
@@ -8,26 +9,26 @@ import VisuallyHidden from "../components/VisuallyHidden"
 import MainLayout from "../layouts/MainLayout"
 import { PageProps } from "../types/PageProps"
 import Section from "../components/Section"
+import ExternalLink from "../components/ExternalLink"
 
 const title = "Akseli Nurmio"
 const description =
   "Akseli Nurmio is a front-end developer based in Helsinki. " +
   "He has worked for Slush, Helsinki Design Week and more."
 
-const structuredDataOfPerson = {
+const structuredDataOfPerson: WithContext<Person> = {
   "@context": "https://schema.org",
   "@type": "Person",
   "@id": "https://akselinurmio.fi/#person",
   name: title,
   description: description,
   jobTitle: "Front-end developer",
-  gender: "male",
   url: "https://akselinurmio.fi/",
   sameAs: [
     "https://www.linkedin.com/in/akselinurmio/",
     "https://twitter.com/akselinurmio",
   ],
-  subjectOf: "https://akselinurmio.fi/#website",
+  subjectOf: { "@id": "https://akselinurmio.fi/#website" },
   address: {
     "@type": "PostalAddress",
     addressLocality: "Helsinki",
@@ -42,16 +43,22 @@ const structuredDataOfPerson = {
     "UI design",
   ],
   knowsLanguage: ["en", "fi"],
+  worksFor: {
+    "@type": "Organization",
+    name: "Yleisradio",
+    alternateName: "Yle",
+    url: "https://yle.fi/",
+  },
 }
 
-const structuredDataOfWebSite = {
+const structuredDataOfWebSite: WithContext<WebSite> = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://akselinurmio.fi/#website",
   name: title,
   description: "The personal website of Akseli Nurmio",
   url: "https://akselinurmio.fi/",
-  about: "https://akselinurmio.fi/#person",
+  about: { "@id": "https://akselinurmio.fi/#person" },
   inLanguage: "en",
 }
 
@@ -75,7 +82,12 @@ const IndexPage = (props: PageProps) => {
 
             <p>I write clean code to create meaningful online experiences.</p>
             <p>
-              I have worked for <Link to="/works/#slush">Slush</Link>,{" "}
+              I develop{" "}
+              <ExternalLink href="https://areena.yle.fi/" hrefLang="fi">
+                Yle Areena
+              </ExternalLink>
+              , a&nbsp;Finnish online streaming service. Previously I have
+              worked for <Link to="/works/#slush">Slush</Link>,{" "}
               <Link to="/works/#helsinkidesignweek">Helsinki Design Week</Link>{" "}
               and many more.
             </p>

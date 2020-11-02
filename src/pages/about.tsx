@@ -38,7 +38,12 @@ const AboutPage = (props: PageProps) => {
             </p>
             <p>
               I have been working in the field of digital design and development
-              for a couple of years now.
+              for a couple of years now. Currently I’m working in a front-end
+              team of{" "}
+              <span title="Finnish Broadcasting Company’s online streaming service">
+                Yle Areena
+              </span>
+              .
             </p>
             <p>
               I feel thrilled to be part of such an ever-changing field, and
@@ -56,8 +61,8 @@ const AboutPage = (props: PageProps) => {
               <TextWithMarginLine>Let’s discuss!</TextWithMarginLine>
             </h2>
             <p>
-              If you would like to hear more or have a chat about your next
-              project, just <Link to="/contact/">ping me!</Link>
+              If you would like to hear more or have a chat about your
+              non-profit project, just <Link to="/contact/">ping me!</Link>
             </p>
           </BlockText>
         </Section>
