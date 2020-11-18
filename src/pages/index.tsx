@@ -14,7 +14,8 @@ import ExternalLink from "../components/ExternalLink"
 const title = "Akseli Nurmio"
 const description =
   "Akseli Nurmio is a front-end developer based in Helsinki. " +
-  "He has worked for Slush, Helsinki Design Week and more."
+  "He is currently working for the Finnish Broadcasting Company Yle. " +
+  "He has previously worked for Slush, Helsinki Design Week and more."
 
 const structuredDataOfPerson: WithContext<Person> = {
   "@context": "https://schema.org",
