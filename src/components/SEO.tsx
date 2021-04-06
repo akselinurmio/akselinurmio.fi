@@ -1,5 +1,6 @@
 import React from "react"
 import { Helmet } from "react-helmet"
+import { WebPage, WithContext } from "schema-dts"
 import useSiteMetadata from "../hooks/useSiteMetadata"
 import StructuredData from "./StructuredData"
 
@@ -18,7 +19,7 @@ interface SEOProps {
 const SEO: React.FunctionComponent<SEOProps> = ({
   title,
   path,
-  lang,
+  lang: langProp,
   description,
   imageURL,
   imageAlt,
@@ -31,7 +32,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
     twitterHandle,
   } = useSiteMetadata()
 
-  lang = lang || defaultLanguage
+  const lang = langProp || defaultLanguage
 
   const meta: Array<JSX.IntrinsicElements["meta"]> = [
     {
@@ -50,7 +51,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
 
   const link: Array<JSX.IntrinsicElements["link"]> = []
 
-  const structuredData = []
+  let structuredData: WithContext<WebPage> | undefined
 
   if (siteName) {
     meta.push({
@@ -72,7 +73,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
       href: absoluteUrl,
     })
 
-    structuredData.push({
+    structuredData = {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "@id": `${absoluteUrl}#webpage`,
@@ -94,7 +95,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
       primaryImageOfPage: imageURL
         ? { "@type": "ImageObject", contentUrl: imageURL }
         : undefined,
-    })
+    }
   }
 
   if (twitterHandle) {
@@ -165,10 +166,8 @@ const SEO: React.FunctionComponent<SEOProps> = ({
         title={titleTag}
         meta={meta}
         link={link}
-      ></Helmet>
-      {structuredData.map((data, i) => (
-        <StructuredData key={i} data={data} />
-      ))}
+      />
+      {structuredData && <StructuredData data={structuredData} />}
     </>
   )
 }

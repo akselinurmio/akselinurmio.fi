@@ -1,8 +1,9 @@
 import React from "react"
+import { Thing, WithContext } from "schema-dts"
 
 interface StructuredDataProps {
   /** Any JSON-compatible JSON-LD data. */
-  data: Object
+  data: WithContext<Thing>
 }
 
 /**
