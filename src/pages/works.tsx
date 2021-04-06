@@ -10,9 +10,9 @@ import StructuredData from "../components/StructuredData"
 import TextWithMarginLine from "../components/TextWithMarginLine"
 import useSiteMetadata from "../hooks/useSiteMetadata"
 import MainLayout from "../layouts/MainLayout"
-import { PagePropsWithData } from "../types/PageProps"
+import { WorkPageProps } from "../types/PageProps"
 
-const WorksPage = (props: PagePropsWithData) => {
+const WorksPage = (props: WorkPageProps) => {
   const path = props.location.pathname
   const { data } = props
 
