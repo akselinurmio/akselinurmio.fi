@@ -7,8 +7,14 @@ interface ISiteMetadata {
   siteUrl: string
 }
 
-const useSiteMetadata: () => ISiteMetadata = () => {
-  const data = useStaticQuery(
+interface SiteMetadataResult {
+  site: {
+    siteMetadata: ISiteMetadata
+  }
+}
+
+const useSiteMetadata = (): ISiteMetadata => {
+  const data = useStaticQuery<SiteMetadataResult>(
     graphql`
       query SiteMetaData {
         site {
