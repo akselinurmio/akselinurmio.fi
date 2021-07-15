@@ -19,6 +19,7 @@ const style = css`
     src: local("Lexend Exa Regular"), local("LexendExa-Regular"),
       url(${lexendExaRegularWoff2}) format("woff2"),
       url(${lexendExaRegularWoff}) format("woff");
+    font-display: swap;
   }
 
   *,
