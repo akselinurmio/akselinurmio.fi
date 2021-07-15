@@ -1,3 +1,4 @@
+/** @type { import("gatsby").GatsbyConfig } */
 module.exports = {
   siteMetadata: {
     name: "Akseli Nurmio",
@@ -35,6 +36,7 @@ module.exports = {
       resolve: "gatsby-plugin-sitemap",
       options: {
         excludes: ["/thanks"],
+        serialize: (page) => ({ url: page.path }),
       },
     },
     {
