@@ -3,8 +3,8 @@
 ## Development
 
 1. Install Node.js with nvm.
-3. Run `npm install`.
-4. Run the development server with `npm run develop`.
+2. Run `npm install`.
+3. Run the development server with `npm run develop`.
 
 ## Building
 
