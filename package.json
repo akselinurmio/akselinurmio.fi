@@ -9,7 +9,7 @@
     "develop": "gatsby develop"
   },
   "dependencies": {
-    "babel-plugin-styled-components": "^2.0.2",
+    "babel-plugin-styled-components": "^2.0.6",
     "gatsby": "^3.2.1",
     "gatsby-image": "^3.2.0",
     "gatsby-plugin-manifest": "^3.2.0",
