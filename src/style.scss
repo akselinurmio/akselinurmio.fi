@@ -1,0 +1,88 @@
+@font-face {
+  font-family: "Aeonik";
+  src: url("/assets/font/Aeonik-Medium.woff2") format("woff2"),
+    url("/assets/font/Aeonik-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: black;
+  color: white;
+}
+
+body {
+  background-color: mediumblue;
+  color: ivory;
+  font-family: "Aeonik", sans-serif;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.name {
+  font-size: 6rem;
+  margin: 0;
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  text-rendering: optimizeLegibility;
+  animation-name: shadow-multiplying-down;
+  animation-delay: 2s;
+  animation-duration: 0.2s;
+  animation-timing-function: steps(5);
+  animation-fill-mode: forwards;
+}
+
+$shadow-step: 0.95em;
+@keyframes shadow-multiplying-down {
+  0%,
+  24.99% {
+    text-shadow: 0 #{1 * $shadow-step};
+  }
+  25%,
+  49.99% {
+    text-shadow: 0 #{1 * $shadow-step}, 0 #{2 * $shadow-step};
+  }
+  50%,
+  74.99% {
+    text-shadow: 0 #{1 * $shadow-step}, 0 #{2 * $shadow-step},
+      0 #{3 * $shadow-step};
+  }
+  75%,
+  99.99% {
+    text-shadow: 0 #{1 * $shadow-step}, 0 #{2 * $shadow-step},
+      0 #{3 * $shadow-step}, 0 #{4 * $shadow-step};
+  }
+  100% {
+    text-shadow: 0 #{1 * $shadow-step}, 0 #{2 * $shadow-step},
+      0 #{3 * $shadow-step}, 0 #{4 * $shadow-step}, 0 #{5 * $shadow-step};
+  }
+}
+
+.name > span {
+  animation-name: letter-appear;
+  animation-timing-function: step-start;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+
+  @for $i from 1 to 13 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{100ms * $i + 100ms};
+    }
+  }
+}
+
+@keyframes letter-appear {
+  from {
+    opacity: 0;
+  }
+}
