@@ -9,7 +9,6 @@
   "devDependencies": {
     "@parcel/optimizer-data-url": "^2.8.2",
     "@parcel/transformer-inline-string": "^2.8.2",
-    "@parcel/transformer-sass": "^2.8.2",
     "parcel": "^2.8.2",
     "prettier": "^2.8.1"
   }
