@@ -1,7 +1,7 @@
 <svg
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 100 100"
-  style="background-color: MediumBlue"
+  style="background-color: #0c0c28"
 >
-  <text style="fill: Ivory; font: bold 100px Helvetica, sans-serif" x="15" y="85">A</text>
+  <text style="fill: #fffff8; font: 500 100px Helvetica, sans-serif" x="15" y="85">A</text>
 </svg>

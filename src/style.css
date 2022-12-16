@@ -1,0 +1,102 @@
+@font-face {
+  font-family: Aeonik;
+  src: url("/assets/font/Aeonik-Medium.woff2") format("woff2"),
+    url("/assets/font/Aeonik-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: auto;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-background: #fffff8;
+  --color-text: #0c0c28;
+  --color-link: mediumblue;
+  --color-link-visited: purple;
+  --color-link-active: #e60000;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin: 0;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--color-link);
+}
+a:visited {
+  color: var(--color-link-visited);
+}
+a:active {
+  color: var(--color-link-active);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Aeonik, sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.main {
+  margin-top: 20%;
+  margin-bottom: 10%;
+}
+
+.text-content {
+  margin-left: 5%;
+  margin-right: 5%;
+  max-width: 43rem;
+}
+
+@media (min-width: 40rem) {
+  .text-content {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+.text-content b {
+  font-weight: inherit;
+  border-bottom: 3px dotted;
+}
+
+.text-content li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.name {
+  font-size: 3rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (min-width: 40rem) {
+  .name {
+    font-size: 4rem;
+  }
+}
+
+.im-just-text,
+.im-just-text:visited {
+  color: inherit;
+  text-decoration: none;
+}
