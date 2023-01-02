@@ -9,71 +9,137 @@
     <title>Akseli Nurmio</title>
     <meta name="viewport" content="width=device-width" />
     <link rel="canonical" href="https://akselinurmio.fi/" />
+    <link rel="alternate" hreflang="en" href="https://akselinurmio.fi/en/" />
     <link rel="stylesheet" href="/src/style.css" />
     <link rel="icon" href="data-url:/assets/favicon.svg" type="image/svg+xml" />
     <meta name="author" content="Akseli Nurmio" />
+    <meta name="description" content="" />
   </head>
   <body>
-    <div class="text-content">
+    <div class="top-container">
       <main class="main">
-        <h1 class="name">Terve, olen Akseli.</h1>
-        <p>
-          Heippa vaan! Nimeni on Akseli ja teen töitä web-kehittäjänä eli jonkun
-          sortin bittinikkarina puulaakissa nimeltä Yleisradio Oy. Tämä on se
-          omin nurkkani tässä WWW:n ihmemaassa, ja toivon että nautit
-          vierailustasi!
-        </p>
-        <nav aria-label="kielen vaihto">
-          <p lang="en">
-            If you prefer the <i lang="fi">kolmas kotimainen</i>, I have done my
-            best to provide this page also
-            <a href="/en/" hreflang="en" rel="alternate">in English</a>.
+        <div class="image-content">
+          <picture>
+            <source
+              media="(min-width: 78rem)"
+              type="image/avif"
+              srcset="
+                /assets/akseli.jpg?as=avif&width=400 1x,
+                /assets/akseli.jpg?as=avif&width=800 2x
+              "
+            />
+            <source
+              media="(min-width: 78rem)"
+              type="image/webp"
+              srcset="
+                /assets/akseli.jpg?as=webp&width=400 1x,
+                /assets/akseli.jpg?as=webp&width=800 2x
+              "
+            />
+            <source
+              type="image/avif"
+              srcset="
+                /assets/akseli.jpg?as=avif&width=200 1x,
+                /assets/akseli.jpg?as=avif&width=400 2x
+              "
+            />
+            <source
+              type="image/webp"
+              srcset="
+                /assets/akseli.jpg?as=webp&width=200 1x,
+                /assets/akseli.jpg?as=webp&width=400 2x
+              "
+            />
+            <img
+              alt="Akseli hymyilee, taustalla helsinkiläinen raitiovaunu"
+              loading="eager"
+              src="/assets/akseli.jpg?as=jpeg&width=400"
+              width="400"
+              height="500"
+              class="portrait"
+            />
+          </picture>
+        </div>
+        <div class="text-content">
+          <h1 class="name">Terve, olen Akseli.</h1>
+          <p>
+            Heippa vaan! Nimeni on Akseli ja teen töitä web-kehittäjänä eli
+            jonkun sortin bittinikkarina puulaakissa nimeltä Yleisradio Oy. Tämä
+            on se omin nurkkani tässä WWW:n ihmemaassa, ja toivon että nautit
+            vierailustasi!
           </p>
-        </nav>
-        <p>Tykkään tehdä listoja, joten kirjoittelin tähän muutaman listan.</p>
-        <h2>Töi ja röi</h2>
-        <ul>
-          <li>
-            <b>Saavutettavuuden parantaminen.</b> Yksi webin hienoimmista ja
-            luonteenomaisimmista ominaisuuksista on sen saavutettavuus. Tehdään
-            web-palveluista kaikille käytettäviä samalla kun urinoidaan
-            visuaalista mannaa ja hitokseen nopeita web-palveluita.
-          </li>
-        </ul>
-        <h2>Harrastuksia</h2>
-        <ul>
-          <li>Pyöräily (kevään lämpöisinä päivinä)</li>
-        </ul>
-        <h2>Muualla verkossa</h2>
-        <ul>
-          <li>
+          <nav aria-label="kielen vaihto">
+            <p lang="en">
+              If you prefer the <i lang="fi">kolmas kotimainen</i>, I have done
+              my best to provide this page also
+              <a href="/en/" hreflang="en" rel="alternate">in English</a>.
+            </p>
+          </nav>
+          <p>
+            Tykkään tehdä listoja, joten kirjoittelin tähän muutaman semmoisen.
+          </p>
+          <h2>
+            Töi ja
             <a
-              href="https://www.linkedin.com/in/akselinurmio/"
+              class="im-just-text"
+              href="https://www.youtube.com/watch?v=CmVdfwsi8Bg"
               rel="external noopener"
               target="_blank"
-              title="Akseli LinkedInissä"
-              >LinkedIn</a
+              >röi</a
             >
-            &ndash; connectaa jos tunnetaan
-          </li>
-          <li>
-            <del
-              ><a
+          </h2>
+          <ul>
+            <li>
+              <b>Saavutettavuuden parantaminen.</b> Yksi webin hienoimmista ja
+              luonteenomaisimmista ominaisuuksista on sen saavutettavuus.
+            </li>
+            <li>
+              <b>Käyttöliittymien suunnittelu.</b> Tärkeimpiä asioita työssäni
+              on palveluiden tekeminen helppokäyttöisemmiksi ja kivemmiksi
+              käyttää.
+            </li>
+            <li>
+              <b>Visuaalisen mannan urinointi</b> eli silmäkarkin väsäily. Tätä
+              on kiva harrastaa aina silloin tällöin vastapainona jalommille
+              aatteille. ✨
+            </li>
+          </ul>
+          <h2>Harrastuksia</h2>
+          <ul>
+            <li>
+              <b>Tietokone- ja lautapelit.</b> Tällä hetkellä tulee pelailtua
+              Raftiä, Valheimiä ja Legend of Zelda: Breath of the Wildiä.
+            </li>
+            <li><b>Pyöräily</b> (lähinnä kevään lämpöisinä päivinä).</li>
+          </ul>
+          <h2>Muualla verkossa</h2>
+          <ul>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/akselinurmio/"
+                rel="external noopener"
+                target="_blank"
+                title="Akseli LinkedInissä"
+                >LinkedIn</a
+              >
+              &ndash; connectaa jos tunnetaan
+            </li>
+            <li>
+              <a
                 href="https://twitter.com/akselinurmio"
                 rel="external noopener"
                 target="_blank"
                 title="Akseli Twitterissä"
                 >Twitter</a
-              ></del
-            >
-            Muskin privasome &ndash; en twiittaa koskaan mitään mutta seuraa
-            toki
-          </li>
-        </ul>
+              >
+              &ndash; en twiittaa koskaan mitään mutta seuraa toki
+            </li>
+          </ul>
+        </div>
       </main>
-      <footer>
+      <footer class="footer">
         <p>
-          <a class="im-just-text" href="wp-admin/index.html" rel="nofollow"
+          <a class="im-just-text" href="/src/wp-admin/index.html" rel="nofollow"
             >&copy;</a
           >
           Akseli Nurmio 2022

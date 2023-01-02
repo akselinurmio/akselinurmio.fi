@@ -19,6 +19,7 @@
   --color-link: mediumblue;
   --color-link-visited: purple;
   --color-link-active: #e60000;
+  --color-highlight: #f5f5ff;
 }
 
 body {
@@ -55,30 +56,62 @@ h6 {
   margin-bottom: 1.5rem;
 }
 
-.main {
-  margin-top: 20%;
-  margin-bottom: 10%;
-}
-
-.text-content {
+.top-container {
   margin-left: 5%;
   margin-right: 5%;
-  max-width: 43rem;
+  max-width: 68rem;
 }
 
 @media (min-width: 40rem) {
-  .text-content {
+  .top-container {
     margin-left: 10%;
     margin-right: 10%;
   }
 }
 
-.text-content b {
-  font-weight: inherit;
-  border-bottom: 3px dotted;
+.main {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: flex-end;
+  margin-top: 20%;
+  margin-bottom: 5%;
 }
 
-.text-content li {
+.text-content {
+  flex-grow: 1;
+  flex-basis: 33rem;
+  max-width: 43rem;
+}
+
+.portrait {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  width: 200px;
+}
+
+@media (min-width: 78rem) {
+  .portrait {
+    width: 400px;
+  }
+}
+
+.footer {
+  margin-top: 5%;
+  margin-bottom: 20%;
+}
+
+b {
+  background-color: var(--color-highlight);
+  border-radius: 0.2em;
+  box-decoration-break: clone;
+  box-shadow: 0 0 0 0.3em var(--color-highlight);
+  font-weight: inherit;
+}
+
+li {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
