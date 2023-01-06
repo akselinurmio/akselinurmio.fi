@@ -59,7 +59,7 @@ h6 {
 .top-container {
   margin-left: 5%;
   margin-right: 5%;
-  max-width: 68rem;
+  max-width: 77rem;
 }
 
 @media (min-width: 40rem) {
@@ -70,18 +70,24 @@ h6 {
 }
 
 .main {
-  display: flex;
-  flex-direction: row-reverse;
-  flex-wrap: wrap;
-  gap: 3rem;
-  justify-content: flex-end;
   margin-top: 20%;
   margin-bottom: 5%;
 }
 
+.image-content {
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 60rem) {
+  .image-content {
+    border-bottom-left-radius: 6rem;
+    float: right;
+    margin-left: 3rem;
+    shape-outside: margin-box;
+  }
+}
+
 .text-content {
-  flex-grow: 1;
-  flex-basis: 33rem;
   max-width: 43rem;
 }
 
@@ -92,7 +98,7 @@ h6 {
   width: 200px;
 }
 
-@media (min-width: 78rem) {
+@media (min-width: 77rem) {
   .portrait {
     width: 400px;
   }
