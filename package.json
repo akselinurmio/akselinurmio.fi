@@ -2,7 +2,7 @@
   "name": "akselinurmio.fi",
   "private": true,
   "scripts": {
-    "build": "rm -rf dist && parcel build 'src/**/*.html' && cp static/. dist/",
+    "build": "rm -rf dist && parcel build 'src/**/*.html' && cp -R static/. dist/",
     "dev": "parcel 'src/**/*.html'",
     "test": "prettier --check --ignore-path .gitignore ."
   },
