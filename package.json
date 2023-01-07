@@ -2,8 +2,8 @@
   "name": "akselinurmio.fi",
   "private": true,
   "scripts": {
-    "build": "rm -rf dist && parcel build src/index.html",
-    "dev": "parcel src/index.html",
+    "build": "rm -rf dist && parcel build 'src/**/*.html' && cp static/. dist/",
+    "dev": "parcel 'src/**/*.html'",
     "test": "prettier --check --ignore-path .gitignore ."
   },
   "devDependencies": {
