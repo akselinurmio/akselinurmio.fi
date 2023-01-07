@@ -1,0 +1,11 @@
+/*.avif
+  Cache-Control: public, max-age=604800, immutable
+/*.css
+  Cache-Control: public, max-age=604800, immutable
+/*.svg
+  Cache-Control: public, max-age=604800, immutable
+/*.webp
+  Cache-Control: public, max-age=604800, immutable
+
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
