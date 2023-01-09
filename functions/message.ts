@@ -16,12 +16,16 @@ const clientError = (message = "Client error") =>
 const genericError = () => new Response("Error\n", { status: 500 });
 
 async function validateTurnstileToken(
-  body: FormData,
+  formData: FormData,
   headers: Headers,
   secretKey: string
 ): Promise<boolean> {
-  const token = body.get("cf-turnstile-response");
+  const token = formData.get("cf-turnstile-response");
   const ip = headers.get("CF-Connecting-IP");
+
+  if (!token || !ip) {
+    return false;
+  }
 
   const response = await fetch(
     "https://challenges.cloudflare.com/turnstile/v0/siteverify",
@@ -51,8 +55,6 @@ async function validateTurnstileToken(
   return success;
 }
 
-async function sendMail() {}
-
 export const onRequest: PagesFunction = async (context) => {
   if (context.request.method !== "POST") {
     return new Response("Only POST requests\n", {
@@ -68,16 +70,16 @@ export const onRequest: PagesFunction = async (context) => {
   const { CONTACT_EMAIL, SENDGRID_API_KEY, TURNSTILE_SECRET_KEY } = context.env;
   const { headers } = context.request;
 
-  let body: FormData;
+  let formData: FormData;
   try {
-    body = await context.request.formData();
+    formData = await context.request.formData();
   } catch (e) {
     console.log(e);
     return clientError("Invalid form data");
   }
 
   const isTurnstileTokenValid = await validateTurnstileToken(
-    body,
+    formData,
     headers,
     TURNSTILE_SECRET_KEY
   );
@@ -86,12 +88,19 @@ export const onRequest: PagesFunction = async (context) => {
     return clientError("Invalid Turnstile token");
   }
 
+  const body =
+    "Message from akselinurmio.fi:\n\n" +
+    Array.from(formData.entries())
+      .map(([name, value]) => `${name}: ${value}`)
+      .join("\n\n") +
+    "\n";
+
   const response = await fetch("https://api.sendgrid.com/v3/mail/send", {
     body: JSON.stringify({
       personalizations: [{ to: [{ email: CONTACT_EMAIL }] }],
       from: { email: "webmaster@akselinurmio.fi" },
       subject: "Mail from website",
-      content: [{ type: "text/plain", value: "You've got mail!" }],
+      content: [{ type: "text/plain", value: body }],
     }),
     headers: {
       Authorization: `Bearer ${SENDGRID_API_KEY}`,

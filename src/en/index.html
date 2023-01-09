@@ -1,0 +1,191 @@
+<!--
+  Howdy! Just letting you know that this site has been crafted by hand
+  just for you using the HTML schematics by the great Sir Timothy.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Akseli Nurmio</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="canonical" href="https://akselinurmio.fi/en/" />
+    <link rel="alternate" hreflang="fi" href="https://akselinurmio.fi/" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="icon" href="data-url:/assets/favicon.svg" type="image/svg+xml" />
+    <meta name="author" content="Akseli Nurmio" />
+    <meta
+      name="description"
+      content="Hi there! I’m Akseli and I work as a web developer in an establishment called The Finnish Broadcasting Company (Yle)."
+    />
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+    ></script>
+    <script src="/src/form.mjs" type="module"></script>
+  </head>
+  <body>
+    <div class="top-container">
+      <main class="main">
+        <div class="image-content">
+          <picture>
+            <source
+              media="(min-width: 77rem)"
+              type="image/avif"
+              srcset="
+                /assets/akseli.jpg?as=avif&width=400 1x,
+                /assets/akseli.jpg?as=avif&width=800 2x
+              "
+            />
+            <source
+              media="(min-width: 77rem)"
+              type="image/webp"
+              srcset="
+                /assets/akseli.jpg?as=webp&width=400 1x,
+                /assets/akseli.jpg?as=webp&width=800 2x
+              "
+            />
+            <source
+              type="image/avif"
+              srcset="
+                /assets/akseli.jpg?as=avif&width=200 1x,
+                /assets/akseli.jpg?as=avif&width=400 2x
+              "
+            />
+            <source
+              type="image/webp"
+              srcset="
+                /assets/akseli.jpg?as=webp&width=200 1x,
+                /assets/akseli.jpg?as=webp&width=400 2x
+              "
+            />
+            <img
+              alt="Akseli is smiling, there is a Finnish tram behind him"
+              loading="eager"
+              src="/assets/akseli.jpg?as=jpeg&width=400"
+              width="400"
+              height="500"
+              class="portrait"
+            />
+          </picture>
+        </div>
+        <div class="text-content">
+          <h1 class="name">Howdy, I’m Akseli.</h1>
+          <p>
+            Cheerio! Hi there, I’m Akseli and I work as a web developer (that’s
+            a sort of a bit nibbler) in an establishment called The Finnish
+            Broadcasting Company. This is my little cozy corner in the
+            wonderland of the Web. I hope you’ll enjoy your stay!
+          </p>
+          <p>
+            If you prefer, this page is also available
+            <a href="/" hreflang="fi" rel="alternate">in Finnish</a>.
+          </p>
+          <p>I’m into making lists, so I scribbled a few here.</p>
+          <h2>Craft and grind</h2>
+          <ul>
+            <li>
+              <b>Improving accessibility.</b> One of the greatest and most
+              distinctive characteristics of the web is its accessibility.
+            </li>
+            <li>
+              <b>User interface design.</b> The top priorities of my work
+              include making services more easy and more fun to use.
+            </li>
+            <li>
+              <b>Drizzling on some visual honey</b> or in other words, creating
+              eye candy. This is a nice hobby from time to time as a
+              counterbalance to the more noble ideals. ✨
+            </li>
+          </ul>
+          <h2>Recreational pursuits</h2>
+          <ul>
+            <li>
+              <b>Computer and board games.</b> At the moment I play Raft,
+              Valheim and Legend of Zelda: Breath of the Wild.
+            </li>
+            <li><b>Biking</b> (mostly on warm spring days).</li>
+          </ul>
+          <h2>Find me elsewhere online</h2>
+          <ul>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/akselinurmio/"
+                rel="external me noopener"
+                target="_blank"
+                >LinkedIn</a
+              >
+              &ndash; hit connect if we know each other
+            </li>
+            <li>
+              <a
+                href="https://twitter.com/akselinurmio"
+                rel="external me noopener"
+                target="_blank"
+                >Twitter</a
+              >
+              &ndash; I never tweet anything but feel free to follow
+            </li>
+          </ul>
+
+          <h2 id="contact">Message me</h2>
+          <form
+            action="/message"
+            method="post"
+            aria-labelledby="contact"
+            class="form"
+            id="contact-form"
+          >
+            <div class="form-field">
+              <input
+                type="text"
+                name="name"
+                id="name-input"
+                autocomplete="name"
+                class="form-input"
+              />
+              <label class="form-label" for="name-input">Your name</label>
+            </div>
+            <div hidden id="greeting"></div>
+            <div class="form-field">
+              <input
+                type="email"
+                name="email"
+                id="email-input"
+                autocomplete="email"
+                class="form-input"
+              />
+              <label class="form-label" for="email-input">Your email</label>
+            </div>
+            <div class="form-field">
+              <textarea
+                name="message"
+                id="message-input"
+                required
+                rows="5"
+                class="form-input"
+              ></textarea>
+              <label class="form-label" for="message-input">Your message</label>
+            </div>
+            <div class="form-field">
+              <div class="form-input">
+                <div
+                  class="cf-turnstile"
+                  data-sitekey="0x4AAAAAAAB4pAL3vK_V47rO"
+                  data-theme="light"
+                ></div>
+              </div>
+              <label class="form-label">Bot check</label>
+            </div>
+            <button type="submit" class="form-button">Send</button>
+
+            <output id="contact-form-output" hidden role="status"></output>
+          </form>
+        </div>
+      </main>
+      <footer class="footer">
+        <p>&copy; Akseli Nurmio</p>
+      </footer>
+    </div>
+  </body>
+</html>

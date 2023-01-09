@@ -8,13 +8,8 @@
     <meta charset="utf-8" />
     <title>Akseli Nurmio</title>
     <meta name="viewport" content="width=device-width" />
-    <link rel="canonical" href="https://akselinurmio.fi/fi/" />
+    <link rel="canonical" href="https://akselinurmio.fi/" />
     <link rel="alternate" hreflang="en" href="https://akselinurmio.fi/en/" />
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href="https://akselinurmio.fi/"
-    />
     <link rel="stylesheet" href="/src/style.css" />
     <link rel="icon" href="data-url:/assets/favicon.svg" type="image/svg+xml" />
     <meta name="author" content="Akseli Nurmio" />
@@ -22,6 +17,11 @@
       name="description"
       content="Heippa vaan! Nimeni on Akseli ja teen töitä web-kehittäjänä puulaakissa nimeltä Yleisradio Oy."
     />
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      defer
+    ></script>
+    <script src="/src/form.mjs" type="module"></script>
   </head>
   <body>
     <div class="top-container">
@@ -131,19 +131,61 @@
             </li>
           </ul>
 
-          <section aria-labelledby="contact">
-            <h2 id="contact">Laita viestiä</h2>
-            <form action="/message" method="post">
-              <input type="text" name="name" />
-              <textarea name="message" cols="30" rows="10"></textarea>
-              <div
-                class="cf-turnstile"
-                data-sitekey="0x4AAAAAAAB4pAL3vK_V47rO"
-                data-theme="light"
-              ></div>
-              <button type="submit"></button>
-            </form>
-          </section>
+          <h2 id="contact">Laita viestiä</h2>
+          <form
+            action="/message"
+            method="post"
+            aria-labelledby="contact"
+            class="form"
+            id="contact-form"
+          >
+            <div class="form-field">
+              <input
+                type="text"
+                name="name"
+                id="name-input"
+                autocomplete="name"
+                class="form-input"
+              />
+              <label class="form-label" for="name-input">Nimesi</label>
+            </div>
+            <div hidden id="greeting"></div>
+            <div class="form-field">
+              <input
+                type="email"
+                name="email"
+                id="email-input"
+                autocomplete="email"
+                class="form-input"
+              />
+              <label class="form-label" for="email-input"
+                >Meiliosoitteesi</label
+              >
+            </div>
+            <div class="form-field">
+              <textarea
+                name="message"
+                id="message-input"
+                required
+                rows="5"
+                class="form-input"
+              ></textarea>
+              <label class="form-label" for="message-input">Viestisi</label>
+            </div>
+            <div class="form-field">
+              <div class="form-input" lang="en">
+                <div
+                  class="cf-turnstile"
+                  data-sitekey="0x4AAAAAAAB4pAL3vK_V47rO"
+                  data-theme="light"
+                ></div>
+              </div>
+              <label class="form-label">Bottitarkistus</label>
+            </div>
+            <button type="submit" class="form-button">Lähetä</button>
+
+            <output id="contact-form-output" hidden role="status"></output>
+          </form>
         </div>
       </main>
       <footer class="footer">

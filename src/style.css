@@ -20,6 +20,16 @@
   --color-link-visited: purple;
   --color-link-active: #e60000;
   --color-highlight: #f5f5ff;
+  --color-input-background: white;
+  --color-input-border: #ced4da;
+  --color-input-text: var(--color-text);
+  --color-button-background-a: #019c63;
+  --color-button-background-b: #10bc5a;
+  --color-button-text: white;
+  --color-error-background: #fff2f4;
+  --color-error-border: #ef9a9a;
+  --color-success-background: #f0fff9;
+  --color-success-border: #8cdcbf;
 }
 
 body {
@@ -70,12 +80,12 @@ h6 {
 }
 
 .main {
-  margin-top: 20%;
+  margin-top: 15%;
   margin-bottom: 5%;
 }
 
 .main:last-child {
-  margin-bottom: 20%;
+  margin-bottom: 15%;
 }
 
 .main::after {
@@ -124,7 +134,7 @@ h6 {
 
 .footer {
   margin-top: 5%;
-  margin-bottom: 20%;
+  margin-bottom: 15%;
 }
 
 b {
@@ -150,4 +160,94 @@ li {
   .name {
     font-size: 4rem;
   }
+}
+
+.form {
+  border-radius: 0.375rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.form-field {
+  position: relative;
+}
+
+.form-input {
+  appearance: none;
+  background-color: var(--color-input-background);
+  border: 1px solid var(--color-input-border);
+  border-radius: 0.375rem;
+  color: var(--color-input-text);
+  display: block;
+  font: inherit;
+  padding-top: 2rem;
+  padding-bottom: 0.75rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  width: 100%;
+}
+
+textarea.form-input {
+  min-height: 5rem;
+  resize: vertical;
+}
+
+.form-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 0.75rem;
+  overflow: hidden;
+  padding-top: 0.75rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  pointer-events: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cf-turnstile {
+  display: flex;
+  min-height: 65px;
+  overflow: auto;
+}
+
+.form-button {
+  background-color: var(--color-button-background-a);
+  background-image: linear-gradient(
+    30deg,
+    var(--color-button-background-a),
+    var(--color-button-background-b)
+  );
+  border: none;
+  border-radius: 2em;
+  color: var(--color-button-text);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.5em 2em;
+  text-align: center;
+}
+
+.error,
+.info,
+.success {
+  background-color: var(--color-input-background);
+  border: 1px solid var(--color-input-border);
+  border-radius: 0.375rem;
+  display: block;
+  padding: 0.75rem;
+}
+
+.error {
+  background-color: var(--color-error-background);
+  border-color: var(--color-error-border);
+}
+
+.success {
+  background-color: var(--color-success-background);
+  border-color: var(--color-success-border);
 }
