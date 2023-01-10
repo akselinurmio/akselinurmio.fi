@@ -3,8 +3,6 @@ const language = document.documentElement.lang;
 const form = document.querySelector("#contact-form");
 /** @type {HTMLOutputElement} */
 const output = document.querySelector("#contact-form-output");
-/** @type {HTMLElement} */
-const greeting = document.querySelector("#greeting");
 
 /**
  * @param {string} message
@@ -21,27 +19,6 @@ const clearOutput = () => {
   output.hidden = true;
   output.className = "";
   output.textContent = "";
-};
-
-/** @param {string} */
-const capitalize = ([first = "", ...rest]) =>
-  first.toLocaleUpperCase() + rest.join("");
-
-/** @param {string} name */
-const updateGreeting = (name) => {
-  const firstName = capitalize(name.trim().split(" ")[0]);
-
-  greeting.hidden = !firstName;
-  greeting.textContent =
-    firstName &&
-    (language === "fi"
-      ? `Moi ${firstName}! Kiva kun kirjoitat.`
-      : `Hi ${firstName}! Nice of you to write to me.`);
-};
-
-const clearGreeting = () => {
-  greeting.hidden = true;
-  greeting.textContent = "";
 };
 
 const sendForm = async () => {
@@ -75,7 +52,6 @@ const sendForm = async () => {
       language === "fi" ? "Kiitos viestistäsi!" : "Thank you for your message!",
       "success"
     );
-    clearGreeting();
     form.reset();
   } else {
     const errorMessage = await response.text();
@@ -122,16 +98,8 @@ const onInvalid = (event) => {
   }
 };
 
-/** @param {Event} event */
-const onChange = (event) => {
-  /** @type {HTMLInputElement | HTMLTextAreaElement} */
-  const target = event.target;
-
+const onChange = () => {
   clearOutput(form);
-
-  if (target.name === "name") {
-    updateGreeting(target.value);
-  }
 };
 
 if (form) {
