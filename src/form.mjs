@@ -12,7 +12,6 @@ const setOutput = (message, type) => {
   output.hidden = false;
   output.className = type;
   output.textContent = message;
-  output.scrollIntoView();
 };
 
 const clearOutput = () => {
