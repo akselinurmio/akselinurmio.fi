@@ -39,6 +39,11 @@ const updateGreeting = (name) => {
       : `Hi ${firstName}! Nice of you to write to me.`);
 };
 
+const clearGreeting = () => {
+  greeting.hidden = true;
+  greeting.textContent = "";
+};
+
 const sendForm = async () => {
   setOutput(
     language === "fi" ? "Viestiäsi lähetetään…" : "Your message is being sent…",
@@ -65,7 +70,14 @@ const sendForm = async () => {
     );
   }
 
-  if (response && !response.ok) {
+  if (response.ok) {
+    setOutput(
+      language === "fi" ? "Kiitos viestistäsi!" : "Thank you for your message!",
+      "success"
+    );
+    clearGreeting();
+    form.reset();
+  } else {
     const errorMessage = await response.text();
     throw new Error(
       `Form action returned error status ${response.status} ${
