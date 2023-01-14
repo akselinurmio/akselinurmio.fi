@@ -118,12 +118,12 @@ const onInvalid = (event) => {
   }
 };
 
-const onChange = () => {
+const onInput = () => {
   clearOutput();
 };
 
 if (form) {
   form.addEventListener("submit", onSubmit);
   form.addEventListener("invalid", onInvalid, { capture: true });
-  form.addEventListener("change", onChange);
+  form.addEventListener("input", onInput);
 }
