@@ -140,6 +140,7 @@
             id="contact-form"
           >
             <div class="form-field">
+              <label class="form-label" for="name-input">Nimesi</label>
               <input
                 type="text"
                 name="name"
@@ -147,9 +148,11 @@
                 autocomplete="name"
                 class="form-input"
               />
-              <label class="form-label" for="name-input">Nimesi</label>
             </div>
             <div class="form-field">
+              <label class="form-label" for="email-input"
+                >Meiliosoitteesi</label
+              >
               <input
                 type="email"
                 name="email"
@@ -157,11 +160,9 @@
                 autocomplete="email"
                 class="form-input"
               />
-              <label class="form-label" for="email-input"
-                >Meiliosoitteesi</label
-              >
             </div>
             <div class="form-field">
+              <label class="form-label" for="message-input">Viestisi</label>
               <textarea
                 name="message"
                 id="message-input"
@@ -169,9 +170,9 @@
                 rows="5"
                 class="form-input"
               ></textarea>
-              <label class="form-label" for="message-input">Viestisi</label>
             </div>
             <div class="form-field">
+              <label class="form-label">Bottitarkistus</label>
               <div class="form-input" lang="en">
                 <div
                   class="cf-turnstile"
@@ -179,7 +180,6 @@
                   data-theme="light"
                 ></div>
               </div>
-              <label class="form-label">Bottitarkistus</label>
             </div>
             <button type="submit" class="form-button">Lähetä</button>
 

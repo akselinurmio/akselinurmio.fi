@@ -4,6 +4,16 @@ const form = document.querySelector("#contact-form");
 /** @type {HTMLOutputElement} */
 const output = document.querySelector("#contact-form-output");
 
+const isSubmitting = () => "submitting" in form.dataset;
+
+const setIsSubmitting = () => {
+  form.dataset.submitting = "";
+};
+
+const clearSubmitState = () => {
+  delete form.dataset.submitting;
+};
+
 /**
  * @param {string} message
  * @param {"error" | "info" | "success"} type
@@ -21,6 +31,12 @@ const clearOutput = () => {
 };
 
 const sendForm = async () => {
+  if (isSubmitting()) {
+    return;
+  } else {
+    setIsSubmitting();
+  }
+
   setOutput(
     language === "fi" ? "Viestiäsi lähetetään…" : "Your message is being sent…",
     "info"
@@ -44,6 +60,10 @@ const sendForm = async () => {
         : "Sending message failed due to a network error. You can try again later.",
       "error"
     );
+    return;
+  } finally {
+    clearOutput();
+    clearSubmitState();
   }
 
   if (response.ok) {
@@ -54,10 +74,17 @@ const sendForm = async () => {
     form.reset();
   } else {
     const errorMessage = await response.text();
-    throw new Error(
+
+    console.error(
       `Form action returned error status ${response.status} ${
         response.statusText
       }${errorMessage ? ` with message: "${errorMessage}"` : ""}`
+    );
+    setOutput(
+      language === "fi"
+        ? "Viestin lähettäminen ei onnistunut. Kokeile myöhemmin uudelleen."
+        : "Sending message didn’t succeed. Please try again later.",
+      "error"
     );
   }
 };
@@ -67,13 +94,7 @@ const onSubmit = (event) => {
   event.preventDefault();
 
   sendForm().catch((e) => {
-    console.error("Error while sending form", e);
-    setOutput(
-      language === "fi"
-        ? "Viestin lähettäminen ei onnistunut. Kokeile myöhemmin uudelleen."
-        : "Sending message didn’t succeed. Please try again later.",
-      "error"
-    );
+    console.error("Unexpected error while sending form", e);
   });
 };
 
@@ -98,7 +119,7 @@ const onInvalid = (event) => {
 };
 
 const onChange = () => {
-  clearOutput(form);
+  clearOutput();
 };
 
 if (form) {
