@@ -1,4 +1,4 @@
-type Env = Record<typeof ENV_KEYS[number], string>;
+type Env = Record<(typeof ENV_KEYS)[number], string>;
 
 const ENV_KEYS = [
   "CONTACT_EMAIL",
@@ -9,6 +9,12 @@ const ENV_KEYS = [
 function isEnv(env: Record<string, unknown>): env is Env {
   return ENV_KEYS.every((key) => key in env);
 }
+
+const emailableFormFieldNames: ReadonlySet<string> = new Set([
+  "name",
+  "email",
+  "message",
+]);
 
 const clientError = (message = "Client error") =>
   new Response(message + "\n", { status: 400 });
@@ -91,6 +97,7 @@ export const onRequest: PagesFunction = async (context) => {
   const body =
     "Message from akselinurmio.fi:\n\n" +
     Array.from(formData.entries())
+      .filter(([name]) => emailableFormFieldNames.has(name))
       .map(([name, value]) => `${name}: ${value}`)
       .join("\n\n") +
     "\n";
