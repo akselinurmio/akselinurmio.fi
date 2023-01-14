@@ -2,8 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://akselinurmio.fi/</loc>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://akselinurmio.fi/en/</loc>
+    <changefreq>monthly</changefreq>
   </url>
 </urlset>
