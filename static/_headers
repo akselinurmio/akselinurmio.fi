@@ -21,4 +21,4 @@ https://:project.pages.dev/*
 
 /*
   X-Frame-Options: DENY
-  Content-Security-Policy: default-src 'self'; base-uri 'none'; connect-src 'report-sample' cloudflareinsights.com; frame-ancestors 'none'; frame-src https://challenges.cloudflare.com; object-src 'none'; script-src 'report-sample' 'self' https://challenges.cloudflare.com https://static.cloudflareinsights.com; report-uri https://63c26f7331143db76bd72dbb.endpoint.csper.io?v=2;
+  Content-Security-Policy: default-src 'self'; base-uri 'none'; connect-src 'report-sample' 'self' cloudflareinsights.com; frame-ancestors 'none'; frame-src https://challenges.cloudflare.com; object-src 'none'; script-src 'report-sample' 'self' https://challenges.cloudflare.com https://static.cloudflareinsights.com; report-uri https://63c26f7331143db76bd72dbb.endpoint.csper.io?v=2;
