@@ -4,14 +4,16 @@ const form = document.querySelector("#contact-form");
 /** @type {HTMLOutputElement} */
 const output = document.querySelector("#contact-form-output");
 
-const isSubmitting = () => "submitting" in form.dataset;
+const submitStateKey = "submitting";
+
+const isSubmitting = () => submitStateKey in form.dataset;
 
 const setIsSubmitting = () => {
-  form.dataset.submitting = "";
+  form.dataset[submitStateKey] = "";
 };
 
 const clearSubmitState = () => {
-  delete form.dataset.submitting;
+  delete form.dataset[submitStateKey];
 };
 
 /**
