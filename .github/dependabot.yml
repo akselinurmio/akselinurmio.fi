@@ -3,6 +3,4 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "monthly"
-    assignees:
-      - "akselinurmio"
+      interval: weekly
