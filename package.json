@@ -5,7 +5,10 @@
     "build": "rm -rf dist && parcel build src/{,en/}{index,404}.html && cp -R static/. dist/",
     "dev": "parcel src/{,en/}{index,404}.html",
     "prettier:check": "prettier --check --ignore-path .gitignore .",
-    "test": "concurrently --group npm:build npm:prettier:check"
+    "test": "concurrently --group npm:build npm:prettier:check npm:type-check",
+    "type-check": "concurrently --group \"npm:type-check:*\"",
+    "type-check:frontend": "cd src && tsc --noEmit",
+    "type-check:functions": "cd functions && tsc --noEmit"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230511.0",

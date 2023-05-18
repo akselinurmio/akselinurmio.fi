@@ -1,8 +1,8 @@
 const language = document.documentElement.lang;
-/** @type {HTMLFormElement} */
-const form = document.querySelector("#contact-form");
-/** @type {HTMLOutputElement} */
-const output = document.querySelector("#contact-form-output");
+const form = document.querySelector("#contact-form") as HTMLFormElement;
+const output = document.querySelector(
+  "#contact-form-output"
+) as HTMLOutputElement;
 
 const submitStateKey = "submitting";
 
@@ -16,11 +16,7 @@ const clearSubmitState = () => {
   delete form.dataset[submitStateKey];
 };
 
-/**
- * @param {string} message
- * @param {"error" | "info" | "success"} type
- */
-const setOutput = (message, type) => {
+const setOutput = (message: string, type: "error" | "info" | "success") => {
   output.hidden = false;
   output.className = type;
   output.textContent = message;
@@ -44,14 +40,11 @@ const sendForm = async () => {
     "info"
   );
 
-  let response;
+  let response: Response;
 
   try {
     response = await fetch(form.action, {
-      body: new URLSearchParams(new FormData(form)),
-      headers: {
-        "Content-Type": form.enctype,
-      },
+      body: new FormData(form),
       method: form.method,
     });
   } catch (e) {
@@ -90,8 +83,7 @@ const sendForm = async () => {
   }
 };
 
-/** @param {SubmitEvent} event */
-const onSubmit = (event) => {
+const onSubmit = (event: SubmitEvent) => {
   event.preventDefault();
 
   sendForm().catch((e) => {
@@ -99,17 +91,15 @@ const onSubmit = (event) => {
   });
 };
 
-/** @param {Event} event */
-const onInvalid = (event) => {
-  /** @type {HTMLInputElement | HTMLTextAreaElement} */
-  const target = event.target;
+const onInvalid = (event: Event) => {
+  const target = event.target as HTMLInputElement | HTMLTextAreaElement;
 
-  if (target.name === "message" && target.validity?.valueMissing) {
+  if (target.name === "message" && target.validity.valueMissing) {
     setOutput(
       language === "fi" ? "Viesti puuttuu." : "The message is missing.",
       "error"
     );
-  } else if (target.type === "email" && target.validity?.typeMismatch) {
+  } else if (target.name === "email" && target.validity.typeMismatch) {
     setOutput(
       language === "fi"
         ? "Antamassasi meiliosoitteessa on ongelma."
@@ -123,8 +113,6 @@ const onInput = () => {
   clearOutput();
 };
 
-if (form) {
-  form.addEventListener("submit", onSubmit);
-  form.addEventListener("invalid", onInvalid, { capture: true });
-  form.addEventListener("input", onInput);
-}
+form.addEventListener("submit", onSubmit);
+form.addEventListener("invalid", onInvalid, { capture: true });
+form.addEventListener("input", onInput);
