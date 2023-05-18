@@ -50,12 +50,12 @@ const sendForm = async () => {
     response = await fetch(form.action, {
       body: new URLSearchParams(new FormData(form)),
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": form.enctype,
       },
-      method: "POST",
+      method: form.method,
     });
   } catch (e) {
-    console.error("Fetch error", e);
+    console.error(e);
     setOutput(
       language === "fi"
         ? "Viestin lähettäminen ei onnistunut verkkovirheen takia. Kokeile myöhemmin uudelleen."
@@ -64,7 +64,6 @@ const sendForm = async () => {
     );
     return;
   } finally {
-    clearOutput();
     clearSubmitState();
   }
 
@@ -75,12 +74,12 @@ const sendForm = async () => {
     );
     form.reset();
   } else {
-    const errorMessage = await response.text();
+    const errorMessage = (await response.text()).trim();
 
     console.error(
-      `Form action returned error status ${response.status} ${
-        response.statusText
-      }${errorMessage ? ` with message: "${errorMessage}"` : ""}`
+      `Form action returned error status ${response.status}${
+        errorMessage ? ` with message: "${errorMessage}"` : ""
+      }`
     );
     setOutput(
       language === "fi"
@@ -96,7 +95,7 @@ const onSubmit = (event) => {
   event.preventDefault();
 
   sendForm().catch((e) => {
-    console.error("Unexpected error while sending form", e);
+    console.error(e);
   });
 };
 
