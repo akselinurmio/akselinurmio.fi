@@ -13,7 +13,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230710.1",
     "concurrently": "^8.2.0",
-    "parcel": "^2.9.2",
+    "parcel": "^2.9.3",
     "prettier": "^2.8.8",
     "sharp": "^0.31.3",
     "typescript": "^5.1.3",
