@@ -11,7 +11,7 @@
     "type-check:functions": "cd functions && tsc --noEmit"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20230710.1",
+    "@cloudflare/workers-types": "^4.20230717.1",
     "concurrently": "^8.2.0",
     "parcel": "^2.9.3",
     "prettier": "^2.8.8",
