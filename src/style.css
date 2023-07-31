@@ -1,6 +1,7 @@
 @font-face {
   font-family: Aeonik;
-  src: url("/assets/font/Aeonik-Medium.woff2") format("woff2"),
+  src:
+    url("/assets/font/Aeonik-Medium.woff2") format("woff2"),
     url("/assets/font/Aeonik-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
