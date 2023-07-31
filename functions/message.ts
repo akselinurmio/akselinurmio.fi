@@ -24,7 +24,7 @@ const genericError = () => new Response("Error\n", { status: 500 });
 async function validateTurnstileToken(
   formData: FormData,
   headers: Headers,
-  secretKey: string
+  secretKey: string,
 ): Promise<boolean> {
   const token = formData.get("cf-turnstile-response");
   const ip = headers.get("CF-Connecting-IP");
@@ -45,7 +45,7 @@ async function validateTurnstileToken(
         "Content-Type": "application/json",
       },
       method: "POST",
-    }
+    },
   );
 
   type TurnstileResponse = { success: boolean; "error-codes": string[] };
@@ -55,7 +55,7 @@ async function validateTurnstileToken(
   if (errors.length > 0) {
     console.log(
       "Turnstile validation returned with following errors: " +
-        errors.join(", ")
+        errors.join(", "),
     );
   }
   return success;
@@ -87,7 +87,7 @@ export const onRequest: PagesFunction = async (context) => {
   const isTurnstileTokenValid = await validateTurnstileToken(
     formData,
     headers,
-    TURNSTILE_SECRET_KEY
+    TURNSTILE_SECRET_KEY,
   );
 
   if (!isTurnstileTokenValid) {
@@ -122,7 +122,7 @@ export const onRequest: PagesFunction = async (context) => {
     const errorDescription = await response.text();
     console.error(
       `Sending email didn't succeed. SendGrid replied with HTTP ${response.status}.\n` +
-        errorDescription
+        errorDescription,
     );
     return genericError();
   }

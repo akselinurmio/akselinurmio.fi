@@ -1,7 +1,7 @@
 const language = document.documentElement.lang;
 const form = document.querySelector("#contact-form") as HTMLFormElement;
 const output = document.querySelector(
-  "#contact-form-output"
+  "#contact-form-output",
 ) as HTMLOutputElement;
 
 const submitStateKey = "submitting";
@@ -37,7 +37,7 @@ const sendForm = async () => {
 
   setOutput(
     language === "fi" ? "Viestiäsi lähetetään…" : "Your message is being sent…",
-    "info"
+    "info",
   );
 
   let response: Response;
@@ -53,7 +53,7 @@ const sendForm = async () => {
       language === "fi"
         ? "Viestin lähettäminen ei onnistunut verkkovirheen takia. Kokeile myöhemmin uudelleen."
         : "Sending message failed due to a network error. You can try again later.",
-      "error"
+      "error",
     );
     return;
   } finally {
@@ -63,7 +63,7 @@ const sendForm = async () => {
   if (response.ok) {
     setOutput(
       language === "fi" ? "Kiitos viestistäsi!" : "Thank you for your message!",
-      "success"
+      "success",
     );
     form.reset();
   } else {
@@ -72,13 +72,13 @@ const sendForm = async () => {
     console.error(
       `Form action returned error status ${response.status}${
         errorMessage ? ` with message: "${errorMessage}"` : ""
-      }`
+      }`,
     );
     setOutput(
       language === "fi"
         ? "Viestin lähettäminen ei onnistunut. Kokeile myöhemmin uudelleen."
         : "Sending message didn’t succeed. Please try again later.",
-      "error"
+      "error",
     );
   }
 };
@@ -97,14 +97,14 @@ const onInvalid = (event: Event) => {
   if (target.name === "message" && target.validity.valueMissing) {
     setOutput(
       language === "fi" ? "Viesti puuttuu." : "The message is missing.",
-      "error"
+      "error",
     );
   } else if (target.name === "email" && target.validity.typeMismatch) {
     setOutput(
       language === "fi"
         ? "Antamassasi meiliosoitteessa on ongelma."
         : "There’s a problem with the email address you gave.",
-      "error"
+      "error",
     );
   }
 };
