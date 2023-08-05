@@ -6,6 +6,10 @@
   Cache-Control: public, max-age=604800, immutable
 /*.webp
   Cache-Control: public, max-age=604800, immutable
+/*.woff
+  Cache-Control: public, max-age=604800, immutable
+/*.woff2
+  Cache-Control: public, max-age=604800, immutable
 
 /*.js
   Content-Type: application/javascript; charset=utf-8
