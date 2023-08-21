@@ -16,7 +16,7 @@
     "@parcel/transformer-jsonld": "^2.9.3",
     "concurrently": "^8.2.0",
     "parcel": "^2.9.3",
-    "prettier": "^3.0.1",
+    "prettier": "^3.0.2",
     "sharp": "^0.31.3",
     "typescript": "^5.1.6",
     "wrangler": "^3.5.0"
