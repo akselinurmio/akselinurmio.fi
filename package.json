@@ -19,7 +19,7 @@
     "prettier": "^3.0.1",
     "sharp": "^0.31.3",
     "typescript": "^5.1.6",
-    "wrangler": "^3.5.0"
+    "wrangler": "^3.5.1"
   },
   "browserslist": "> 0.5% in FI, not dead"
 }
