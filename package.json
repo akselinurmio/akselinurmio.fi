@@ -12,7 +12,7 @@
     "type-check:functions": "cd functions && tsc --noEmit"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20231016.0",
+    "@cloudflare/workers-types": "^4.20231025.0",
     "@parcel/packager-raw-url": "^2.10.0",
     "@parcel/transformer-jsonld": "^2.10.0",
     "concurrently": "^8.2.2",
