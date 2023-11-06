@@ -16,7 +16,7 @@
     "@parcel/packager-raw-url": "^2.10.0",
     "@parcel/transformer-jsonld": "^2.10.0",
     "concurrently": "^8.2.2",
-    "parcel": "^2.10.0",
+    "parcel": "^2.10.2",
     "prettier": "^3.0.3",
     "sharp": "^0.31.3",
     "typescript": "^5.1.6",
