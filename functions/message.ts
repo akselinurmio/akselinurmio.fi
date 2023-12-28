@@ -17,9 +17,9 @@ const emailableFormFieldNames: ReadonlySet<string> = new Set([
 ]);
 
 const clientError = (message = "Client error") =>
-  new Response(message + "\n", { status: 400 });
+  new Response(message, { status: 400 });
 
-const genericError = () => new Response("Error\n", { status: 500 });
+const genericError = () => new Response("Server error", { status: 500 });
 
 async function validateTurnstileToken(
   formData: FormData,
@@ -63,7 +63,7 @@ async function validateTurnstileToken(
 
 export const onRequest: PagesFunction = async (context) => {
   if (context.request.method !== "POST") {
-    return new Response("Only POST requests\n", {
+    return new Response("Only POST requests", {
       headers: { Allow: "POST" },
       status: 405,
     });
@@ -99,8 +99,7 @@ export const onRequest: PagesFunction = async (context) => {
     Array.from(formData.entries())
       .filter(([name]) => emailableFormFieldNames.has(name))
       .map(([name, value]) => `${name}: ${value}`)
-      .join("\n\n") +
-    "\n";
+      .join("\n\n");
 
   const response = await fetch("https://api.sendgrid.com/v3/mail/send", {
     body: JSON.stringify({
