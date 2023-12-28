@@ -1,6 +1,8 @@
 const language = document.documentElement.lang;
 const form = document.getElementById("contact-form") as HTMLFormElement;
-const output = document.getElementById("contact-form-output") as HTMLOutputElement;
+const output = document.getElementById(
+  "contact-form-output",
+) as HTMLOutputElement;
 
 const submitStateKey = "submitting";
 
@@ -27,8 +29,7 @@ const clearOutput = () => {
 };
 
 const sendForm = async () => {
-  if (isSubmitting())
-    return;
+  if (isSubmitting()) return;
 
   setIsSubmitting();
   setOutput(
