@@ -1,7 +1,7 @@
 const language = document.documentElement.lang;
-const form = document.querySelector("#contact-form") as HTMLFormElement;
-const output = document.querySelector(
-  "#contact-form-output",
+const form = document.getElementById("contact-form") as HTMLFormElement;
+const output = document.getElementById(
+  "contact-form-output",
 ) as HTMLOutputElement;
 
 const submitStateKey = "submitting";
@@ -29,12 +29,9 @@ const clearOutput = () => {
 };
 
 const sendForm = async () => {
-  if (isSubmitting()) {
-    return;
-  } else {
-    setIsSubmitting();
-  }
+  if (isSubmitting()) return;
 
+  setIsSubmitting();
   setOutput(
     language === "fi" ? "Viestiäsi lähetetään…" : "Your message is being sent…",
     "info",
@@ -67,12 +64,10 @@ const sendForm = async () => {
     );
     form.reset();
   } else {
-    const errorMessage = (await response.text()).trim();
-
     console.error(
-      `Form action returned error status ${response.status}${
-        errorMessage ? ` with message: "${errorMessage}"` : ""
-      }`,
+      `Form action returned error status ${response.status} with message: "%s". Response: %o`,
+      await response.text(),
+      response,
     );
     setOutput(
       language === "fi"
@@ -87,7 +82,7 @@ const onSubmit = (event: SubmitEvent) => {
   event.preventDefault();
 
   sendForm().catch((e) => {
-    console.error(e);
+    console.error(e, "Error occurred while sending the form");
   });
 };
 

@@ -1,28 +1,23 @@
 /*.avif
-  Cache-Control: public, max-age=604800, immutable
+  Cache-Control: max-age=604800, immutable
 /*.css
-  Cache-Control: public, max-age=604800, immutable
+  Cache-Control: max-age=604800, immutable
 /*.svg
-  Cache-Control: public, max-age=604800, immutable
+  Cache-Control: max-age=604800, immutable
 /*.webp
-  Cache-Control: public, max-age=604800, immutable
+  Cache-Control: max-age=604800, immutable
 /*.woff
-  Cache-Control: public, max-age=604800, immutable
+  Cache-Control: max-age=604800, immutable
 /*.woff2
-  Cache-Control: public, max-age=604800, immutable
+  Cache-Control: max-age=604800, immutable
 
 /*.js
-  Content-Type: application/javascript; charset=utf-8
-
-# Service worker destroyal
-/sw.js
-  Cache-Control: no-cache
-/*
-  Clear-Site-Data: "storage"
+  Cache-Control: max-age=604800, immutable
+  Content-Type: text/javascript; charset=utf-8
 
 https://:project.pages.dev/*
   X-Robots-Tag: noindex
 
 /*
   X-Frame-Options: DENY
-  Content-Security-Policy: default-src 'self'; base-uri 'none'; connect-src 'report-sample' 'self' cloudflareinsights.com; form-action 'self'; frame-ancestors 'none'; frame-src https://challenges.cloudflare.com; object-src 'none'; script-src 'report-sample' 'self' https://challenges.cloudflare.com https://static.cloudflareinsights.com; style-src 'report-sample' 'self';
+  Content-Security-Policy: default-src 'none'; base-uri 'none'; connect-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src https://challenges.cloudflare.com; img-src 'self'; media-src 'self'; require-trusted-types-for 'script'; script-src 'self' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'self'
