@@ -2,6 +2,10 @@
   Cache-Control: max-age=604800, immutable
 /*.css
   Cache-Control: max-age=604800, immutable
+/*.jpeg
+  Cache-Control: max-age=604800, immutable
+/*.js
+  Cache-Control: max-age=604800, immutable
 /*.svg
   Cache-Control: max-age=604800, immutable
 /*.webp
@@ -10,10 +14,6 @@
   Cache-Control: max-age=604800, immutable
 /*.woff2
   Cache-Control: max-age=604800, immutable
-
-/*.js
-  Cache-Control: max-age=604800, immutable
-  Content-Type: text/javascript; charset=utf-8
 
 https://:project.pages.dev/*
   X-Robots-Tag: noindex
