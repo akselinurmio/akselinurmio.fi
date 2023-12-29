@@ -18,13 +18,13 @@ const clearSubmitState = () => {
 
 const setOutput = (message: string, type: "error" | "info" | "success") => {
   output.hidden = false;
-  output.className = type;
+  output.className = `output output-${type}`;
   output.textContent = message;
 };
 
 const clearOutput = () => {
   output.hidden = true;
-  output.className = "";
+  output.className = "output";
   output.textContent = "";
 };
 
