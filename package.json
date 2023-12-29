@@ -1,8 +1,9 @@
 {
   "name": "akselinurmio.fi",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build": "rm -rf dist && parcel build src/{,en/}{index,404}.html && cp -R static/. dist/",
+    "build": "node build.js",
     "dev": "parcel src/{,en/}{index,404}.html",
     "prettier:check": "prettier --check --ignore-path .gitignore .",
     "prettier:fix": "prettier --write --ignore-path .gitignore .",
