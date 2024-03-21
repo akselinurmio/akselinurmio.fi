@@ -23,7 +23,6 @@
   --color-highlight: #f5f5ff;
   --color-input-background: white;
   --color-input-border: #ced4da;
-  --color-input-text: var(--color-text);
   --color-button-background-a: #019c63;
   --color-button-background-b: #10bc5a;
   --color-button-text: white;
@@ -32,7 +31,27 @@
   --color-success-background: #f0fff9;
   --color-success-border: #8cdcbf;
 
-  color-scheme: light;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #0c0c28;
+    --color-text: #f5f5ff;
+    --color-link: #7899ff;
+    --color-link-visited: #c080ff;
+    --color-link-active: #ff7070;
+    --color-highlight: #323258;
+    --color-input-background: #0b0b0b;
+    --color-input-border: #4d4d4d;
+    --color-button-background-a: #019c63;
+    --color-button-background-b: #10bc5a;
+    --color-button-text: white;
+    --color-error-background: #4d0000;
+    --color-error-border: #ff4d4d;
+    --color-success-background: #003d14;
+    --color-success-border: #8cdcbf;
+  }
 }
 
 body {
@@ -43,10 +62,14 @@ body {
   font-size: 1.25rem;
   line-height: 1.5;
   margin: 0;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 a {
   color: var(--color-link);
+  transition: color 0.3s;
 }
 a:visited {
   color: var(--color-link-visited);
@@ -145,6 +168,9 @@ b {
   box-decoration-break: clone;
   box-shadow: 0 0 0 0.3em var(--color-highlight);
   font-weight: inherit;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
 }
 
 li {
@@ -185,7 +211,7 @@ li {
   background-color: var(--color-input-background);
   border: 1px solid var(--color-input-border);
   border-radius: 0.375rem;
-  color: var(--color-input-text);
+  color: inherit;
   display: block;
   font: inherit;
   padding-top: 2rem;
@@ -193,6 +219,9 @@ li {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   width: 100%;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 textarea.form-input {
@@ -248,6 +277,9 @@ textarea.form-input {
   border-radius: 0.375rem;
   margin-top: 1rem;
   padding: 0.75rem;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 .output-error {
