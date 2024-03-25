@@ -18,7 +18,7 @@
     "@parcel/transformer-jsonld": "^2.11.0",
     "@parcel/transformer-webmanifest": "^2.11.0",
     "concurrently": "^8.2.2",
-    "parcel": "^2.11.0",
+    "parcel": "^2.12.0",
     "prettier": "^3.2.5",
     "sharp": "^0.31.3",
     "typescript": "^5.4.3",
