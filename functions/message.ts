@@ -10,12 +10,6 @@ function isEnv(env: Record<string, unknown>): env is Env {
   return ENV_KEYS.every((key) => key in env);
 }
 
-const emailableFormFieldNames: ReadonlySet<string> = new Set([
-  "name",
-  "email",
-  "message",
-]);
-
 const clientError = (message = "Client error") =>
   new Response(message, { status: 400 });
 
@@ -94,21 +88,27 @@ export const onRequest: PagesFunction = async (context) => {
     return clientError("Invalid Turnstile token");
   }
 
-  const body =
-    "Message from akselinurmio.fi:\n\n" +
-    Array.from(formData.entries())
-      .filter(([name]) => emailableFormFieldNames.has(name))
-      .map(([name, value]) => `${name}: ${value}`)
-      .join("\n\n");
+  const senderName = formData.get("name");
+  const senderEmail = formData.get("email");
+  const message = formData.get("message");
+
+  if (!message) {
+    return clientError("Message is missing");
+  }
+
+  const body = `Message from ${senderName || "?"}${senderEmail ? ` <${senderEmail}>` : ""}:
+
+${message}`;
 
   const response = await fetch("https://api.sendgrid.com/v3/mail/send", {
     body: JSON.stringify({
       personalizations: [{ to: [{ email: CONTACT_EMAIL }] }],
-      from: { email: "webmaster@akselinurmio.fi" },
+      from: { email: "noreply@akselinurmio.fi" },
       subject: "Mail from website",
       content: [{ type: "text/plain", value: body }],
     }),
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${SENDGRID_API_KEY}`,
       "Content-Type": "application/json",
     },
