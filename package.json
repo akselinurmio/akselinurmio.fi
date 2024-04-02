@@ -15,15 +15,15 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240329.0",
-    "@parcel/packager-raw-url": "^2.11.0",
-    "@parcel/transformer-jsonld": "^2.11.0",
-    "@parcel/transformer-webmanifest": "^2.11.0",
+    "@parcel/packager-raw-url": "^2.12.0",
+    "@parcel/transformer-jsonld": "^2.12.0",
+    "@parcel/transformer-webmanifest": "^2.12.0",
     "concurrently": "^8.2.2",
-    "parcel": "^2.11.0",
+    "parcel": "^2.12.0",
     "prettier": "^3.2.5",
     "sharp": "^0.31.3",
     "typescript": "^5.4.3",
-    "wrangler": "^3.34.2"
+    "wrangler": "^3.42.0"
   },
   "browserslist": "> 0.5% in FI, not dead"
 }
