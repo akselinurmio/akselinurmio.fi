@@ -4,17 +4,27 @@ const output = document.getElementById(
   "contact-form-output",
 ) as HTMLOutputElement;
 
-const submitStateKey = "submitting";
+type FormStateString = "idle" | "invalid" | "submitting";
 
-const isSubmitting = () => submitStateKey in form.dataset;
+class FormState {
+  static getState(): FormStateString {
+    switch (form.dataset.state) {
+      case "invalid":
+      case "submitting":
+        return form.dataset.state;
+      default:
+        return "idle";
+    }
+  }
 
-const setIsSubmitting = () => {
-  form.dataset[submitStateKey] = "";
-};
-
-const clearSubmitState = () => {
-  delete form.dataset[submitStateKey];
-};
+  static setState(state: FormStateString) {
+    if (state === "idle") {
+      delete form.dataset.state;
+    } else {
+      form.dataset.state = state;
+    }
+  }
+}
 
 const setOutput = (message: string, type: "error" | "info" | "success") => {
   output.hidden = false;
@@ -29,9 +39,9 @@ const clearOutput = () => {
 };
 
 const sendForm = async () => {
-  if (isSubmitting()) return;
+  if (FormState.getState() === "submitting") return;
 
-  setIsSubmitting();
+  FormState.setState("submitting");
   setOutput(
     language === "fi" ? "Viestiäsi lähetetään…" : "Your message is being sent…",
     "info",
@@ -54,7 +64,7 @@ const sendForm = async () => {
     );
     return;
   } finally {
-    clearSubmitState();
+    FormState.setState("idle");
   }
 
   if (response.ok) {
@@ -87,6 +97,10 @@ const onSubmit = (event: SubmitEvent) => {
 };
 
 const onInvalid = (event: Event) => {
+  if (FormState.getState() === "invalid") return;
+
+  FormState.setState("invalid");
+
   const target = event.target as HTMLInputElement | HTMLTextAreaElement;
 
   if (target.name === "message" && target.validity.valueMissing) {
@@ -105,6 +119,7 @@ const onInvalid = (event: Event) => {
 };
 
 const onInput = () => {
+  FormState.setState("idle");
   clearOutput();
 };
 
