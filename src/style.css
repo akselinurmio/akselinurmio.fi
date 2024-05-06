@@ -263,7 +263,9 @@ textarea.form-input {
   font: inherit;
   padding: 0.5em 2em;
   text-align: center;
-  transition: filter 0.3s, opacity 0.3s;
+  transition:
+    filter 0.3s,
+    opacity 0.3s;
 }
 
 .form[data-state="submitting"] .form-button {
