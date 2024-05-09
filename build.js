@@ -55,7 +55,7 @@ async function generateHeadersFile() {
     hashedAssets
       .map(
         (fileName) =>
-          `/${fileName}\n  Cache-Control: max-age=604800, immutable`,
+          `/${fileName}\n  Cache-Control: max-age=31536000, immutable`,
       )
       .join("\n") +
     "\n";
