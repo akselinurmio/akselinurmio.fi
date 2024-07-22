@@ -5,12 +5,12 @@
   "scripts": {
     "build": "node build.js",
     "dev": "wrangler pages dev --proxy 1234 -- npm run dev:frontend",
-    "dev:frontend": "parcel src/{,en/}{index,404}.html",
+    "dev:frontend": "parcel frontend/{,en/}{index,404}.html",
     "prettier:check": "prettier --check --ignore-path .gitignore .",
     "prettier:fix": "prettier --write --ignore-path .gitignore .",
     "test": "concurrently --group npm:build npm:prettier:check npm:type-check",
     "type-check": "concurrently --group \"npm:type-check:*\"",
-    "type-check:frontend": "cd src && tsc --noEmit",
+    "type-check:frontend": "cd frontend && tsc --noEmit",
     "type-check:functions": "cd functions && tsc --noEmit"
   },
   "devDependencies": {

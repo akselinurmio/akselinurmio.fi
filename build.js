@@ -1,6 +1,6 @@
 import { Parcel } from "@parcel/core";
 import { cp, readdir, readFile, rm, writeFile } from "node:fs/promises";
-import { fileURLToPath } from "url";
+import { fileURLToPath } from "node:url";
 
 const buildDirectory = "./dist";
 const staticDirectory = "./static";
@@ -14,10 +14,10 @@ async function clear() {
 async function build() {
   const bundler = new Parcel({
     entries: [
-      "./src/index.html",
-      "./src/404.html",
-      "./src/en/index.html",
-      "./src/en/404.html",
+      "./frontend/index.html",
+      "./frontend/404.html",
+      "./frontend/en/index.html",
+      "./frontend/en/404.html",
     ],
     mode: "production",
     additionalReporters: [

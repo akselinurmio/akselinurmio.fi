@@ -34,7 +34,7 @@
       sizes="16x16"
       href="/assets/favicon-16x16.png"
     />
-    <link rel="manifest" href="/src/site.webmanifest" />
+    <link rel="manifest" href="/frontend/site.webmanifest" />
     <link
       rel="preload"
       href="/assets/font/Aeonik-Medium.woff2"
@@ -42,7 +42,7 @@
       type="font/woff2"
       crossorigin
     />
-    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="/frontend/style.css" />
     <meta name="author" content="Akseli Nurmio" />
     <meta
       name="description"
@@ -52,7 +52,7 @@
       src="https://challenges.cloudflare.com/turnstile/v0/api.js"
       defer
     ></script>
-    <script src="/src/form.ts" type="module"></script>
+    <script src="/frontend/form.ts" type="module"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -256,12 +256,12 @@
             </div>
             <div class="form-field">
               <label class="form-label">Bottitarkistus</label>
-              <div class="form-input" lang="en">
+              <div class="form-input">
                 <div
                   class="cf-turnstile"
-                  data-language="en"
+                  data-action="contact_fi"
+                  data-language="fi"
                   data-sitekey="0x4AAAAAAAB4pAL3vK_V47rO"
-                  data-theme="auto"
                 ></div>
               </div>
             </div>
