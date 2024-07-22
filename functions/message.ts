@@ -85,7 +85,7 @@ export const onRequest: PagesFunction = async (context) => {
   );
 
   if (!isTurnstileTokenValid) {
-    return clientError("Invalid Turnstile token");
+    return clientError("Invalid Turnstile token. Have you enabled JavaScript?");
   }
 
   const senderName = formData.get("name");

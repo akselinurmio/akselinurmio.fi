@@ -38,6 +38,10 @@ function clearOutput() {
   output.textContent = "";
 }
 
+function wait(milliseconds: number) {
+  return new Promise<void>((resolve) => setTimeout(resolve, milliseconds));
+}
+
 async function sendForm() {
   if (getFormState() === "submitting") return;
 
@@ -50,10 +54,13 @@ async function sendForm() {
   let response: Response;
 
   try {
-    response = await fetch(form.action, {
-      body: new FormData(form),
-      method: form.method,
-    });
+    [response] = await Promise.all([
+      fetch(form.action, {
+        body: new FormData(form),
+        method: form.method,
+      }),
+      wait(1000),
+    ]);
   } catch (e) {
     console.error(e);
     setOutput(
@@ -75,16 +82,25 @@ async function sendForm() {
     form.reset();
   } else {
     console.error(
-      `Form action returned error status ${response.status} with message: "%s". Response: %o`,
-      await response.text(),
+      `Form action returned error status ${response.status} with message: "${await response.text()}". Response: %o`,
       response,
     );
-    setOutput(
-      language === "fi"
-        ? "Viestin lähettäminen ei onnistunut. Kokeile myöhemmin uudelleen."
-        : "Sending message didn’t succeed. Please try again later.",
-      "error",
-    );
+
+    if (response.status === 400) {
+      setOutput(
+        language === "fi"
+          ? "Viestin lähettäminen ei onnistunut. Tarkista, että kaikki kentät on täytetty oikein."
+          : "Sending message didn’t succeed. Please check that all fields are filled correctly.",
+        "error",
+      );
+    } else {
+      setOutput(
+        language === "fi"
+          ? "Viestin lähettäminen ei onnistunut. Kokeile myöhemmin uudelleen."
+          : "Sending message didn’t succeed. Please try again later.",
+        "error",
+      );
+    }
   }
 }
 
