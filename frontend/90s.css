@@ -1,0 +1,12 @@
+body {
+  background: darkblue url(/assets/blue_marble.gif);
+  color: white;
+}
+
+.image-content {
+  text-align: center;
+}
+
+.portrait {
+  border: silver 7px dotted;
+}

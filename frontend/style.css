@@ -121,6 +121,8 @@ h6 {
 
 .image-content {
   margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
 }
 
 @media (min-width: 60rem) {
@@ -154,6 +156,52 @@ h6 {
 @media (prefers-reduced-motion) {
   .animation {
     display: none;
+  }
+}
+
+.to-90s {
+  animation: alternate wiggle 2s 0.5s both infinite ease-in-out;
+  background: none;
+  border: none;
+  cursor: help;
+  display: block;
+  font-size: 2rem;
+  left: 48%;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  text-shadow: 0 0 0.5rem white;
+  top: -0.75rem;
+  transition: all linear 0.5s;
+  transform-origin: center bottom;
+}
+
+.to-90s[hidden] {
+  animation: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+@media (min-width: 77rem) {
+  .to-90s {
+    font-size: 3rem;
+    top: -1rem;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .to-90s {
+    animation: none;
+  }
+}
+
+@keyframes wiggle {
+  from {
+    transform: rotate(-5deg);
+  }
+  to {
+    transform: rotate(5deg);
   }
 }
 

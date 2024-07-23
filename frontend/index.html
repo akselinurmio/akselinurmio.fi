@@ -42,7 +42,14 @@
       type="font/woff2"
       crossorigin
     />
-    <link rel="stylesheet" href="/frontend/style.css" />
+    <link rel="stylesheet" href="/frontend/style.css" id="main-stylesheet" />
+    <link
+      rel="stylesheet"
+      href="/frontend/90s.css"
+      title="1990s"
+      disabled
+      id="ninetees-stylesheet"
+    />
     <meta name="author" content="Akseli Nurmio" />
     <meta
       name="description"
@@ -53,6 +60,7 @@
       defer
     ></script>
     <script src="/frontend/form.ts" type="module"></script>
+    <script src="/frontend/style-switch.ts" type="module"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -143,6 +151,16 @@
               class="portrait"
             />
           </picture>
+          <button
+            aria-label="Aikamatkaa 90-luvulle"
+            class="to-90s"
+            hidden
+            id="to-90s"
+            title="Aikamatkaa 90-luvulle"
+            type="button"
+          >
+            💡
+          </button>
         </div>
         <div class="text-content">
           <h1 class="name">Terve, olen Akseli.</h1>
