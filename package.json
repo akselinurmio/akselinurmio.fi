@@ -14,16 +14,16 @@
     "type-check:functions": "cd functions && tsc --noEmit"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240614.0",
+    "@cloudflare/workers-types": "^4.20240722.0",
     "@parcel/packager-raw-url": "^2.12.0",
     "@parcel/transformer-jsonld": "^2.12.0",
     "@parcel/transformer-webmanifest": "^2.12.0",
     "concurrently": "^8.2.2",
     "parcel": "^2.12.0",
-    "prettier": "^3.3.2",
+    "prettier": "^3.3.3",
     "sharp": "^0.31.3",
-    "typescript": "^5.5.2",
-    "wrangler": "^3.62.0"
+    "typescript": "^5.5.4",
+    "wrangler": "^3.66.0"
   },
   "browserslist": "> 0.5% in FI, not dead"
 }
