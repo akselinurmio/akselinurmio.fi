@@ -1,13 +1,13 @@
 function activate90sStylesheet() {
   const defaultStylesheet = document.getElementById(
-      "main-stylesheet",
-    ) as HTMLLinkElement,
-    alternateStylesheet = document.getElementById(
-      "ninetees-stylesheet",
-    ) as HTMLLinkElement;
-
-  alternateStylesheet.disabled = false;
+    "main-stylesheet",
+  ) as HTMLLinkElement;
   defaultStylesheet.disabled = true;
+
+  const alternateStylesheet = document.getElementById(
+    "ninetees-stylesheet",
+  ) as HTMLLinkElement;
+  alternateStylesheet.disabled = false;
 }
 
 function initialize90sSwitch() {

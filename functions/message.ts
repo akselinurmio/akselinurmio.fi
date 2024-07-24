@@ -92,8 +92,8 @@ export const onRequest: PagesFunction = async (context) => {
   const senderEmail = formData.get("email");
   const message = formData.get("message");
 
-  if (!senderName || !senderEmail || !message) {
-    return clientError("Required field is missing");
+  if (!message) {
+    return clientError("Message is missing");
   }
 
   const body = `Message from ${senderName || "?"}${senderEmail ? ` <${senderEmail}>` : ""}:
