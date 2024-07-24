@@ -151,5 +151,5 @@ function onInput() {
 }
 
 form.addEventListener("submit", onSubmit);
-form.addEventListener("invalid", onInvalid, { capture: true });
-form.addEventListener("input", onInput);
+form.addEventListener("invalid", onInvalid, { capture: true, passive: true });
+form.addEventListener("input", onInput, { passive: true });

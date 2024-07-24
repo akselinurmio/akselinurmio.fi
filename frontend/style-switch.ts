@@ -15,14 +15,18 @@ function initialize90sSwitch() {
 
   button.hidden = false;
 
-  button.addEventListener("click", () => {
-    activate90sStylesheet();
-    button.hidden = true;
-  });
+  button.addEventListener(
+    "click",
+    () => {
+      activate90sStylesheet();
+      button.hidden = true;
+    },
+    { once: true, passive: true },
+  );
 }
 
 function start90sTimer() {
   setTimeout(initialize90sSwitch, 10_000);
 }
 
-window.addEventListener("load", start90sTimer);
+window.addEventListener("load", start90sTimer, { once: true, passive: true });
