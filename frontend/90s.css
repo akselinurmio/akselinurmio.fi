@@ -3,10 +3,14 @@ body {
   color: white;
 }
 
-.image-content {
+.right-side-content {
   text-align: center;
 }
 
 .portrait {
   border: silver 7px dotted;
+}
+
+.theme-switch-wrapper {
+  display: none;
 }
