@@ -256,8 +256,10 @@ h6 {
   transition: all 0.2s;
 }
 
-.theme-switch-wrapper:hover {
-  background-color: var(--color-highlight);
+@media (hover: hover) {
+  .theme-switch-wrapper:hover {
+    background-color: var(--color-highlight);
+  }
 }
 
 .theme-switch-slider {
