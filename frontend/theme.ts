@@ -6,7 +6,7 @@ function init() {
   const switchWrapper = document.getElementById(
     "theme-switch-wrapper",
   ) as HTMLElement;
-  const checkbox = document.getElementById(
+  const darkThemePreferredCheckbox = document.getElementById(
     "theme-switch-checkbox",
   ) as HTMLInputElement;
 
@@ -14,21 +14,22 @@ function init() {
     "(prefers-color-scheme: dark)",
   );
 
-  const onDarkThemePreferenceChange = (event: MediaQueryListEvent) => {
-    checkbox.checked = event.matches;
+  const setDarkThemePreferenceCheckboxValue = () => {
+    darkThemePreferredCheckbox.checked = isDarkThemeDefaultQuery.matches;
   };
 
   isDarkThemeDefaultQuery.addEventListener(
     "change",
-    onDarkThemePreferenceChange,
+    setDarkThemePreferenceCheckboxValue,
   );
 
-  checkbox.checked = isDarkThemeDefaultQuery.matches;
-  checkbox.addEventListener("change", () => {
-    setThemeOverride(checkbox.checked ? "dark" : "light");
+  setDarkThemePreferenceCheckboxValue();
+
+  darkThemePreferredCheckbox.addEventListener("change", () => {
+    setThemeOverride(darkThemePreferredCheckbox.checked ? "dark" : "light");
     isDarkThemeDefaultQuery.removeEventListener(
       "change",
-      onDarkThemePreferenceChange,
+      setDarkThemePreferenceCheckboxValue,
     );
   });
 
