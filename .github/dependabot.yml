@@ -14,3 +14,4 @@ updates:
         patterns:
           - "@parcel/*"
           - "parcel"
+          - "sharp"
