@@ -109,7 +109,7 @@ function onSubmit(event: SubmitEvent) {
 
   (async () => {
     try {
-      sendForm();
+      await sendForm();
     } catch (e) {
       console.error(e, "Error occurred while sending the form");
     }
