@@ -14,7 +14,7 @@
     "type-check:functions": "cd functions && tsc --noEmit"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20241127.0",
+    "@cloudflare/workers-types": "^4.20241230.0",
     "@parcel/optimizer-svgo": "^2.13.2",
     "@parcel/packager-raw-url": "^2.13.2",
     "@parcel/transformer-jsonld": "^2.13.2",
