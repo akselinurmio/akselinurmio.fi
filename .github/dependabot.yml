@@ -9,6 +9,11 @@ updates:
     schedule:
       interval: monthly
     groups:
+      cloudflare:
+        applies-to: version-updates
+        patterns:
+          - "@cloudflare/*"
+          - "wrangler"
       parcel:
         applies-to: version-updates
         patterns:
