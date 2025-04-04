@@ -58,6 +58,7 @@ async function sendForm() {
       fetch(form.action, {
         body: new FormData(form),
         method: form.method,
+        signal: AbortSignal.timeout(30_000),
       }),
       wait(1000),
     ]);
@@ -106,14 +107,7 @@ async function sendForm() {
 
 function onSubmit(event: SubmitEvent) {
   event.preventDefault();
-
-  (async () => {
-    try {
-      await sendForm();
-    } catch (e) {
-      console.error(e, "Error occurred while sending the form");
-    }
-  })();
+  sendForm();
 }
 
 function onInvalid(event: Event) {

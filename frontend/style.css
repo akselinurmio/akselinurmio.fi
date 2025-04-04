@@ -415,7 +415,6 @@ textarea.form-input {
   transition:
     filter 0.3s,
     opacity 0.3s;
-  width: 100%;
 }
 
 .form[data-state="submitting"] .form-button {
