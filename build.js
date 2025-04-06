@@ -77,7 +77,7 @@ async function copyStaticFiles() {
 
   await cp(staticDirectory, buildDirectory, {
     recursive: true,
-    filter: (sourcePath) => basename(sourcePath) === "_headers",
+    filter: (sourcePath) => basename(sourcePath) !== "_headers",
   });
 }
 
