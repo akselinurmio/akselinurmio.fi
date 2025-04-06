@@ -42,14 +42,7 @@
       type="font/woff2"
       crossorigin
     />
-    <link rel="stylesheet" href="/frontend/style.css" id="main-stylesheet" />
-    <link
-      rel="stylesheet"
-      href="/frontend/90s.css"
-      title="1990s"
-      disabled
-      id="ninetees-stylesheet"
-    />
+    <link rel="stylesheet" href="/frontend/style.css" />
     <meta name="author" content="Akseli Nurmio" />
     <meta
       name="description"
@@ -61,8 +54,6 @@
       defer
     ></script>
     <script src="/frontend/form.ts" type="module"></script>
-    <script src="/frontend/90s.ts" type="module"></script>
-    <script src="/frontend/theme.ts" type="module"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -153,29 +144,6 @@
               class="portrait"
             />
           </picture>
-          <button
-            aria-label="Travel to the 1990s"
-            class="to-90s"
-            hidden
-            id="to-90s"
-            title="Travel to the 1990s"
-            type="button"
-          >
-            💡
-          </button>
-          <label class="theme-switch-wrapper" hidden id="theme-switch-wrapper">
-            <input
-              autocomplete="off"
-              class="theme-switch-checkbox visually-hidden"
-              id="theme-switch-checkbox"
-              type="checkbox"
-              role="switch"
-            />
-            <span aria-hidden="true">🔆</span>
-            <span class="theme-switch-slider"></span>
-            <span class="visually-hidden">Dark theme</span>
-            <span aria-hidden="true">🌚</span>
-          </label>
         </div>
         <div class="left-side-content">
           <h1 class="name">Howdy, I’m Akseli.</h1>

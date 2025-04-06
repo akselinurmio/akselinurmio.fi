@@ -27,5 +27,8 @@
     "typescript": "^5.8.2",
     "wrangler": "^4.6.0"
   },
-  "browserslist": "> 0.5% in FI, not dead"
+  "browserslist": [
+    "> 0.5% in FI",
+    "not dead"
+  ]
 }

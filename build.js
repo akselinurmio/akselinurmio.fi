@@ -1,5 +1,6 @@
 import { Parcel } from "@parcel/core";
 import { cp, readdir, readFile, rm, writeFile } from "node:fs/promises";
+import { basename } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const buildDirectory = "./dist";
@@ -76,7 +77,7 @@ async function copyStaticFiles() {
 
   await cp(staticDirectory, buildDirectory, {
     recursive: true,
-    filter: (sourcePath) => !sourcePath.endsWith("_headers"),
+    filter: (sourcePath) => basename(sourcePath) === "_headers",
   });
 }
 
