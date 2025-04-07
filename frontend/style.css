@@ -41,9 +41,6 @@ body {
   font-size: 1.25rem;
   line-height: 1.5;
   margin: 0;
-  transition:
-    background-color 0.3s,
-    color 0.3s;
 }
 
 a {
@@ -159,9 +156,6 @@ b {
   box-decoration-break: clone;
   box-shadow: 0 0 0 0.3em var(--color-highlight);
   font-weight: inherit;
-  transition:
-    background-color 0.3s,
-    box-shadow 0.3s;
 }
 
 li {
@@ -207,9 +201,6 @@ li {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   width: 100%;
-  transition:
-    background-color 0.3s,
-    border-color 0.3s;
 }
 
 textarea.form-input {

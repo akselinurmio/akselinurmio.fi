@@ -28,7 +28,6 @@
     "wrangler": "^4.6.0"
   },
   "browserslist": [
-    "> 0.5% in FI",
-    "not dead"
+    "defaults and fully supports fetch"
   ]
 }

@@ -38,6 +38,12 @@ function clearOutput() {
   output.textContent = "";
 }
 
+function timeoutSignal() {
+  if (typeof AbortSignal !== "undefined" && AbortSignal.timeout) {
+    return AbortSignal.timeout(30_000);
+  }
+}
+
 function wait(milliseconds: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, milliseconds));
 }
@@ -58,10 +64,11 @@ async function sendForm() {
       fetch(form.action, {
         body: new FormData(form),
         method: form.method,
-        signal: AbortSignal.timeout(30_000),
+        signal: timeoutSignal(),
       }),
       wait(1000),
     ]);
+    setFormState("idle");
   } catch (e) {
     console.error(e);
     setOutput(
@@ -70,10 +77,11 @@ async function sendForm() {
         : "Sending message failed due to a network error. You can try again later.",
       "error",
     );
-    return;
-  } finally {
     setFormState("idle");
+    return;
   }
+
+  setFormState("idle");
 
   if (response.ok) {
     setOutput(
