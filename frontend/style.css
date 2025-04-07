@@ -105,7 +105,7 @@ h6 {
   .right-side-content {
     border-bottom-left-radius: 6rem;
     float: right;
-    margin-left: 3rem;
+    margin-left: 6%;
     shape-outside: margin-box;
   }
 }
@@ -135,19 +135,13 @@ h6 {
   }
 }
 
-.visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
 .footer {
   margin-top: 5%;
   margin-bottom: 15%;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 b {
@@ -156,17 +150,20 @@ b {
   box-decoration-break: clone;
   box-shadow: 0 0 0 0.3em var(--color-highlight);
   font-weight: inherit;
+  margin-inline: 0.15ch;
 }
 
 li {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+  text-wrap: pretty;
 }
 
 .name {
   font-size: 3rem;
   margin-top: 0;
   margin-bottom: 0;
+  text-wrap: balance;
 }
 
 @media (min-width: 40rem) {
