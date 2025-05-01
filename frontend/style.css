@@ -67,6 +67,37 @@ h6 {
   margin-bottom: 1.5rem;
 }
 
+h2:target {
+  display: inline-block;
+  position: relative;
+}
+
+h2:target::after {
+  content: "👈";
+  font-size: 1.2em;
+  position: absolute;
+  top: -0.3em;
+  margin-left: 0.2em;
+  pointer-events: none;
+  transform: rotate(-10deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  h2:target::after {
+    animation: point-at 1s ease-in-out infinite;
+  }
+
+  @keyframes point-at {
+    0%,
+    100% {
+      transform: rotate(-10deg);
+    }
+    50% {
+      transform: rotate(-10deg) translate(0.2em);
+    }
+  }
+}
+
 .top-container {
   margin-left: 5%;
   margin-right: 5%;
