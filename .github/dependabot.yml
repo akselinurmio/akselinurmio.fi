@@ -27,3 +27,5 @@ updates:
           - "@axe-core/*"
           - "@playwright/*"
           - "playwright"
+    ignore:
+      - dependency-name: "sharp"
