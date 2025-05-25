@@ -21,3 +21,9 @@ updates:
           - "parcel"
           - "sharp"
           - "svgo"
+      playwright:
+        applies-to: version-updates
+        patterns:
+          - "@axe-core/*"
+          - "@playwright/*"
+          - "playwright"
