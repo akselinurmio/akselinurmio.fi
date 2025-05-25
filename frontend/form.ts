@@ -81,8 +81,6 @@ async function sendForm() {
     return;
   }
 
-  setFormState("idle");
-
   if (response.ok) {
     setOutput(
       language === "fi" ? "Kiitos viestistäsi!" : "Thank you for your message!",
