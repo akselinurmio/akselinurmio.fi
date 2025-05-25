@@ -13,5 +13,10 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npx prettier --write .
-      - run: git diff --cached --quiet || git commit -m "Format with Prettier"
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - run: git add .
+      - run: git commit -m "Format with Prettier"
+        continue-on-error: true
       - run: git push
