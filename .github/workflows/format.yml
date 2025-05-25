@@ -1,0 +1,32 @@
+name: Auto-fix formatting
+on: push
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+      - run: npm ci
+      - run: prettier --write .
+      - name: Check last commit author
+        id: check_last_commit
+        run: |
+          BOT_NAME="$(git config user.name)"
+          LAST_AUTHOR="$(git log -1 --pretty=format:'%an')"
+          if [ "$LAST_AUTHOR" = "$BOT_NAME" ]; then
+            echo "Last commit was made by the bot. Skipping commit to avoid loop."
+            echo "should_commit=false" >> $GITHUB_OUTPUT
+          else
+            echo "should_commit=true" >> $GITHUB_OUTPUT
+          fi
+      - name: Commit and push changes
+        if: steps.check_last_commit.outputs.should_commit == 'true'
+        run: |
+          git add .
+          git diff --cached --quiet || git commit -m "Format with Prettier"
+          git push
