@@ -12,7 +12,7 @@ jobs:
           node-version-file: ".nvmrc"
           cache: "npm"
       - run: npm ci
-      - run: prettier --write .
+      - run: npx prettier --write .
       - name: Check last commit author
         id: check_last_commit
         run: |
