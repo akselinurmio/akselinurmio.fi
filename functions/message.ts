@@ -92,8 +92,17 @@ export const onRequest: PagesFunction = async (context) => {
   const senderEmail = formData.get("email");
   const message = formData.get("message");
 
+  if (senderName && senderName.length > 100) {
+    return clientError("Name is too long");
+  }
+  if (senderEmail && senderEmail.length > 254) {
+    return clientError("Email address is too long");
+  }
   if (!message) {
     return clientError("Message is missing");
+  }
+  if (message.length > 2000) {
+    return clientError("Message is too long");
   }
 
   const body = `Message from ${senderName || "?"}${senderEmail ? ` <${senderEmail}>` : ""}:

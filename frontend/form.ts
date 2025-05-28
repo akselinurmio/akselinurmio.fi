@@ -89,7 +89,7 @@ async function sendForm() {
     form.reset();
   } else {
     console.error(
-      `Form action returned error status ${response.status} with message: "${await response.text()}". Response: %o`,
+      `Form action returned error status ${response.status} with message: "${await response.text()}". Response:`,
       response,
     );
 
@@ -124,10 +124,19 @@ function onInvalid(event: Event) {
   const target = event.target as HTMLInputElement | HTMLTextAreaElement;
 
   if (target.name === "message") {
-    setOutput(
-      language === "fi" ? "Viesti puuttuu." : "The message is missing.",
-      "error",
-    );
+    if (target.value.length > 2000) {
+      setOutput(
+        language === "fi"
+          ? "Viesti on liian pitkä. Pituus saa olla enintään 2000 merkkiä."
+          : "The message is too long. It can be at most 2000 characters long.",
+        "error",
+      );
+    } else {
+      setOutput(
+        language === "fi" ? "Viesti puuttuu." : "The message is missing.",
+        "error",
+      );
+    }
   } else if (target.name === "email") {
     setOutput(
       language === "fi"
