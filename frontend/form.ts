@@ -123,8 +123,8 @@ function onInvalid(event: Event) {
 
   const target = event.target as HTMLInputElement | HTMLTextAreaElement;
 
-  if (target.name === "message") {
-    if (target.value.length > 2000) {
+  if (target.id === "message-input") {
+    if (target.value.length > 0) {
       setOutput(
         language === "fi"
           ? "Viesti on liian pitkä. Pituus saa olla enintään 2000 merkkiä."
@@ -137,7 +137,7 @@ function onInvalid(event: Event) {
         "error",
       );
     }
-  } else if (target.name === "email") {
+  } else if (target.id === "email-input") {
     setOutput(
       language === "fi"
         ? "Antamassasi meiliosoitteessa on ongelma."
@@ -160,5 +160,5 @@ function onInput() {
 }
 
 form.addEventListener("submit", onSubmit);
-form.addEventListener("invalid", onInvalid, { capture: true, passive: true });
-form.addEventListener("input", onInput, { passive: true });
+form.addEventListener("invalid", onInvalid, true);
+form.addEventListener("input", onInput);
