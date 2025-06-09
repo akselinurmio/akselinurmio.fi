@@ -124,41 +124,33 @@ function onSubmit(event: SubmitEvent) {
 }
 
 function onInvalid(event: Event) {
-  if (getFormState() === "invalid") return;
-
-  setFormState("invalid");
-
   const target = event.target as HTMLInputElement | HTMLTextAreaElement;
 
-  if (target.id === "message-input") {
-    if (target.value.length > 0) {
-      setOutput(
-        language === "fi"
-          ? "Viesti on liian pitkä. Pituus saa olla enintään 2000 merkkiä."
-          : "The message is too long. It can be at most 2000 characters long.",
-        "error",
-      );
-    } else {
-      setOutput(
-        language === "fi" ? "Viesti puuttuu." : "The message is missing.",
-        "error",
-      );
-    }
-  } else if (target.id === "email-input") {
+  if (getFormState() === "invalid") return;
+  setFormState("invalid");
+
+  if (target.id === "message-input" && !target.value) {
+    setOutput(
+      language === "fi" ? "Viesti puuttuu." : "The message is missing.",
+      "error",
+    );
+    return;
+  }
+  if (target.id === "email-input") {
     setOutput(
       language === "fi"
         ? "Antamassasi meiliosoitteessa on ongelma."
         : "There’s a problem with the email address you gave.",
       "error",
     );
-  } else {
-    setOutput(
-      language === "fi"
-        ? "Korjaathan lomakkeessa olevat virheet."
-        : "Please correct the errors in the form.",
-      "error",
-    );
+    return;
   }
+  setOutput(
+    language === "fi"
+      ? "Korjaathan lomakkeessa olevat virheet."
+      : "Please correct the errors in the form.",
+    "error",
+  );
 }
 
 function onInput() {
