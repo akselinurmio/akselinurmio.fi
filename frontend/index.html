@@ -68,6 +68,22 @@
       defer
     ></script>
     <script src="/frontend/form.ts" type="module"></script>
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "source": "list",
+            "urls": ["/en/"]
+          }
+        ],
+        "prefetch": [
+          {
+            "source": "list",
+            "urls": ["/en/"]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div class="top-container">
