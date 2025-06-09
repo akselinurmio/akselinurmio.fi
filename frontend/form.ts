@@ -1,5 +1,8 @@
 const language = document.documentElement.lang;
 const form = document.getElementById("contact-form") as HTMLFormElement;
+const submitButton = document.getElementById(
+  "submit-button",
+) as HTMLButtonElement;
 const output = document.getElementById(
   "contact-form-output",
 ) as HTMLOutputElement;
@@ -21,8 +24,12 @@ function getFormState(): FormState {
 function setFormState(state: FormState) {
   if (state === "idle") {
     delete form.dataset.state;
+    submitButton.setAttribute("aria-disabled", "false");
   } else {
     form.dataset.state = state;
+    if (state === "submitting") {
+      submitButton.setAttribute("aria-disabled", "true");
+    }
   }
 }
 

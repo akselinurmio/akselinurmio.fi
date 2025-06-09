@@ -8,7 +8,7 @@
     "dev:frontend": "parcel frontend/{,en/}{index,404}.html",
     "prettier:check": "prettier --check --ignore-path .gitignore .",
     "prettier:fix": "prettier --write --ignore-path .gitignore .",
-    "test:a11y": "playwright test tests/a11y.spec.js",
+    "test": "playwright test",
     "type-check": "concurrently --group \"npm:type-check:*\"",
     "type-check:frontend": "cd frontend && tsc --noEmit",
     "type-check:functions": "cd functions && tsc --noEmit"
