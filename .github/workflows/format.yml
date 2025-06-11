@@ -1,7 +1,11 @@
 name: Auto-fix formatting
-on: push
+on:
+  push:
+    branches-ignore:
+      - trunk
 permissions:
   contents: write
+
 jobs:
   fix:
     runs-on: ubuntu-latest
