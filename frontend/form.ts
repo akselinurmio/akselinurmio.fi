@@ -1,3 +1,14 @@
+declare var URLSearchParams: {
+  new (
+    init?:
+      | string
+      | string[][]
+      | Record<string, string>
+      | URLSearchParams
+      | FormData,
+  ): URLSearchParams;
+};
+
 const language = document.documentElement.lang;
 const form = document.getElementById("contact-form") as HTMLFormElement;
 const submitButton = document.getElementById(
@@ -90,7 +101,7 @@ async function sendForm(): Promise<void> {
   try {
     const [response] = await Promise.all([
       fetch(form.action, {
-        body: new FormData(form),
+        body: new URLSearchParams(new FormData(form)),
         method: form.method,
         signal: createTimeoutSignal(),
       }),
