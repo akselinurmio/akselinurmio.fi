@@ -4,6 +4,18 @@
     "module": "esnext",
     "lib": ["esnext"],
     "types": ["@cloudflare/workers-types"],
-    "strict": true
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "noUncheckedSideEffectImports": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": true
   }
 }

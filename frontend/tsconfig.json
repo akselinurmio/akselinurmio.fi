@@ -4,6 +4,18 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "NodeNext",
     "strict": true,
-    "target": "ESNext"
+    "target": "ESNext",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "noUncheckedSideEffectImports": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": true
   }
 }
