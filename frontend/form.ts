@@ -17,6 +17,9 @@ const submitButton = document.getElementById(
 const output = document.getElementById(
   "contact-form-output",
 ) as HTMLOutputElement;
+const turnstileWidget = document.getElementById("turnstile-widget");
+
+let turnstileWidgetId: string | null | undefined;
 
 type FormState = "idle" | "invalid" | "submitting" | "success" | "error";
 
@@ -27,6 +30,8 @@ interface FormStatus {
 
 const messages = {
   fi: {
+    botCheckError:
+      "Bottitarkistus epäonnistui. Lomake ei valitettavasti toimi.",
     sending: "Viestiäsi lähetetään…",
     networkError:
       "Viestin lähettäminen ei onnistunut verkkovirheen takia. Kokeile myöhemmin uudelleen.",
@@ -40,6 +45,7 @@ const messages = {
     formError: "Korjaathan lomakkeessa olevat virheet.",
   },
   en: {
+    botCheckError: "Bot check failed. Unfortunately, the form will not work.",
     sending: "Your message is being sent…",
     networkError:
       "Sending message failed due to a network error. You can try again later.",
@@ -52,6 +58,44 @@ const messages = {
     formError: "Please correct the errors in the form.",
   },
 } as const;
+
+function initializeTurnstile(): void {
+  try {
+    if (!turnstileWidget) {
+      throw new Error("Turnstile widget container not found");
+    }
+
+    if (typeof turnstile === "undefined") {
+      throw new Error("Turnstile API not available");
+    }
+
+    const action = language === "fi" ? "contact_fi" : "contact_en";
+    const turnstileLanguage = language === "fi" ? "fi" : "en";
+
+    turnstileWidgetId = turnstile.render(turnstileWidget, {
+      sitekey: "0x4AAAAAAAB4pAL3vK_V47rO",
+      action,
+      language: turnstileLanguage,
+      theme: "light",
+      callback: () => {
+        if (getFormState() === "error") {
+          setFormState({ state: "idle" });
+        }
+      },
+      "error-callback": () => {
+        if (getFormState() === "idle") {
+          setFormState({
+            state: "error",
+            message: getMessage("botCheckError"),
+          });
+        }
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    setFormState({ state: "error", message: getMessage("botCheckError") });
+  }
+}
 
 function getFormState(): FormState {
   return (form.dataset.state as FormState) || "idle";
@@ -111,6 +155,10 @@ async function sendForm(): Promise<void> {
     if (response.ok) {
       setFormState({ state: "success", message: getMessage("success") });
       form.reset();
+
+      if (turnstileWidgetId) {
+        turnstile.reset(turnstileWidgetId);
+      }
     } else {
       console.error(
         `Form action returned error status ${response.status} with message: "${await response.text()}".`,
@@ -170,6 +218,8 @@ function isFormInput(
 function onInput(): void {
   setFormState({ state: "idle" });
 }
+
+initializeTurnstile();
 
 form.addEventListener("submit", onSubmit);
 form.addEventListener("invalid", onInvalid, true);

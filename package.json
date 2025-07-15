@@ -21,6 +21,7 @@
     "@parcel/transformer-jsonld": "^2.14.4",
     "@parcel/transformer-webmanifest": "^2.14.4",
     "@playwright/test": "^1.53.2",
+    "@types/cloudflare-turnstile": "^0.2.2",
     "concurrently": "^9.2.0",
     "parcel": "^2.14.4",
     "playwright": "^1.52.0",

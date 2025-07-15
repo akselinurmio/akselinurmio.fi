@@ -58,7 +58,7 @@
       }
     </script>
     <script
-      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
       defer
     ></script>
     <script src="/frontend/form.ts" type="module"></script>
@@ -242,13 +242,7 @@
             <div class="form-field">
               <div class="form-label">Bot check</div>
               <div class="form-input">
-                <div
-                  class="cf-turnstile"
-                  data-action="contact_en"
-                  data-language="en"
-                  data-sitekey="0x4AAAAAAAB4pAL3vK_V47rO"
-                  data-theme="light"
-                ></div>
+                <div id="turnstile-widget"></div>
                 <noscript>
                   <p>Turn on JavaScript to see the bot check.</p>
                 </noscript>

@@ -64,7 +64,7 @@
       }
     </script>
     <script
-      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
       defer
     ></script>
     <script src="/frontend/form.ts" type="module"></script>
@@ -252,13 +252,7 @@
             <div class="form-field">
               <div class="form-label">Bottitarkistus</div>
               <div class="form-input">
-                <div
-                  class="cf-turnstile"
-                  data-action="contact_fi"
-                  data-language="fi"
-                  data-sitekey="0x4AAAAAAAB4pAL3vK_V47rO"
-                  data-theme="light"
-                ></div>
+                <div id="turnstile-widget"></div>
                 <noscript>
                   <p>Laita JavaScript päälle, jotta bottitarkistus toimii.</p>
                 </noscript>
