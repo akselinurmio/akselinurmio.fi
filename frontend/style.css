@@ -298,7 +298,8 @@ textarea.form-input {
   display: none;
 }
 
-.output-error {
+.output-error,
+.output-invalid {
   background-color: var(--color-error-background);
   border-color: var(--color-error-border);
 }

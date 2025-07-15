@@ -7,155 +7,157 @@ const output = document.getElementById(
   "contact-form-output",
 ) as HTMLOutputElement;
 
-type FormState = "idle" | "invalid" | "submitting";
+type FormState = "idle" | "invalid" | "submitting" | "success" | "error";
+
+interface FormStatus {
+  state: FormState;
+  message?: string;
+}
+
+const messages = {
+  fi: {
+    sending: "Viestiäsi lähetetään…",
+    networkError:
+      "Viestin lähettäminen ei onnistunut verkkovirheen takia. Kokeile myöhemmin uudelleen.",
+    success: "Kiitos viestistäsi!",
+    validationError:
+      "Viestin lähettäminen ei onnistunut. Tarkista, että kaikki kentät on täytetty oikein.",
+    serverError:
+      "Viestin lähettäminen ei onnistunut. Kokeile myöhemmin uudelleen.",
+    missingMessage: "Viesti puuttuu.",
+    emailError: "Antamassasi meiliosoitteessa on ongelma.",
+    formError: "Korjaathan lomakkeessa olevat virheet.",
+  },
+  en: {
+    sending: "Your message is being sent…",
+    networkError:
+      "Sending message failed due to a network error. You can try again later.",
+    success: "Thank you for your message!",
+    validationError:
+      "Sending message didn't succeed. Please check that all fields are filled correctly.",
+    serverError: "Sending message didn't succeed. Please try again later.",
+    missingMessage: "The message is missing.",
+    emailError: "There's a problem with the email address you gave.",
+    formError: "Please correct the errors in the form.",
+  },
+} as const;
 
 function getFormState(): FormState {
-  const { state } = form.dataset;
-
-  switch (state) {
-    case "invalid":
-    case "submitting":
-      return state;
-    default:
-      return "idle";
-  }
+  return (form.dataset.state as FormState) || "idle";
 }
 
-function setFormState(state: FormState) {
-  if (state === "idle") {
-    delete form.dataset.state;
-    submitButton.setAttribute("aria-disabled", "false");
+function setFormState(formStatus: FormStatus): void {
+  const { state, message } = formStatus;
+
+  form.dataset.state = state;
+
+  if (state === "submitting") {
+    submitButton.setAttribute("aria-disabled", "true");
   } else {
-    form.dataset.state = state;
-    if (state === "submitting") {
-      submitButton.setAttribute("aria-disabled", "true");
-    }
+    submitButton.removeAttribute("aria-disabled");
+  }
+
+  if (message) {
+    output.hidden = false;
+    output.className = `output output-${state}`;
+    output.textContent = message;
+  } else {
+    output.hidden = true;
+    output.className = "output";
+    output.textContent = "";
   }
 }
 
-function setOutput(message: string, type: "error" | "info" | "success") {
-  output.hidden = false;
-  output.className = `output output-${type}`;
-  output.textContent = message;
+function getMessage(key: keyof typeof messages.fi): string {
+  return messages[language as keyof typeof messages][key];
 }
 
-function clearOutput() {
-  output.hidden = true;
-  output.className = "output";
-  output.textContent = "";
+function createTimeoutSignal(): AbortSignal | undefined {
+  return typeof AbortSignal !== "undefined" && AbortSignal.timeout
+    ? AbortSignal.timeout(30_000)
+    : undefined;
 }
 
-function timeoutSignal() {
-  if (typeof AbortSignal !== "undefined" && AbortSignal.timeout) {
-    return AbortSignal.timeout(30_000);
-  }
+function wait(milliseconds: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
-function wait(milliseconds: number) {
-  return new Promise<void>((resolve) => setTimeout(resolve, milliseconds));
-}
-
-async function sendForm() {
+async function sendForm(): Promise<void> {
   if (getFormState() === "submitting") return;
 
-  setFormState("submitting");
-  setOutput(
-    language === "fi" ? "Viestiäsi lähetetään…" : "Your message is being sent…",
-    "info",
-  );
-
-  let response: Response;
+  setFormState({ state: "submitting", message: getMessage("sending") });
 
   try {
-    [response] = await Promise.all([
+    const [response] = await Promise.all([
       fetch(form.action, {
         body: new FormData(form),
         method: form.method,
-        signal: timeoutSignal(),
+        signal: createTimeoutSignal(),
       }),
       wait(1000),
     ]);
-    setFormState("idle");
-  } catch (e) {
-    console.error(e);
-    setOutput(
-      language === "fi"
-        ? "Viestin lähettäminen ei onnistunut verkkovirheen takia. Kokeile myöhemmin uudelleen."
-        : "Sending message failed due to a network error. You can try again later.",
-      "error",
-    );
-    setFormState("idle");
-    return;
-  }
 
-  if (response.ok) {
-    setOutput(
-      language === "fi" ? "Kiitos viestistäsi!" : "Thank you for your message!",
-      "success",
-    );
-    form.reset();
-  } else {
-    console.error(
-      `Form action returned error status ${response.status} with message: "${await response.text()}". Response:`,
-      response,
-    );
-
-    if (response.status === 400) {
-      setOutput(
-        language === "fi"
-          ? "Viestin lähettäminen ei onnistunut. Tarkista, että kaikki kentät on täytetty oikein."
-          : "Sending message didn’t succeed. Please check that all fields are filled correctly.",
-        "error",
-      );
+    if (response.ok) {
+      setFormState({ state: "success", message: getMessage("success") });
+      form.reset();
     } else {
-      setOutput(
-        language === "fi"
-          ? "Viestin lähettäminen ei onnistunut. Kokeile myöhemmin uudelleen."
-          : "Sending message didn’t succeed. Please try again later.",
-        "error",
+      console.error(
+        `Form action returned error status ${response.status} with message: "${await response.text()}".`,
       );
+
+      const errorMessage =
+        response.status === 400
+          ? getMessage("validationError")
+          : getMessage("serverError");
+
+      setFormState({ state: "error", message: errorMessage });
     }
+  } catch (error) {
+    console.error(error);
+    setFormState({ state: "error", message: getMessage("networkError") });
   }
 }
 
-function onSubmit(event: SubmitEvent) {
+function onSubmit(event: SubmitEvent): void {
   event.preventDefault();
   sendForm();
 }
 
-function onInvalid(event: Event) {
-  const target = event.target as HTMLInputElement | HTMLTextAreaElement;
+function onInvalid(event: Event): void {
+  const { target } = event;
+
+  if (!isFormInput(target)) {
+    throw new Error(
+      "Invalid event target: expected HTMLInputElement or HTMLTextAreaElement",
+    );
+  }
 
   if (getFormState() === "invalid") return;
-  setFormState("invalid");
+
+  let message: string;
 
   if (target.id === "message-input" && !target.value) {
-    setOutput(
-      language === "fi" ? "Viesti puuttuu." : "The message is missing.",
-      "error",
-    );
-    return;
+    message = getMessage("missingMessage");
+  } else if (target.id === "email-input") {
+    message = getMessage("emailError");
+  } else {
+    message = getMessage("formError");
   }
-  if (target.id === "email-input") {
-    setOutput(
-      language === "fi"
-        ? "Antamassasi meiliosoitteessa on ongelma."
-        : "There’s a problem with the email address you gave.",
-      "error",
-    );
-    return;
-  }
-  setOutput(
-    language === "fi"
-      ? "Korjaathan lomakkeessa olevat virheet."
-      : "Please correct the errors in the form.",
-    "error",
+
+  setFormState({ state: "invalid", message });
+}
+
+function isFormInput(
+  element: EventTarget | null,
+): element is HTMLInputElement | HTMLTextAreaElement {
+  return (
+    element instanceof HTMLInputElement ||
+    element instanceof HTMLTextAreaElement
   );
 }
 
-function onInput() {
-  setFormState("idle");
-  clearOutput();
+function onInput(): void {
+  setFormState({ state: "idle" });
 }
 
 form.addEventListener("submit", onSubmit);
