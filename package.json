@@ -5,7 +5,7 @@
   "scripts": {
     "build": "node build.js",
     "dev": "wrangler pages dev --proxy 1234 -- npm run dev:frontend",
-    "dev:frontend": "parcel frontend/{,en/}{index,404}.html",
+    "dev:frontend": "parcel frontend/{,en/}{index,404}.html frontend/en/technical/index.html",
     "prettier:check": "prettier --check --ignore-path .gitignore .",
     "prettier:fix": "prettier --write --ignore-path .gitignore .",
     "test": "playwright test",

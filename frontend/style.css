@@ -23,9 +23,8 @@
   --color-highlight: #f5f5ff;
   --color-input-background: white;
   --color-input-border: #ced4da;
-  --color-button-background-a: #019c63;
-  --color-button-background-b: #10bc5a;
-  --color-button-text: white;
+  --color-button-background: #0c0c28;
+  --color-button-text: #fffff8;
   --color-error-background: #fff2f4;
   --color-error-border: #ef9a9a;
   --color-success-background: #f0fff9;
@@ -181,7 +180,7 @@ b {
   box-decoration-break: clone;
   box-shadow: 0 0 0 0.3em var(--color-highlight);
   font-weight: inherit;
-  margin-inline: 0.15ch;
+  margin-inline: 0.15ch 0.1ch;
 }
 
 li {
@@ -257,31 +256,6 @@ textarea.form-input {
   overflow: auto;
 }
 
-.form-button {
-  background-color: var(--color-button-background-a);
-  background-image: linear-gradient(
-    30deg,
-    var(--color-button-background-a),
-    var(--color-button-background-b)
-  );
-  border: none;
-  border-radius: 2em;
-  color: var(--color-button-text);
-  cursor: pointer;
-  display: block;
-  font: inherit;
-  padding: 0.5em 2em;
-  text-align: center;
-  transition:
-    filter 0.3s,
-    opacity 0.3s;
-}
-
-.form-button[aria-disabled="true"] {
-  filter: grayscale(1);
-  opacity: 0.7;
-}
-
 .output {
   background-color: var(--color-input-background);
   border: 1px solid var(--color-input-border);
@@ -307,4 +281,40 @@ textarea.form-input {
 .output-success {
   background-color: var(--color-success-background);
   border-color: var(--color-success-border);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-button-background);
+  color: var(--color-button-text);
+  justify-content: center;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  text-align: center;
+}
+
+.button:any-link {
+  color: var(--color-button-text);
+}
+
+.button:hover {
+  background-color: color-mix(in srgb, var(--color-text) 80%, transparent);
+}
+
+.button[aria-disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@media (max-width: 40rem) {
+  .button {
+    width: 100%;
+  }
 }

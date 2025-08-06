@@ -8,4 +8,8 @@
     <loc>https://akselinurmio.fi/en/</loc>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://akselinurmio.fi/en/technical/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

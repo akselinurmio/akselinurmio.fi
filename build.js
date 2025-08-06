@@ -19,6 +19,7 @@ async function build() {
       "./frontend/404.html",
       "./frontend/en/index.html",
       "./frontend/en/404.html",
+      "./frontend/en/technical/index.html",
     ],
     mode: "production",
     additionalReporters: [

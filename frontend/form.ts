@@ -30,8 +30,6 @@ interface FormStatus {
 
 const messages = {
   fi: {
-    botCheckError:
-      "Bottitarkistus epäonnistui. Lomake ei valitettavasti toimi.",
     sending: "Viestiäsi lähetetään…",
     networkError:
       "Viestin lähettäminen ei onnistunut verkkovirheen takia. Kokeile myöhemmin uudelleen.",
@@ -45,7 +43,6 @@ const messages = {
     formError: "Korjaathan lomakkeessa olevat virheet.",
   },
   en: {
-    botCheckError: "Bot check failed. Unfortunately, the form will not work.",
     sending: "Your message is being sent…",
     networkError:
       "Sending message failed due to a network error. You can try again later.",
@@ -82,18 +79,9 @@ function initializeTurnstile(): void {
           setFormState({ state: "idle" });
         }
       },
-      "error-callback": () => {
-        if (getFormState() === "idle") {
-          setFormState({
-            state: "error",
-            message: getMessage("botCheckError"),
-          });
-        }
-      },
     });
   } catch (error) {
     console.error(error);
-    setFormState({ state: "error", message: getMessage("botCheckError") });
   }
 }
 

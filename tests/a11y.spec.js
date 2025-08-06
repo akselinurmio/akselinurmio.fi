@@ -4,15 +4,17 @@ import { AxeBuilder } from "@axe-core/playwright";
 test.describe("Accessibility checks", () => {
   test.describe.configure({ mode: "parallel" });
 
-  ["/", "/en/", "/404.html", "/en/404.html"].forEach((path) => {
-    test(`Page ${path} should have no accessibility violations`, async ({
-      page,
-    }) => {
-      await page.goto(path);
+  ["/", "/en/", "/en/technical/", "/404.html", "/en/404.html"].forEach(
+    (path) => {
+      test(`Page ${path} should have no accessibility violations`, async ({
+        page,
+      }) => {
+        await page.goto(path);
 
-      const results = await new AxeBuilder({ page }).analyze();
+        const results = await new AxeBuilder({ page }).analyze();
 
-      expect(results.violations).toEqual([]);
-    });
-  });
+        expect(results.violations).toEqual([]);
+      });
+    },
+  );
 });
