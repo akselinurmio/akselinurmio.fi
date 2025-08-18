@@ -9,15 +9,8 @@ export async function getLastCommitInfo(locale: string): Promise<{
   shortHash: string;
   longHash: string;
 }> {
-  const [timestampResult, shortHashResult, longHashResult] = await Promise.all([
-    execAsync("git log -1 --format=%cI"),
-    execAsync("git log -1 --format=%h"),
-    execAsync("git log -1 --format=%H"),
-  ]);
-
-  const dateIso = timestampResult.stdout.trim();
-  const shortHash = shortHashResult.stdout.trim();
-  const longHash = longHashResult.stdout.trim();
+  const result = await execAsync("git log -1 --format=%cI%n%h%n%H");
+  const [dateIso, shortHash, longHash] = result.stdout.trim().split("\n");
 
   const dateFormatted = new Date(dateIso).toLocaleString(locale, {
     year: "numeric",
