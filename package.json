@@ -4,21 +4,23 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler pages dev -- npm run dev:frontend",
-    "dev:frontend": "cd frontend && npm run dev",
-    "build": "cd frontend && npm run build",
-    "preview": "cd frontend && npm run preview",
+    "dev:frontend": "cd frontend && astro dev",
+    "build": "cd frontend && astro build",
+    "preview": "cd frontend && astro preview",
     "prettier:check": "prettier --check --ignore-path .gitignore .",
     "prettier:fix": "prettier --write --ignore-path .gitignore .",
     "test": "playwright test",
     "type-check": "concurrently --group \"npm:type-check:*\"",
-    "type-check:frontend": "cd frontend && tsc --noEmit",
+    "type-check:frontend": "cd frontend && astro check",
     "type-check:functions": "cd functions && tsc --noEmit"
   },
-  "devDependencies": {
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
     "@axe-core/playwright": "^4.10.2",
     "@cloudflare/workers-types": "^4.20250701.0",
     "@playwright/test": "^1.54.2",
     "@types/cloudflare-turnstile": "^0.2.2",
+    "astro": "^5.13.2",
     "concurrently": "^9.2.0",
     "playwright": "^1.52.0",
     "prettier": "^3.6.2",
