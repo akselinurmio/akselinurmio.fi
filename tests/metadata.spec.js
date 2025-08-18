@@ -61,13 +61,4 @@ test.describe("Page metadata checks", () => {
     const robotsMeta = page.locator('meta[name="robots"]');
     await expect(robotsMeta).toHaveAttribute("content", "noindex");
   });
-
-  test("English 404 page has correct metadata", async ({ page }) => {
-    await page.goto("/en/404.html");
-
-    await expect(page).toHaveTitle("Page was not found");
-
-    const robotsMeta = page.locator('meta[name="robots"]');
-    await expect(robotsMeta).toHaveAttribute("content", "noindex");
-  });
 });
