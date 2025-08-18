@@ -1,5 +1,8 @@
+.astro/
 .dev.vars
-.parcel-cache/
+.DS_Store
+.env
+.env.production
 .wrangler/
 dist/
 node_modules/

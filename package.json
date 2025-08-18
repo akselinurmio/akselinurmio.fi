@@ -3,9 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node build.js",
-    "dev": "wrangler pages dev --proxy 1234 -- npm run dev:frontend",
-    "dev:frontend": "parcel frontend/{,en/}{index,404}.html frontend/en/technical/index.html",
+    "dev": "wrangler pages dev -- npm run dev:frontend",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "preview": "cd frontend && npm run preview",
     "prettier:check": "prettier --check --ignore-path .gitignore .",
     "prettier:fix": "prettier --write --ignore-path .gitignore .",
     "test": "playwright test",
@@ -16,22 +17,12 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",
     "@cloudflare/workers-types": "^4.20250701.0",
-    "@parcel/optimizer-svgo": "^2.14.4",
-    "@parcel/packager-raw-url": "^2.14.4",
-    "@parcel/transformer-jsonld": "^2.14.4",
-    "@parcel/transformer-webmanifest": "^2.14.4",
     "@playwright/test": "^1.54.2",
     "@types/cloudflare-turnstile": "^0.2.2",
     "concurrently": "^9.2.0",
-    "parcel": "^2.14.4",
     "playwright": "^1.52.0",
     "prettier": "^3.6.2",
-    "sharp": "^0.33.5",
-    "svgo": "^3.3.2",
     "typescript": "^5.9.2",
     "wrangler": "^4.22.0"
-  },
-  "browserslist": [
-    "defaults and fully supports fetch"
-  ]
+  }
 }

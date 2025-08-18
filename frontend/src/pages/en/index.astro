@@ -1,0 +1,172 @@
+---
+import AkseliImage from "../../components/AkseliImage.astro";
+import BaseLayout from "../../components/BaseLayout.astro";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": new URL("/en/", Astro.site),
+  url: new URL("/en/", Astro.site),
+  name: "Akseli Nurmio",
+  description:
+    "Front-end developer at Yle, building accessible and user-friendly web apps. Get to know my work, interests, and side projects.",
+  inLanguage: "en",
+  isPartOf: { "@id": new URL("/#website", Astro.site) },
+};
+
+const speculationRulePaths = ["/"];
+---
+
+<BaseLayout
+  title="Akseli Nurmio"
+  description="Front-end developer at Yle, building accessible and user-friendly web apps. Get to know my work, interests, and side projects."
+  lang="en"
+  canonical="/en/"
+  alternateHrefLang={{
+    en: "/en/",
+    fi: "/",
+  }}
+  structuredData={structuredData}
+  speculationRulePaths={speculationRulePaths}
+>
+  <script
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+    defer></script>
+  <script src="/src/scripts/form.ts"></script>
+
+  <div class="top-container">
+    <main class="main">
+      <div class="right-side-content">
+        <AkseliImage alt="Akseli is smiling, there is a tram behind him" />
+      </div>
+      <div class="left-side-content">
+        <h1 class="name">Hey, I'm Akseli.</h1>
+        <p>
+          I'm a seasoned front-end developer, currently working on
+          <a href="https://areena.yle.fi/tv">Yle Areena</a> web apps at
+          <a href="https://yle.fi/aihe/a/20-75000"
+            >the Finnish Broad&shy;casting Company, Yle</a
+          >.
+        </p>
+        <p>
+          If you prefer, this page is also available
+          <a href="/">in Finnish</a>.
+        </p>
+        <h2>How I work</h2>
+        <ul>
+          <li>
+            I take <b>ownership of my work</b> from day one — from planning all the
+            way through the full lifecycle of the product or code.
+          </li>
+          <li>
+            I aim to make everything I build <b>accessible</b> to everyone, in every
+            situation. I create services people can rely on.
+          </li>
+          <li>
+            I focus on making digital services <b>easier to use</b>. Tech can be
+            complicated, but most of the time, it really doesn't have to be.
+          </li>
+        </ul>
+        <h2>Beyond the code</h2>
+        <ul>
+          <li>
+            In my free time, I enjoy <b>playing games</b> — both video games and
+            the tabletop kind. Lately I've been diving into
+            <cite>Cyberpunk 2077</cite>, <cite>Civ VI</cite> and
+            <cite>Wingspan</cite>.
+          </li>
+          <li>
+            When the weather's nice, my favorite way to unwind is hitting the
+            roads and gravel trails around the Helsinki area
+            <b>on my bike</b>.
+          </li>
+          <li>
+            Nothing beats a good adventure or sci-fi <b>movie</b>. Film
+            festivals are the best — you often stumble across movies you'd never
+            even hear about otherwise.
+          </li>
+          <li>
+            Even though I get to code a lot at work, I still like messing around
+            with fun little side projects. Most recent one?
+            <a href="https://whoisyourfavorite.bond/"
+              >"Who's your favorite Bond?"</a
+            >
+          </li>
+        </ul>
+        <h2>Find me elsewhere</h2>
+        <ul>
+          <li>
+            You can find more about my work experience on
+            <a href="https://www.linkedin.com/in/akselinurmio/">LinkedIn</a>
+          </li>
+          <li>
+            I occasionally log the beers I try on
+            <a href="https://untappd.com/user/kaljakseli">Untappd</a>
+            🍻
+          </li>
+        </ul>
+
+        <form
+          action="/message"
+          method="post"
+          aria-labelledby="contact"
+          class="form"
+          id="contact-form"
+        >
+          <h2 id="contact">Message me</h2>
+          <div class="form-field">
+            <label class="form-label" for="name-input">Your name</label>
+            <input
+              type="text"
+              name="name"
+              id="name-input"
+              autocomplete="name"
+              class="form-input"
+            />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="email-input">Your email</label>
+            <input
+              type="email"
+              name="email"
+              id="email-input"
+              autocomplete="email"
+              class="form-input"
+            />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="message-input">Your message</label>
+            <textarea
+              name="message"
+              id="message-input"
+              required
+              rows="5"
+              class="form-input"
+              maxlength="2000"></textarea>
+          </div>
+          <div class="form-field">
+            <div class="form-label">Bot check</div>
+            <div class="form-input">
+              <div id="turnstile-widget"></div>
+              <noscript>
+                <p>Turn on JavaScript to see the bot check.</p>
+              </noscript>
+            </div>
+          </div>
+
+          <button type="submit" id="submit-button" class="button">
+            Send
+          </button>
+
+          <output class="output" hidden id="contact-form-output" role="status"
+          ></output>
+        </form>
+      </div>
+    </main>
+    <footer class="footer">
+      <p>
+        &copy; Akseli Nurmio | <a href="/en/technical/">Technical details</a>
+      </p>
+    </footer>
+  </div>
+</BaseLayout>

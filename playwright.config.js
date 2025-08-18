@@ -4,12 +4,12 @@ export default defineConfig({
   reporter: process.env.CI ? "github" : "line",
   testDir: "./tests",
   use: {
-    baseURL: "http://localhost:1234",
+    baseURL: "http://localhost:4321",
   },
   webServer: {
     command: "npm run dev:frontend",
-    port: 1234,
-    timeout: 30_000,
+    port: 4321,
+    timeout: 10_000,
     reuseExistingServer: !process.env.CI,
   },
 });
