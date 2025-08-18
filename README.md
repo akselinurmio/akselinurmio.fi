@@ -4,7 +4,7 @@
 # Install deps
 npm install
 
-# Run development server with form function support
+# Run development server
 npm run dev
 
 # Production build
