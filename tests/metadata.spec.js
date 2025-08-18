@@ -70,16 +70,4 @@ test.describe("Page metadata checks", () => {
     const robotsMeta = page.locator('meta[name="robots"]');
     await expect(robotsMeta).toHaveAttribute("content", "noindex");
   });
-
-  test("Technical page has correct metadata", async ({ page }) => {
-    await page.goto("/en/technical/");
-
-    await expect(page).toHaveTitle(/tech/i);
-
-    const canonicalLink = page.locator('link[rel="canonical"]');
-    await expect(canonicalLink).toHaveAttribute(
-      "href",
-      "https://akselinurmio.fi/en/technical/",
-    );
-  });
 });

@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "wrangler pages dev -- npm run dev:frontend",
-    "dev:frontend": "cd frontend && astro dev",
+    "dev": "cd frontend && astro dev",
+    "dev:functions": "npm run build && wrangler pages dev frontend/dist",
     "build": "cd frontend && astro build",
     "preview": "cd frontend && astro preview",
     "prettier:check": "prettier --check --ignore-path .gitignore .",

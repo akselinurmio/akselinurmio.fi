@@ -1,6 +1,7 @@
 ---
 import AkseliImage from "../../components/AkseliImage.astro";
 import BaseLayout from "../../components/BaseLayout.astro";
+import Footer from "../../components/Footer.astro";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -164,10 +165,6 @@ const speculationRulePaths = ["/"];
         </form>
       </div>
     </main>
-    <footer class="footer">
-      <p>
-        &copy; Akseli Nurmio | <a href="/en/technical/">Technical details</a>
-      </p>
-    </footer>
+    <Footer locale="en-GB" />
   </div>
 </BaseLayout>
