@@ -14,7 +14,7 @@ export async function getLastCommitInfo(locale: string): Promise<{
 
   const dateFormatted = new Date(dateIso).toLocaleString(locale, {
     year: "numeric",
-    month: "short",
+    month: locale.startsWith("fi") ? "numeric" : "short",
     day: "numeric",
     hour: "numeric",
     minute: "2-digit",
