@@ -36,15 +36,17 @@ jobs:
           node-version-file: ".nvmrc"
           cache: "npm"
 
-      - name: Cache playwright binaries
+      - name: Cache Playwright browsers
         uses: actions/cache@v4
         with:
-          key: playwright-${{ hashFiles('package-lock.json') }}
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
           path: ~/.cache/ms-playwright
+          restore-keys: |
+            ${{ runner.os }}-playwright-
 
       - run: npm ci
 
-      - name: Install Playwright dependencies
+      - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
       - run: npm run test
