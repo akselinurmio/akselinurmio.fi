@@ -3,35 +3,28 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node build.js",
-    "dev": "wrangler pages dev --proxy 1234 -- npm run dev:frontend",
-    "dev:frontend": "parcel frontend/{,en/}{index,404}.html frontend/en/technical/index.html",
+    "dev": "cd frontend && astro dev",
+    "dev:functions": "npm run build && wrangler pages dev frontend/dist",
+    "build": "cd frontend && astro build",
+    "preview": "cd frontend && astro preview",
     "prettier:check": "prettier --check --ignore-path .gitignore .",
     "prettier:fix": "prettier --write --ignore-path .gitignore .",
     "test": "playwright test",
     "type-check": "concurrently --group \"npm:type-check:*\"",
-    "type-check:frontend": "cd frontend && tsc --noEmit",
+    "type-check:frontend": "cd frontend && astro check",
     "type-check:functions": "cd functions && tsc --noEmit"
   },
-  "devDependencies": {
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
     "@axe-core/playwright": "^4.10.2",
     "@cloudflare/workers-types": "^4.20250701.0",
-    "@parcel/optimizer-svgo": "^2.14.4",
-    "@parcel/packager-raw-url": "^2.14.4",
-    "@parcel/transformer-jsonld": "^2.14.4",
-    "@parcel/transformer-webmanifest": "^2.14.4",
     "@playwright/test": "^1.54.2",
     "@types/cloudflare-turnstile": "^0.2.2",
+    "astro": "^5.13.2",
     "concurrently": "^9.2.0",
-    "parcel": "^2.14.4",
     "playwright": "^1.52.0",
     "prettier": "^3.6.2",
-    "sharp": "^0.33.5",
-    "svgo": "^3.3.2",
     "typescript": "^5.9.2",
     "wrangler": "^4.22.0"
-  },
-  "browserslist": [
-    "defaults and fully supports fetch"
-  ]
+  }
 }

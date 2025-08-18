@@ -1,0 +1,122 @@
+---
+import "../styles/style.css";
+
+export interface Props {
+  title: string;
+  description?: string;
+  lang: string;
+  canonical?: string;
+  alternateHrefLang?: { [key: string]: string };
+  robots?: string;
+  structuredData?: object;
+  speculationRulePaths?: string[];
+}
+
+const {
+  title,
+  description,
+  lang = "fi",
+  robots,
+  structuredData,
+  speculationRulePaths,
+} = Astro.props;
+
+const canonical =
+  Astro.props.canonical && new URL(Astro.props.canonical, Astro.site);
+const alternates = Astro.props.alternateHrefLang
+  ? Object.entries(Astro.props.alternateHrefLang).map(
+      ([lang, href]) => [lang, new URL(href, Astro.site)] as const
+    )
+  : [];
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width" />
+
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    {
+      alternates.map(([lang, href]) => (
+        <link rel="alternate" hreflang={lang} href={href} />
+      ))
+    }
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      sizes="any"
+      href="/assets/favicon.svg"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="preload"
+      href="/assets/font/Aeonik-Medium.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <meta name="author" content="Akseli Nurmio" />
+    {description && <meta name="description" content={description} />}
+    <meta name="color-scheme" content="light" />
+
+    {robots && <meta name="robots" content={robots} />}
+
+    {
+      structuredData && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify(structuredData)}
+        />
+      )
+    }
+
+    {
+      speculationRulePaths && (
+        <script
+          is:inline
+          type="speculationrules"
+          set:html={JSON.stringify({
+            prerender: [
+              {
+                source: "list",
+                urls: speculationRulePaths,
+              },
+            ],
+            prefetch: [
+              {
+                source: "list",
+                urls: speculationRulePaths,
+              },
+            ],
+          })}
+        />
+      )
+    }
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
