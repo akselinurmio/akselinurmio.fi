@@ -1,3 +1,7 @@
+declare const URL: {
+  canParse(url: string): boolean;
+};
+
 type Env = Record<(typeof ENV_KEYS)[number], string>;
 
 const ENV_KEYS = [
@@ -91,12 +95,19 @@ export const onRequest: PagesFunction = async (context) => {
   const senderName = formData.get("name");
   const senderEmail = formData.get("email");
   const message = formData.get("message");
+  const referer = headers.get("referer");
 
   if (senderName && senderName.length > 100) {
     return clientError("Name is too long");
   }
+  if (senderName && senderName.includes("\n")) {
+    return clientError("Name contains newlines");
+  }
   if (senderEmail && senderEmail.length > 254) {
     return clientError("Email address is too long");
+  }
+  if (senderEmail && senderEmail.includes("\n")) {
+    return clientError("Email address contains newlines");
   }
   if (!message) {
     return clientError("Message is missing");
@@ -104,14 +115,20 @@ export const onRequest: PagesFunction = async (context) => {
   if (message.length > 2000) {
     return clientError("Message is too long");
   }
+  if (referer && !URL.canParse(referer)) {
+    return clientError("Invalid referer");
+  }
 
-  const body = `Message from ${senderName || "?"}${senderEmail ? ` <${senderEmail}>` : ""}:
+  const body = `Name: ${senderName || ""}
+Email: ${senderEmail || ""}
+Form: ${referer || "unknown"}
 
+Message:
 ${message}`;
 
   const response = await fetch("https://api.resend.com/emails", {
     body: JSON.stringify({
-      from: "noreply@notifications.akselinurmio.fi",
+      from: `"akselinurmio.fi" <noreply@notifications.akselinurmio.fi>`,
       to: CONTACT_EMAIL,
       subject: "Mail from website",
       text: body,
