@@ -14,18 +14,9 @@ updates:
         patterns:
           - "@cloudflare/*"
           - "wrangler"
-      parcel:
-        applies-to: version-updates
-        patterns:
-          - "@parcel/*"
-          - "parcel"
-          - "sharp"
-          - "svgo"
       playwright:
         applies-to: version-updates
         patterns:
           - "@axe-core/*"
           - "@playwright/*"
           - "playwright"
-    ignore:
-      - dependency-name: "sharp"
