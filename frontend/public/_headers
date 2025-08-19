@@ -1,2 +1,8 @@
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+/*
+  Content-Security-Policy: default-src 'none'; base-uri 'none'; connect-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src https://challenges.cloudflare.com; img-src 'self'; manifest-src 'self'; media-src 'self'; script-src 'self' https://challenges.cloudflare.com 'inline-speculation-rules'; script-src-attr 'none'; style-src 'self'
+
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable

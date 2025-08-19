@@ -3,9 +3,12 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   site: "https://akselinurmio.fi",
-  trailingSlash: "always",
   build: {
     format: "preserve",
   },
-  compressHTML: false,
+  vite: {
+    build: {
+      assetsInlineLimit: 0,
+    },
+  },
 });
