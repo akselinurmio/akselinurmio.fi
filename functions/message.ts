@@ -2,7 +2,7 @@ type Env = Record<(typeof ENV_KEYS)[number], string>;
 
 const ENV_KEYS = [
   "CONTACT_EMAIL",
-  "SENDGRID_API_KEY",
+  "RESEND_API_KEY",
   "TURNSTILE_SECRET_KEY",
 ] as const;
 
@@ -67,7 +67,7 @@ export const onRequest: PagesFunction = async (context) => {
     console.error("Environment variables missing");
     return genericError();
   }
-  const { CONTACT_EMAIL, SENDGRID_API_KEY, TURNSTILE_SECRET_KEY } = context.env;
+  const { CONTACT_EMAIL, RESEND_API_KEY, TURNSTILE_SECRET_KEY } = context.env;
   const { headers } = context.request;
 
   let formData: FormData;
@@ -109,16 +109,15 @@ export const onRequest: PagesFunction = async (context) => {
 
 ${message}`;
 
-  const response = await fetch("https://api.sendgrid.com/v3/mail/send", {
+  const response = await fetch("https://api.resend.com/emails", {
     body: JSON.stringify({
-      personalizations: [{ to: [{ email: CONTACT_EMAIL }] }],
-      from: { email: "noreply@akselinurmio.fi" },
+      from: "noreply@notifications.akselinurmio.fi",
+      to: CONTACT_EMAIL,
       subject: "Mail from website",
-      content: [{ type: "text/plain", value: body }],
+      text: body,
     }),
     headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${SENDGRID_API_KEY}`,
+      Authorization: `Bearer ${RESEND_API_KEY}`,
       "Content-Type": "application/json",
     },
     method: "POST",
@@ -129,8 +128,7 @@ ${message}`;
   } else {
     const errorDescription = await response.text();
     console.error(
-      `Sending email didn't succeed. SendGrid replied with HTTP ${response.status}.\n` +
-        errorDescription,
+      `Sending email didn't succeed. Resend replied with HTTP ${response.status}. ${errorDescription}`,
     );
     return genericError();
   }
