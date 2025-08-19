@@ -18,7 +18,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@axe-core/playwright": "^4.10.2",
-    "@cloudflare/workers-types": "^4.20250816.0",
+    "@cloudflare/workers-types": "^4.20250819.0",
     "@playwright/test": "^1.54.2",
     "@types/cloudflare-turnstile": "^0.2.2",
     "astro": "^5.13.2",
@@ -26,6 +26,6 @@
     "playwright": "^1.52.0",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2",
-    "wrangler": "^4.30.0"
+    "wrangler": "^4.31.0"
   }
 }
