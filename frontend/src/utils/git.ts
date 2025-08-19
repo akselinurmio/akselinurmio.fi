@@ -12,13 +12,8 @@ export async function getLastCommitInfo(locale: string): Promise<{
   const result = await execAsync("git log -1 --format=%cI%n%h%n%H");
   const [dateIso, shortHash, longHash] = result.stdout.trim().split("\n");
 
-  const dateFormatted = new Date(dateIso).toLocaleString(locale, {
-    year: "numeric",
-    month: locale.startsWith("fi") ? "numeric" : "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
-    timeZoneName: "shortOffset",
+  const dateFormatted = new Date(dateIso).toLocaleDateString(locale, {
+    dateStyle: "medium",
     timeZone: "Europe/Helsinki",
   });
 
