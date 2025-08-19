@@ -4,8 +4,9 @@
   "type": "module",
   "scripts": {
     "dev": "cd frontend && astro dev",
-    "dev:functions": "npm run build && wrangler pages dev frontend/dist",
+    "dev:functions": "npm run build:dev && wrangler pages dev frontend/dist",
     "build": "cd frontend && astro build",
+    "build:dev": "cd frontend && astro build --devOutput",
     "preview": "cd frontend && astro preview",
     "prettier:check": "prettier --check --ignore-path .gitignore .",
     "prettier:fix": "prettier --write --ignore-path .gitignore .",

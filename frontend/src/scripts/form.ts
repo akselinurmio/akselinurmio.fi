@@ -58,8 +58,12 @@ function initializeTurnstile(): void {
     const action = language === "fi" ? "contact_fi" : "contact_en";
     const turnstileLanguage = language === "fi" ? "fi" : "en";
 
+    const sitekey = import.meta.env.DEV
+      ? "1x00000000000000000000AA"
+      : "0x4AAAAAAAB4pAL3vK_V47rO";
+
     turnstileWidgetId = turnstile.render(turnstileWidget, {
-      sitekey: "0x4AAAAAAAB4pAL3vK_V47rO",
+      sitekey,
       action,
       language: turnstileLanguage,
       theme: "light",
