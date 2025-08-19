@@ -252,7 +252,7 @@ textarea.form-input {
 
 .cf-turnstile {
   display: flex;
-  min-height: 65px;
+  min-height: 73px;
   overflow: auto;
 }
 
