@@ -138,10 +138,6 @@ async function sendForm(): Promise<void> {
     if (response.ok) {
       setFormState({ state: "success", message: getMessage("success") });
       form.reset();
-
-      if (turnstileWidgetId) {
-        turnstile.reset(turnstileWidgetId);
-      }
     } else {
       console.error(
         `Form action returned error status ${response.status} with message: "${await response.text()}".`,
@@ -157,6 +153,10 @@ async function sendForm(): Promise<void> {
   } catch (error) {
     console.error(error);
     setFormState({ state: "error", message: getMessage("networkError") });
+  }
+
+  if (turnstileWidgetId) {
+    turnstile.reset(turnstileWidgetId);
   }
 }
 
