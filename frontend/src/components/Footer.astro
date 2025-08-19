@@ -20,9 +20,22 @@ const footerText =
     <a
       href={`https://github.com/akselinurmio/akselinurmio.fi/commit/${commitInfo.longHash}`}
       title={`Commit: ${commitInfo.shortHash}`}
-      ><time datetime={commitInfo.dateIso} lang={locale}
+      ><time datetime={commitInfo.dateIso} lang={locale} data-commit-date
         >{commitInfo.dateFormatted}</time
       ></a
     >.
   </p>
 </footer>
+
+<script>
+  const timeElements =
+    document.querySelectorAll<HTMLTimeElement>("[data-commit-date]");
+
+  for (const timeElement of timeElements) {
+    const date = new Date(timeElement.dateTime);
+    const formattedDate = date.toLocaleDateString(timeElement.lang, {
+      dateStyle: "medium",
+    });
+    timeElement.textContent = formattedDate;
+  }
+</script>
