@@ -1,5 +1,6 @@
-declare const URL: {
+declare var URL: {
   canParse(url: string): boolean;
+  prototype: URL;
 };
 
 type Env = Record<(typeof ENV_KEYS)[number], string>;
