@@ -19,7 +19,7 @@
     "@astrojs/check": "^0.9.4",
     "@axe-core/playwright": "^4.10.2",
     "@cloudflare/workers-types": "^4.20250819.0",
-    "@playwright/test": "^1.54.2",
+    "@playwright/test": "^1.55.0",
     "@types/cloudflare-turnstile": "^0.2.2",
     "astro": "^5.13.2",
     "concurrently": "^9.2.0",
