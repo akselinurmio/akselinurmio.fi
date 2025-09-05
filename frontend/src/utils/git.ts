@@ -10,15 +10,18 @@ export async function getLastCommitInfo(locale: string): Promise<{
   longHash: string;
 }> {
   const result = await execAsync("git log -1 --format=%cI%n%h%n%H");
-  const [dateIso, shortHash, longHash] = result.stdout.trim().split("\n");
+  const [dateTimeIso, shortHash, longHash] = result.stdout.trim().split("\n");
 
-  const dateFormatted = new Date(dateIso).toLocaleDateString(locale, {
-    dateStyle: "medium",
-    timeZone: "Europe/Helsinki",
-  });
+  const dateIso = dateTimeIso.substring(0, 10);
+  const dateFormatted = new Date(dateIso)
+    .toLocaleDateString(locale, {
+      dateStyle: "long",
+      timeZone: "UTC",
+    })
+    .replace(" ", "\u00A0");
 
   return {
-    dateIso,
+    dateIso: dateTimeIso,
     dateFormatted,
     shortHash,
     longHash,
