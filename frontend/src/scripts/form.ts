@@ -72,11 +72,6 @@ function initializeTurnstile(): void {
       action,
       language: turnstileLanguage,
       theme: "light",
-      callback: () => {
-        if (getFormState() === "error") {
-          setFormState({ state: "idle" });
-        }
-      },
     });
   } catch (error) {
     console.error(error);
@@ -114,7 +109,7 @@ function getMessage(key: keyof typeof messages.fi): string {
 }
 
 function createTimeoutSignal(): AbortSignal | undefined {
-  return typeof AbortSignal !== "undefined" && AbortSignal.timeout
+  return typeof AbortSignal !== "undefined" && "timeout" in AbortSignal
     ? AbortSignal.timeout(30_000)
     : undefined;
 }
