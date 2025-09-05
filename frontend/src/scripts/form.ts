@@ -42,10 +42,10 @@ const messages = {
       "Sending message failed due to a network error. You can try again later.",
     success: "Thank you for your message!",
     validationError:
-      "Sending message didn't succeed. Please check that all fields are filled correctly.",
-    serverError: "Sending message didn't succeed. Please try again later.",
+      "Sending message didn’t succeed. Please check that all fields are filled correctly.",
+    serverError: "Sending message didn’t succeed. Please try again later.",
     missingMessage: "The message is missing.",
-    emailError: "There's a problem with the email address you gave.",
+    emailError: "There’s a problem with the email address you gave.",
     formError: "Please correct the errors in the form.",
   },
 } as const;
