@@ -25,7 +25,7 @@ const canonical =
   Astro.props.canonical && new URL(Astro.props.canonical, Astro.site);
 const alternates = Astro.props.alternateHrefLang
   ? Object.entries(Astro.props.alternateHrefLang).map(
-      ([lang, href]) => [lang, new URL(href, Astro.site)] as const
+      ([lang, href]) => [lang, new URL(href, Astro.site)] as const,
     )
   : [];
 ---
