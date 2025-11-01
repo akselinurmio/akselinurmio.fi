@@ -17,9 +17,9 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.5",
-    "@axe-core/playwright": "^4.10.2",
+    "@axe-core/playwright": "^4.11.0",
     "@cloudflare/workers-types": "^4.20251014.0",
-    "@playwright/test": "^1.55.0",
+    "@playwright/test": "^1.56.1",
     "@types/cloudflare-turnstile": "^0.2.2",
     "astro": "^5.15.3",
     "concurrently": "^9.2.1",
