@@ -16,7 +16,7 @@
     "type-check:functions": "cd functions && tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.5",
     "@axe-core/playwright": "^4.10.2",
     "@cloudflare/workers-types": "^4.20251014.0",
     "@playwright/test": "^1.55.0",
