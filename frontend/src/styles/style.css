@@ -127,6 +127,10 @@ h2:target::after {
   display: block;
 }
 
+.main p {
+  text-wrap: pretty;
+}
+
 .right-side-content {
   margin-bottom: 3rem;
   position: relative;
@@ -170,10 +174,6 @@ h2:target::after {
 .footer {
   margin-top: 5%;
   margin-bottom: 15%;
-}
-
-p {
-  text-wrap: pretty;
 }
 
 b {
