@@ -16,17 +16,17 @@
     "type-check:functions": "cd functions && tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.5",
+    "@astrojs/check": "^0.9.6",
     "@axe-core/playwright": "^4.11.0",
-    "@cloudflare/workers-types": "^4.20251014.0",
-    "@playwright/test": "^1.56.1",
+    "@cloudflare/workers-types": "^4.20251128.0",
+    "@playwright/test": "^1.57.0",
     "@types/cloudflare-turnstile": "^0.2.2",
-    "astro": "^5.15.9",
+    "astro": "^5.16.3",
     "concurrently": "^9.2.1",
     "playwright": "^1.52.0",
     "prettier": "^3.7.3",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.9.2",
-    "wrangler": "^4.45.3"
+    "wrangler": "^4.51.0"
   }
 }
