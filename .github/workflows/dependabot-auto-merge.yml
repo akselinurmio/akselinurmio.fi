@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'akselinurmio/akselinurmio.fi'
     steps:
-      - name: Wait for 1 minute before enabling auto-merge
-        run: sleep 60
       - name: Enable auto-merge for Dependabot PRs
         run: gh pr merge --auto --merge "$PR_URL"
         env:
