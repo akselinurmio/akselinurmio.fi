@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 declare var URL: {
   canParse(url: string): boolean;
   prototype: URL;
@@ -20,6 +22,11 @@ const clientError = (message = "Client error") =>
 
 const genericError = () => new Response("Server error", { status: 500 });
 
+const turnstileResponseSchema = z.object({
+  success: z.boolean(),
+  "error-codes": z.array(z.string()).default([]),
+});
+
 async function validateTurnstileToken(
   formData: FormData,
   headers: Headers,
@@ -28,7 +35,7 @@ async function validateTurnstileToken(
   const token = formData.get("cf-turnstile-response");
   const ip = headers.get("CF-Connecting-IP");
 
-  if (!token || !ip) {
+  if (!token || token.length > 2048 || !ip) {
     return false;
   }
 
@@ -47,9 +54,9 @@ async function validateTurnstileToken(
     },
   );
 
-  type TurnstileResponse = { success: boolean; "error-codes": string[] };
-  const outcome = await response.json<TurnstileResponse>();
-  const { success, "error-codes": errors = [] } = outcome;
+  const { success, "error-codes": errors } = turnstileResponseSchema.parse(
+    await response.json(),
+  );
 
   if (errors.length > 0) {
     console.log(
