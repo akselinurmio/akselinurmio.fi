@@ -108,10 +108,10 @@ function getMessage(key: keyof typeof messages.fi): string {
   return messages[language as keyof typeof messages][key];
 }
 
-function createTimeoutSignal(): AbortSignal | undefined {
+function createTimeoutSignal(): AbortSignal | null {
   return typeof AbortSignal !== "undefined" && "timeout" in AbortSignal
     ? AbortSignal.timeout(30_000)
-    : undefined;
+    : null;
 }
 
 function wait(milliseconds: number): Promise<void> {

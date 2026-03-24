@@ -14,18 +14,13 @@ test.describe("Page metadata checks", () => {
       "https://akselinurmio.fi/",
     );
 
-    const alternateLinks = page.locator('link[rel="alternate"]');
-    await expect(alternateLinks).toHaveCount(2);
-    await expect(alternateLinks.nth(0)).toHaveAttribute("hreflang", "en");
-    await expect(alternateLinks.nth(0)).toHaveAttribute(
-      "href",
-      "https://akselinurmio.fi/en/",
-    );
-    await expect(alternateLinks.nth(1)).toHaveAttribute("hreflang", "fi");
-    await expect(alternateLinks.nth(1)).toHaveAttribute(
-      "href",
-      "https://akselinurmio.fi/",
-    );
+    await expect(page.locator('link[rel="alternate"]')).toHaveCount(2);
+    await expect(
+      page.locator('link[rel="alternate"][hreflang="fi"]'),
+    ).toHaveAttribute("href", "https://akselinurmio.fi");
+    await expect(
+      page.locator('link[rel="alternate"][hreflang="en"]'),
+    ).toHaveAttribute("href", "https://akselinurmio.fi/en/");
   });
 
   test("English homepage has correct metadata", async ({ page }) => {
@@ -41,16 +36,12 @@ test.describe("Page metadata checks", () => {
 
     const alternateLinks = page.locator('link[rel="alternate"]');
     await expect(alternateLinks).toHaveCount(2);
-    await expect(alternateLinks.nth(0)).toHaveAttribute("hreflang", "en");
-    await expect(alternateLinks.nth(0)).toHaveAttribute(
-      "href",
-      "https://akselinurmio.fi/en/",
-    );
-    await expect(alternateLinks.nth(1)).toHaveAttribute("hreflang", "fi");
-    await expect(alternateLinks.nth(1)).toHaveAttribute(
-      "href",
-      "https://akselinurmio.fi/",
-    );
+    await expect(
+      page.locator('link[rel="alternate"][hreflang="fi"]'),
+    ).toHaveAttribute("href", "https://akselinurmio.fi");
+    await expect(
+      page.locator('link[rel="alternate"][hreflang="en"]'),
+    ).toHaveAttribute("href", "https://akselinurmio.fi/en/");
   });
 
   test("Finnish 404 page has correct metadata", async ({ page }) => {

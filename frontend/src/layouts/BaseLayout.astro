@@ -1,12 +1,12 @@
 ---
+import { getAbsoluteLocaleUrl, toCodes } from "astro:i18n";
+import { i18n } from "astro:config/client";
 import "../styles/style.css";
 
 export interface Props {
   title: string;
   description?: string;
   lang: string;
-  canonical?: string;
-  alternateHrefLang?: { [key: string]: string };
   robots?: string;
   structuredData?: object;
   speculationRulePaths?: string[];
@@ -21,13 +21,15 @@ const {
   speculationRulePaths,
 } = Astro.props;
 
-const canonical =
-  Astro.props.canonical && new URL(Astro.props.canonical, Astro.site);
-const alternates = Astro.props.alternateHrefLang
-  ? Object.entries(Astro.props.alternateHrefLang).map(
-      ([lang, href]) => [lang, new URL(href, Astro.site)] as const,
-    )
-  : [];
+const indexed = robots !== "noindex";
+const currentLocale = Astro.currentLocale ?? i18n!.defaultLocale;
+const localePrefix =
+  currentLocale === i18n!.defaultLocale ? "" : `/${currentLocale}`;
+const localePath = Astro.url.pathname.slice(localePrefix.length) || "/";
+const canonical = Astro.url;
+const alternates = toCodes(i18n!.locales).map(
+  (locale) => [locale, getAbsoluteLocaleUrl(locale, localePath)] as const,
+);
 ---
 
 <!doctype html>
@@ -37,12 +39,13 @@ const alternates = Astro.props.alternateHrefLang
     <title>{title}</title>
     <meta name="viewport" content="width=device-width" />
 
-    {canonical && <link rel="canonical" href={canonical} />}
+    {indexed && <link rel="canonical" href={canonical} />}
 
     {
-      alternates.map(([lang, href]) => (
-        <link rel="alternate" hreflang={lang} href={href} />
-      ))
+      indexed &&
+        alternates.map(([lang, href]) => (
+          <link rel="alternate" hreflang={lang} href={href} />
+        ))
     }
 
     <link

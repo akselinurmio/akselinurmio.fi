@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+import AkseliImage from "../components/AkseliImage.astro";
+import ContactForm from "../components/ContactForm.astro";
+import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface Props {
+  entry: CollectionEntry<"home">;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const lang = entry.id;
+const { locale = lang, imageAlt, heading, title, description } = entry.data;
+
+const canonical = lang === "fi" ? "/" : "/en/";
+const speculationRulePaths = lang === "fi" ? ["/en/"] : ["/"];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": new URL(canonical, Astro.site),
+  url: new URL(canonical, Astro.site),
+  name: title,
+  description,
+  inLanguage: lang,
+  isPartOf:
+    lang === "fi"
+      ? {
+          "@type": "WebSite",
+          "@id": new URL("/#website", Astro.site),
+          url: new URL("/", Astro.site),
+          name: "Akseli Nurmio",
+          inLanguage: ["en", "fi"],
+        }
+      : {
+          "@id": new URL("/#website", Astro.site),
+        },
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  structuredData={structuredData}
+  speculationRulePaths={speculationRulePaths}
+>
+  <script
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+    is:inline
+    defer></script>
+  <script src="/src/scripts/form.ts"></script>
+
+  <div class="top-container">
+    <main class="main">
+      <div class="right-side-content">
+        <AkseliImage alt={imageAlt} />
+      </div>
+
+      <div class="left-side-content">
+        <h1 class="name">{heading}</h1>
+        <Content />
+        <ContactForm locale={locale} />
+      </div>
+    </main>
+    <Footer locale={locale} />
+  </div>
+</BaseLayout>
