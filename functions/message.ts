@@ -27,6 +27,24 @@ const turnstileResponseSchema = z.object({
   "error-codes": z.array(z.string()).default([]),
 });
 
+const contactMessageSchema = z.object({
+  senderName: z
+    .string()
+    .max(100, "Name is too long")
+    .regex(/^[^\n]*$/, "Name contains newlines")
+    .nullable(),
+  senderEmail: z
+    .email("Email is invalid")
+    .max(254, "Email address is too long")
+    .nullable(),
+  message: z
+    .string("Message is missing")
+    .trim()
+    .nonempty("Message is missing")
+    .max(2000, "Message is too long"),
+  referer: z.url("Invalid referer").nullable(),
+});
+
 async function validateTurnstileToken(
   formData: FormData,
   headers: Headers,
@@ -100,32 +118,23 @@ export const onRequest: PagesFunction = async (context) => {
     return clientError("Invalid Turnstile token. Have you enabled JavaScript?");
   }
 
-  const senderName = formData.get("name");
-  const senderEmail = formData.get("email");
-  const message = formData.get("message");
-  const referer = headers.get("referer");
+  let contactMessage: z.infer<typeof contactMessageSchema>;
+  try {
+    contactMessage = contactMessageSchema.parse({
+      senderName: formData.get("name"),
+      senderEmail: formData.get("email"),
+      message: formData.get("message"),
+      referer: headers.get("referer"),
+    });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return clientError(error.issues[0]?.message);
+    }
 
-  if (senderName && senderName.length > 100) {
-    return clientError("Name is too long");
+    throw error;
   }
-  if (senderName && senderName.includes("\n")) {
-    return clientError("Name contains newlines");
-  }
-  if (senderEmail && senderEmail.length > 254) {
-    return clientError("Email address is too long");
-  }
-  if (senderEmail && senderEmail.includes("\n")) {
-    return clientError("Email address contains newlines");
-  }
-  if (!message) {
-    return clientError("Message is missing");
-  }
-  if (message.length > 2000) {
-    return clientError("Message is too long");
-  }
-  if (referer && !URL.canParse(referer)) {
-    return clientError("Invalid referer");
-  }
+
+  const { senderName, senderEmail, message, referer } = contactMessage;
 
   const body = `Name: ${senderName || ""}
 Email: ${senderEmail || ""}
