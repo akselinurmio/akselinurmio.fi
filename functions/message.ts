@@ -36,6 +36,7 @@ const contactMessageSchema = z.object({
   senderEmail: z
     .email("Email is invalid")
     .max(254, "Email address is too long")
+    .or(z.literal(""))
     .nullable(),
   message: z
     .string("Message is missing")
