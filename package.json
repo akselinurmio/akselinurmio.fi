@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "wrangler pages dev frontend/site --port 4321 --compatibility-date=2026-04-28",
-    "dev:functions": "npm run build && wrangler pages dev frontend/site --port 4321 --compatibility-date=2026-04-28",
+    "dev": "wrangler pages dev frontend/dist --port 4321 --compatibility-date=2026-04-28",
+    "dev:functions": "npm run build && wrangler pages dev frontend/dist --port 4321 --compatibility-date=2026-04-28",
     "build": "tsc --project frontend/tsconfig.json",
-    "preview": "wrangler pages dev frontend/site --port 4321 --compatibility-date=2026-04-28",
+    "preview": "wrangler pages dev frontend/dist --port 4321 --compatibility-date=2026-04-28",
     "prettier:check": "prettier --check --ignore-path .gitignore .",
     "prettier:fix": "prettier --write --ignore-path .gitignore .",
     "test": "playwright test",

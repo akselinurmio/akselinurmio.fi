@@ -4,7 +4,7 @@ import { dirname, join } from "path";
 
 const dir = dirname(fileURLToPath(import.meta.url));
 const input = join(dir, "akseli.jpg");
-const out = join(dir, "../site/assets");
+const out = join(dir, "../dist/assets");
 
 const variants = [
   { width: 200, suffix: "200" },

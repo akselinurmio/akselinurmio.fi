@@ -7,7 +7,7 @@
     "strict": true,
     "skipLibCheck": true,
     "rootDir": "./src",
-    "outDir": "./site/assets"
+    "outDir": "./dist/assets"
   },
   "include": ["src/**/*"]
 }
