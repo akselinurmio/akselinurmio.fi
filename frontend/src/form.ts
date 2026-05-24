@@ -42,10 +42,10 @@ const messages = {
       "Sending message failed due to a network error. You can try again later.",
     success: "Thank you for your message!",
     validationError:
-      "Sending message didn’t succeed. Please check that all fields are filled correctly.",
-    serverError: "Sending message didn’t succeed. Please try again later.",
+      "Sending message didn't succeed. Please check that all fields are filled correctly.",
+    serverError: "Sending message didn't succeed. Please try again later.",
     missingMessage: "The message is missing.",
-    emailError: "There’s a problem with the email address you gave.",
+    emailError: "There's a problem with the email address you gave.",
     formError: "Please correct the errors in the form.",
   },
 } as const;
@@ -63,9 +63,10 @@ function initializeTurnstile(): void {
     const action = language === "fi" ? "contact_fi" : "contact_en";
     const turnstileLanguage = language === "fi" ? "fi" : "en";
 
-    const sitekey = import.meta.env.DEV
-      ? "1x00000000000000000000AA"
-      : "0x4AAAAAAAB4pAL3vK_V47rO";
+    const sitekey =
+      location.hostname === "localhost" || location.hostname === "127.0.0.1"
+        ? "1x00000000000000000000AA"
+        : "0x4AAAAAAAB4pAL3vK_V47rO";
 
     turnstileWidgetId = turnstile.render(turnstileWidget, {
       sitekey,
