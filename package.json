@@ -16,11 +16,11 @@
     "generate-images": "npx tsx frontend/scripts/generate-images.ts"
   },
   "dependencies": {
-    "@axe-core/playwright": "^4.11.2",
+    "@axe-core/playwright": "^4.11.3",
     "@cloudflare/workers-types": "^4.20260424.1",
-    "@playwright/test": "^1.59.1",
+    "@playwright/test": "^1.60.0",
     "@types/cloudflare-turnstile": "^0.2.2",
-    "@types/node": "^25.6.0",
+    "@types/node": "^25.8.0",
     "concurrently": "^9.2.1",
     "playwright": "^1.52.0",
     "prettier": "^3.8.3",
