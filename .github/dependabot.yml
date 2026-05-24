@@ -13,11 +13,6 @@ updates:
     schedule:
       interval: monthly
     groups:
-      astro:
-        applies-to: version-updates
-        patterns:
-          - "@astrojs/*"
-          - "astro"
       cloudflare:
         applies-to: version-updates
         patterns:

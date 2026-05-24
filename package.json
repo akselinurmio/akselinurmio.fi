@@ -3,32 +3,32 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "cd frontend && astro dev",
-    "dev:functions": "npm run build:dev && wrangler pages dev frontend/dist",
-    "build": "cd frontend && astro build",
-    "build:dev": "cd frontend && astro build --devOutput",
-    "preview": "cd frontend && astro preview",
+    "dev": "wrangler pages dev frontend/site --port 4321 --compatibility-date=2026-04-28",
+    "dev:functions": "npm run build && wrangler pages dev frontend/site --port 4321 --compatibility-date=2026-04-28",
+    "build": "tsc --project frontend/tsconfig.json",
+    "preview": "wrangler pages dev frontend/site --port 4321 --compatibility-date=2026-04-28",
     "prettier:check": "prettier --check --ignore-path .gitignore .",
     "prettier:fix": "prettier --write --ignore-path .gitignore .",
     "test": "playwright test",
     "type-check": "concurrently --group \"npm:type-check:*\"",
-    "type-check:frontend": "cd frontend && astro check",
-    "type-check:functions": "cd functions && tsc --noEmit"
+    "type-check:frontend": "tsc --project frontend/tsconfig.json --noEmit",
+    "type-check:functions": "cd functions && tsc --noEmit",
+    "generate-images": "npx tsx frontend/scripts/generate-images.ts"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.8",
     "@axe-core/playwright": "^4.11.2",
     "@cloudflare/workers-types": "^4.20260424.1",
     "@playwright/test": "^1.59.1",
     "@types/cloudflare-turnstile": "^0.2.2",
     "@types/node": "^25.6.0",
-    "astro": "^6.1.10",
     "concurrently": "^9.2.1",
     "playwright": "^1.52.0",
     "prettier": "^3.8.3",
-    "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.9.2",
     "wrangler": "^4.84.1",
     "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }
