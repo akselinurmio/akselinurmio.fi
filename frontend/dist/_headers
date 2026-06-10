@@ -2,11 +2,7 @@ https://:project.pages.dev/*
   X-Robots-Tag: noindex
 
 /*
-  Reporting-Endpoints: default="https://b5qstzg4.uriports.com/reports"
-  Report-To: {"group":"default","max_age":10886400,"endpoints":[{"url":"https://b5qstzg4.uriports.com/reports"}],"include_subdomains":true}
-  NEL: {"report_to":"default","max_age":2592000,"include_subdomains":true,"failure_fraction":1.0}
-  Content-Security-Policy: default-src 'none'; base-uri 'none'; connect-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src https://challenges.cloudflare.com; img-src 'self'; manifest-src 'self'; media-src 'self'; script-src 'self' https://challenges.cloudflare.com 'inline-speculation-rules'; script-src-attr 'none'; style-src 'self'; report-uri https://b5qstzg4.uriports.com/reports/enforce; report-to default
-  Permissions-Policy-Report-Only: microphone=();report-to=default, camera=();report-to=default, payment=();report-to=default, geolocation=();report-to=default, fullscreen=(self);report-to=default
+  Content-Security-Policy: default-src 'none'; base-uri 'none'; connect-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src https://challenges.cloudflare.com; img-src 'self'; manifest-src 'self'; media-src 'self'; script-src 'self' https://challenges.cloudflare.com 'inline-speculation-rules'; script-src-attr 'none'; style-src 'self'
 
 /assets/*.js
   Content-Type: application/javascript; charset=UTF-8
