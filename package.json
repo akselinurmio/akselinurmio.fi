@@ -20,7 +20,7 @@
     "@cloudflare/workers-types": "^4.20260526.1",
     "@playwright/test": "^1.60.0",
     "@types/cloudflare-turnstile": "^0.2.2",
-    "@types/node": "^25.9.1",
+    "@types/node": "^26.1.1",
     "concurrently": "^10.0.4",
     "playwright": "^1.52.0",
     "prettier": "^3.9.5",
