@@ -16,9 +16,9 @@
     "generate-images": "npx tsx frontend/scripts/generate-images.ts"
   },
   "dependencies": {
-    "@axe-core/playwright": "^4.11.3",
+    "@axe-core/playwright": "^4.12.1",
     "@cloudflare/workers-types": "^4.20260526.1",
-    "@playwright/test": "^1.60.0",
+    "@playwright/test": "^1.61.1",
     "@types/cloudflare-turnstile": "^0.2.2",
     "@types/node": "^26.1.1",
     "concurrently": "^10.0.4",
