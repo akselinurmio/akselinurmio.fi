@@ -25,10 +25,10 @@
     "playwright": "^1.52.0",
     "prettier": "^3.9.6",
     "typescript": "^5.9.2",
-    "wrangler": "^4.103.0",
+    "wrangler": "^4.114.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "sharp": "^0.34.5"
+    "sharp": "^0.35.3"
   }
 }
