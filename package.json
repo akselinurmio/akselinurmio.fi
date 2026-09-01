@@ -23,7 +23,7 @@
     "@types/node": "^26.1.1",
     "concurrently": "^10.0.4",
     "playwright": "^1.52.0",
-    "prettier": "^3.9.5",
+    "prettier": "^3.9.6",
     "typescript": "^5.9.2",
     "wrangler": "^4.103.0",
     "zod": "^4.4.3"
