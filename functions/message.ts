@@ -54,7 +54,7 @@ async function validateTurnstileToken(
   const token = formData.get("cf-turnstile-response");
   const ip = headers.get("CF-Connecting-IP");
 
-  if (!token || token.length > 2048 || !ip) {
+  if (typeof token !== "string" || token.length > 2048 || !ip) {
     return false;
   }
 
