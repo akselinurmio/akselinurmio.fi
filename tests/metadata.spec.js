@@ -17,7 +17,7 @@ test.describe("Page metadata checks", () => {
     await expect(page.locator('link[rel="alternate"]')).toHaveCount(2);
     await expect(
       page.locator('link[rel="alternate"][hreflang="fi"]'),
-    ).toHaveAttribute("href", "https://akselinurmio.fi");
+    ).toHaveAttribute("href", "https://akselinurmio.fi/");
     await expect(
       page.locator('link[rel="alternate"][hreflang="en"]'),
     ).toHaveAttribute("href", "https://akselinurmio.fi/en/");
@@ -38,7 +38,7 @@ test.describe("Page metadata checks", () => {
     await expect(alternateLinks).toHaveCount(2);
     await expect(
       page.locator('link[rel="alternate"][hreflang="fi"]'),
-    ).toHaveAttribute("href", "https://akselinurmio.fi");
+    ).toHaveAttribute("href", "https://akselinurmio.fi/");
     await expect(
       page.locator('link[rel="alternate"][hreflang="en"]'),
     ).toHaveAttribute("href", "https://akselinurmio.fi/en/");
