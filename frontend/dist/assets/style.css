@@ -83,7 +83,7 @@ h2:target::after {
   transform: rotate(-10deg);
 }
 
-@media (prefers-reduced-motion: no-preference) {
+@media not (prefers-reduced-motion) {
   h2:target::after {
     animation: point-at 1s ease-in-out infinite;
   }
