@@ -35,6 +35,11 @@ const messages = {
     missingMessage: "Viesti puuttuu.",
     emailError: "Antamassasi meiliosoitteessa on ongelma.",
     formError: "Korjaathan lomakkeessa olevat virheet.",
+    turnstilePending:
+      "Bottitarkistus on vielä kesken. Odota hetki tai viimeistele tarkistus ja kokeile sitten uudelleen.",
+    turnstileUnavailable:
+      "Bottitarkistus ei latautunut. Tarkista, ettei selaimesi estä sitä, ja lataa sivu uudelleen.",
+    turnstileError: "Bottitarkistus epäonnistui. Kokeile uudelleen.",
   },
   en: {
     sending: "Your message is being sent…",
@@ -47,6 +52,11 @@ const messages = {
     missingMessage: "The message is missing.",
     emailError: "There's a problem with the email address you gave.",
     formError: "Please correct the errors in the form.",
+    turnstilePending:
+      "The bot check isn't complete yet. Please wait a moment or complete the check, then try again.",
+    turnstileUnavailable:
+      "The bot check didn't load. Make sure your browser isn't blocking it and reload the page.",
+    turnstileError: "The bot check failed. Please try again.",
   },
 } as const;
 
@@ -119,8 +129,32 @@ function wait(milliseconds: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
+function getTurnstileProblem():
+  "turnstileUnavailable" | "turnstilePending" | null {
+  if (!turnstileWidgetId) return "turnstileUnavailable";
+  if (!turnstile.getResponse(turnstileWidgetId)) return "turnstilePending";
+  return null;
+}
+
+function getErrorMessage(status: number): string {
+  switch (status) {
+    case 400:
+      return getMessage("validationError");
+    case 403:
+      return getMessage("turnstileError");
+    default:
+      return getMessage("serverError");
+  }
+}
+
 async function sendForm(): Promise<void> {
   if (getFormState() === "submitting") return;
+
+  const turnstileProblem = getTurnstileProblem();
+  if (turnstileProblem) {
+    setFormState({ state: "error", message: getMessage(turnstileProblem) });
+    return;
+  }
 
   setFormState({ state: "submitting", message: getMessage("sending") });
 
@@ -142,12 +176,10 @@ async function sendForm(): Promise<void> {
         `Form action returned error status ${response.status} with message: "${await response.text()}".`,
       );
 
-      const errorMessage =
-        response.status === 400
-          ? getMessage("validationError")
-          : getMessage("serverError");
-
-      setFormState({ state: "error", message: errorMessage });
+      setFormState({
+        state: "error",
+        message: getErrorMessage(response.status),
+      });
     }
   } catch (error) {
     console.error(error);
@@ -198,6 +230,8 @@ function isFormInput(
 }
 
 function onInput(): void {
+  if (getFormState() === "submitting") return;
+
   setFormState({ state: "idle" });
 }
 

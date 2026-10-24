@@ -116,7 +116,10 @@ export const onRequest: PagesFunction = async (context) => {
   );
 
   if (!isTurnstileTokenValid) {
-    return clientError("Invalid Turnstile token. Have you enabled JavaScript?");
+    return new Response(
+      "Invalid Turnstile token. Have you enabled JavaScript?",
+      { status: 403 },
+    );
   }
 
   let contactMessage: z.infer<typeof contactMessageSchema>;
