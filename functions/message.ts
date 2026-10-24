@@ -43,7 +43,7 @@ const contactMessageSchema = z.object({
     .trim()
     .nonempty("Message is missing")
     .max(2000, "Message is too long"),
-  referer: z.httpUrl("Invalid referer").nullable(),
+  referer: z.httpUrl().nullable().catch(null),
 });
 
 async function validateTurnstileToken(
