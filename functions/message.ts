@@ -151,6 +151,7 @@ ${message}`;
     body: JSON.stringify({
       from: `"akselinurmio.fi" <noreply@notifications.akselinurmio.fi>`,
       to: CONTACT_EMAIL,
+      reply_to: senderEmail || undefined,
       subject: "Mail from website",
       text: body,
     }),
