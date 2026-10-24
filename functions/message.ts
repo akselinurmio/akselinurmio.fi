@@ -1,10 +1,5 @@
 import { z } from "zod";
 
-declare var URL: {
-  canParse(url: string): boolean;
-  prototype: URL;
-};
-
 type Env = Record<(typeof ENV_KEYS)[number], string>;
 
 const ENV_KEYS = [
