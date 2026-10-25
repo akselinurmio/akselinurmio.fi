@@ -9,7 +9,7 @@ console.log(`Source image: ${meta.width}x${meta.height}`);
 
 const widths = [200, 400, 600, 800];
 const formats = [
-  { format: "avif", quality: 60 },
+  { format: "avif", quality: 65 },
   { format: "webp", quality: 85 },
 ] as const;
 
