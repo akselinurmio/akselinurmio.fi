@@ -22,7 +22,9 @@ await Promise.all(
         .resize(width)
         .toFormat(format, { quality })
         .toFile(join(out, file));
-      console.log(`${file}: ${info.width}x${info.height}, ${Math.round(info.size / 1000)} KB`);
+      console.log(
+        `${file}: ${info.width}x${info.height}, ${Math.round(info.size / 1000)} KB`,
+      );
     }),
   ),
 );
