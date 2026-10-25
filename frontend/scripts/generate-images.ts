@@ -1,30 +1,28 @@
 import sharp from "sharp";
-import { fileURLToPath } from "url";
-import { dirname, join } from "path";
+import { join } from "node:path";
 
-const dir = dirname(fileURLToPath(import.meta.url));
-const input = join(dir, "akseli.jpg");
-const out = join(dir, "../dist/assets");
+const source = sharp(join(import.meta.dirname, "akseli.jpg"));
+const out = join(import.meta.dirname, "../dist/assets");
 
-const variants = [
-  { width: 200, suffix: "200" },
-  { width: 400, suffix: "200@2x" },
-  { width: 400, suffix: "400" },
-  { width: 800, suffix: "400@2x" },
+const meta = await source.metadata();
+console.log(`Source image: ${meta.width}x${meta.height}`);
+
+const widths = [200, 400, 600, 800];
+const formats = [
+  { format: "avif", quality: 60 },
+  { format: "webp", quality: 85 },
 ] as const;
 
-for (const { width, suffix } of variants) {
-  const meta = await sharp(input)
-    .resize(width)
-    .webp({ quality: 85 })
-    .toFile(`${out}/akseli-${suffix}.webp`);
-  console.log(`akseli-${suffix}.webp: ${meta.width}x${meta.height}`);
-  await sharp(input)
-    .resize(width)
-    .jpeg({ quality: 85 })
-    .toFile(`${out}/akseli-${suffix}.jpg`);
-  console.log(`akseli-${suffix}.jpg: done`);
-}
-
-const meta = await sharp(input).metadata();
-console.log(`Source image: ${meta.width}x${meta.height}`);
+await Promise.all(
+  widths.flatMap((width) =>
+    formats.map(async ({ format, quality }) => {
+      const file = `akseli-${width}.${format}`;
+      const info = await source
+        .clone()
+        .resize(width)
+        .toFormat(format, { quality })
+        .toFile(join(out, file));
+      console.log(`${file}: ${info.width}x${info.height}, ${Math.round(info.size / 1000)} KB`);
+    }),
+  ),
+);

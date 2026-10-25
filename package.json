@@ -13,7 +13,7 @@
     "type-check": "concurrently --group \"npm:type-check:*\"",
     "type-check:frontend": "tsc --project frontend/tsconfig.json --noEmit",
     "type-check:functions": "cd functions && tsc --noEmit",
-    "generate-images": "npx tsx frontend/scripts/generate-images.ts"
+    "generate-images": "node frontend/scripts/generate-images.ts"
   },
   "dependencies": {
     "@axe-core/playwright": "^4.13.0",

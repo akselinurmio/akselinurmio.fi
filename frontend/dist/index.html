@@ -69,21 +69,25 @@
         <div class="right-side-content">
           <picture>
             <source
-              media="(min-width: 77rem)"
-              type="image/webp"
-              srcset="/assets/akseli-400.webp 1x, /assets/akseli-400@2x.webp 2x"
-              width="400"
-              height="500"
-            />
-            <source
-              type="image/webp"
-              srcset="/assets/akseli-200.webp 1x, /assets/akseli-200@2x.webp 2x"
-              width="200"
-              height="250"
+              type="image/avif"
+              srcset="
+                /assets/akseli-200.avif 200w,
+                /assets/akseli-400.avif 400w,
+                /assets/akseli-600.avif 600w,
+                /assets/akseli-800.avif 800w
+              "
+              sizes="(min-width: 77rem) 400px, 200px"
             />
             <img
               alt="Akseli hymyilee, taustalla helsinkiläinen raitiovaunu"
-              src="/assets/akseli-400.jpg"
+              src="/assets/akseli-400.webp"
+              srcset="
+                /assets/akseli-200.webp 200w,
+                /assets/akseli-400.webp 400w,
+                /assets/akseli-600.webp 600w,
+                /assets/akseli-800.webp 800w
+              "
+              sizes="(min-width: 77rem) 400px, 200px"
               width="400"
               height="500"
               class="portrait"
